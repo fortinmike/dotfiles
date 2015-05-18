@@ -38,6 +38,7 @@ mou() { open -a Mou $1 &; }
 alias fixopenwith="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user"
 alias configz="vim $THIS_DIR/zshrc.zsh" # Edit this file rather than ~/.zshrc
 alias sourcez="source ~/.zshrc" # ... but source the user's .zshrc file, which sources this file
+alias updatez="echo 'Updating Antigen and updating bundles...'; git submodule foreach git pull origin master; git add antigen; git commit -m 'Updated Antigen';  antigen update;"
 
 # ----> Antigen Config
 # Note: Make sure this repo was cloned including submodules!
