@@ -1,3 +1,5 @@
+THIS_DIR=$(dirname $0)
+
 # ----> Environment Variables
 
 export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X12/bin"
@@ -26,20 +28,21 @@ export MR="$HOME/Projects/Software/Ruby/git-multirepo"
 export IR="$HOME/Sites/irradiated.net"
 export MU="$HOME/Projects/Software/Simbioz/Muzeus.iOS"
 
-# ----> OS X App Aliases
+# ----> Open With OS X Apps
 
-alias xcode="/Applications/Xcode.app/Contents/MacOS/Xcode"
+xcode() { open -a Xcode $1 &; }
+mou() { open -a Mou $1 &; }
 
 # ----> Custom Commands
 
 alias fixopenwith="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user"
-alias configz="vim ~/.zshrc"
-alias sourcez="source ~/.zshrc"
+alias configz="vim $THIS_DIR/zshrc.zsh" # Edit this file rather than ~/.zshrc
+alias sourcez="source ~/.zshrc" # ... but source the user's .zshrc file, which sources this file
 
 # ----> Antigen Config
-# Note: The Antigen repo must be cloned manually in ~/.antigen
+# Note: Make sure this repo was cloned including submodules!
 
-source $(dirname $0)/antigen/antigen.zsh
+source $THIS_DIR/antigen/antigen.zsh
 
 antigen use oh-my-zsh
 
