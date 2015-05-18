@@ -39,7 +39,7 @@ alias sourcez="source ~/.zshrc"
 # ----> Antigen Config
 # Note: The Antigen repo must be cloned manually in ~/.antigen
 
-source antigen/antigen.zsh
+source $(dirname $0)/antigen/antigen.zsh
 
 antigen use oh-my-zsh
 
