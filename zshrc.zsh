@@ -35,10 +35,23 @@ mou() { open -a Mou $1 &; }
 
 # ----> Custom Commands
 
-alias fixopenwith="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user"
 alias configz="vim $THIS_DIR/zshrc.zsh" # Edit this file rather than ~/.zshrc
 alias sourcez="source ~/.zshrc" # ... but source the user's .zshrc file, which sources this file
 alias updatez="echo 'Updating Antigen and updating bundles...'; git submodule foreach git pull origin master; git add antigen; git commit -m 'Updated antigen submodule';  antigen update; sourcez"
+alias fixopenwith="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user"
+alias lsl="ls -la"
+
+# ----> zsh-history-substring-search Key Bindings
+
+# bind UP and DOWN arrow keys
+zmodload zsh/terminfo
+bindkey "$terminfo[kcuu1]" history-substring-search-up
+bindkey "$terminfo[kcud1]" history-substring-search-down
+
+# bind UP and DOWN arrow keys (compatibility fallback
+# for Ubuntu 12.04, Fedora 21, and MacOSX 10.9 users)
+bindkey '^[[A' history-substring-search-up
+bindkey '^[[B' history-substring-search-down
 
 # ----> Antigen Config
 # Note: Make sure this repo was cloned including submodules!
@@ -62,4 +75,7 @@ antigen bundle pod # Autocompletion for CocoaPods
 antigen bundle gem # Autocompletion for the "gem" command, plus some aliases
 
 antigen bundle zsh-users/zsh-syntax-highlighting # Live command highlighting in the prompt
+antigen bundle zsh-users/zsh-history-substring-search # Type partial command and press UP to find last command containing string
+
+antigen apply
 
