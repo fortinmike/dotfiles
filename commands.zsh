@@ -9,6 +9,7 @@ alias updatez="echo 'Updating Antigen and updating bundles...'; git submodule fo
 
 alias fixopenwith="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user"
 alias lsl="ls -la"
+alias cdg="cd-gitroot"
 
 # ----> Open With OS X Apps
 
