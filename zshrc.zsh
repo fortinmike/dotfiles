@@ -1,9 +1,5 @@
 THIS_DIR=$(dirname $0)
 
-source "$THIS_DIR/env.zsh"
-source "$THIS_DIR/commands.zsh"
-source "$THIS_DIR/key-bindings.zsh"
-
 # ----> Antigen Config
 # Note: Make sure this repo was cloned w/ submodules!
 
@@ -29,4 +25,8 @@ antigen bundle zsh-users/zsh-syntax-highlighting # Live command highlighting in 
 antigen bundle zsh-users/zsh-history-substring-search # Type partial command and press UP to find last command containing string
 
 antigen apply
+
+source "$THIS_DIR/env.zsh"
+source "$THIS_DIR/commands.zsh"
+source "$THIS_DIR/key-bindings.zsh"
 
