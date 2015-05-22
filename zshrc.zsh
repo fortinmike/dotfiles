@@ -5,7 +5,7 @@ source "$THIS_DIR/commands.zsh"
 source "$THIS_DIR/key-bindings.zsh"
 
 # ----> Antigen Config
-# Note: Make sure this repo was cloned including submodules!
+# Note: Make sure this repo was cloned w/ submodules!
 
 source "$THIS_DIR/antigen/antigen.zsh"
 
