@@ -24,6 +24,7 @@ antigen bundle gem # Autocompletion for the "gem" command, plus some aliases
 antigen bundle zsh-users/zsh-syntax-highlighting # Live command highlighting in the prompt
 antigen bundle zsh-users/zsh-history-substring-search # Type partial command and press UP to find last command containing string
 antigen bundle mollifier/cd-gitroot # Quickly cd to the current git root (alias in key-bindings.zsh)
+antigen bundle supercrabtree/k # ls alternative
 
 antigen apply
 
