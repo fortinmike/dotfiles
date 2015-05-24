@@ -31,4 +31,5 @@ antigen apply
 source "$THIS_DIR/env.zsh"
 source "$THIS_DIR/commands.zsh"
 source "$THIS_DIR/key-bindings.zsh"
+source "$THIS_DIR/dotnet.zsh" # .NET tools and execution environment
 
