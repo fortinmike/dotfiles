@@ -1,6 +1,6 @@
 # ----> PATH
 
-export PATH="/usr/local/bin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X12/bin"
+export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X12/bin"
 export PATH="$PATH:$HOME/Documents/Scripts/bash"
 export PATH="$PATH:$HOME/Projects/Software/Ruby/git-multirepo/git-multirepo-migrations"
 
@@ -8,6 +8,7 @@ export PATH="$PATH:$HOME/Projects/Software/Ruby/git-multirepo/git-multirepo-migr
 
 export EDITOR='vim'
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+export ANSIBLE_LOAD_CALLBACK_PLUGINS=1
 
 # ----> Directories
 
