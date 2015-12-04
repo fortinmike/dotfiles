@@ -10,6 +10,8 @@ alias updatez="echo 'Updating Antigen and bundles...'; git -C '$THIS_DIR' submod
 alias fixopenwith="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user"
 alias lsl="ls -la"
 alias cdg="cd-gitroot"
+alias gc="git commit"
+alias ga="git commit --amend"
 mkcd() { mkdir $1; cd $1; }
 
 # ----> Open With OS X Apps
