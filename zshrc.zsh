@@ -15,7 +15,7 @@ antigen bundle fasd # Quick access to files and directories
 antigen bundle brew # Autocompletion for Homebrew, plus useful aliases
 antigen bundle osx # Finder, QuickLook and more integrations in the shell
 antigen bundle colorize # $ colorize [source file to display with syntax highlighting]
-antigen bundle colored-man # $ Use man as always, now with color!
+antigen bundle colored-man-pages # $ Use man as always, now with color!
 antigen bundle extract # $ x [file to extract]
 antigen bundle gitignore # Generate default gitignores for various languages and IDE's: $ gi list; gi swift > .gitignore
 antigen bundle pod # Autocompletion for CocoaPods
