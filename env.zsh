@@ -3,6 +3,7 @@
 export PATH="/usr/local/bin:/usr/local/sbin:/usr/bin:/bin:/usr/sbin:/sbin:/opt/X12/bin"
 export PATH="$PATH:$HOME/Documents/Scripts/bash"
 export PATH="$PATH:$HOME/Projects/Software/Ruby/git-multirepo/git-multirepo-migrations"
+export PATH=/Library/Developer/Toolchains/swift-latest.xctoolchain/usr/bin:"${PATH}"
 
 # ----> Configuration
 
