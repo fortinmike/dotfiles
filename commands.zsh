@@ -12,6 +12,8 @@ alias lsl="ls -la"
 alias cdg="cd-gitroot"
 alias gc="git commit"
 alias ga="git commit --amend"
+alias gai="git commit --amend --no-edit"
+alias gs="git status"
 mkcd() { mkdir $1; cd $1; }
 
 # ----> Open With OS X Apps
