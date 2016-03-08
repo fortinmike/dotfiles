@@ -7,6 +7,7 @@ alias updatez="echo 'Updating Antigen and bundles...'; git -C '$THIS_DIR' submod
 
 # ----> Useful Commands
 
+alias weather="curl -4 wttr.in/montreal"
 alias fixopenwith="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user"
 alias lsl="ls -la"
 alias cdg="cd-gitroot"
