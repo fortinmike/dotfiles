@@ -24,6 +24,7 @@ antigen bundle zsh-users/zsh-syntax-highlighting # Live command highlighting in 
 antigen bundle zsh-users/zsh-history-substring-search # Type partial command and press UP to find last command containing string
 antigen bundle mollifier/cd-gitroot # Quickly cd to the current git root (alias in key-bindings.zsh)
 antigen bundle supercrabtree/k # ls alternative
+antigen bundle rupa/z # Quick navigation to recent folders
 
 antigen apply
 
