@@ -17,6 +17,7 @@ if ! zgen saved; then
   zgen oh-my-zsh plugins/extract # x [file to extract]
   zgen oh-my-zsh plugins/gitignore # Generate default gitignores for various languages and IDE's: $ gi list; gi swift > .gitignore
   zgen oh-my-zsh plugins/pod # Autocompletion for CocoaPods
+  zgen oh-my-zsh plugins/gem # Autocompletion for RubyGems
 
   zgen load zsh-users/zsh-syntax-highlighting # Live command highlighting in the prompt
   zgen load zsh-users/zsh-history-substring-search # Type partial command and press UP to find last command containing string
