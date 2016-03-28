@@ -10,7 +10,6 @@ if ! zgen saved; then
   zgen oh-my-zsh themes/robbyrussell
   zgen oh-my-zsh plugins/git # git completions and more
   zgen oh-my-zsh plugins/sudo # Double-tap ESC to prefix current command with sudo
-  zgen oh-my-zsh plugins/fasd # Quick access to files and directories
   zgen oh-my-zsh plugins/brew # Autocompletion for Homebrew, plus useful aliases
   zgen oh-my-zsh plugins/osx # Finder, QuickLook and more integrations in the shell
   zgen oh-my-zsh plugins/colorize # $ colorize [source file to display with syntax highlighting]
