@@ -1,9 +1,9 @@
 # ----> ZSH Config Commands
 
 alias cdz="cd $THIS_DIR"
-alias configz="vim $THIS_DIR/zshrc.zsh" # Edit this file rather than ~/.zshrc
+alias configz="vim $THIS_DIR/zshrc.zsh" # Edit this repo rather than ~/.zshrc
 alias sourcez="zgen reset; source ~/.zshrc" # ... but source the user's .zshrc file, which sources this file
-#alias updatez="echo 'Updating Antigen and bundles...'; git -C '$THIS_DIR' submodule foreach git pull origin master; git -C '$THIS_DIR' add antigen; git -C '$THIS_DIR' commit -m 'Updated antigen submodule'; antigen update; sourcez"
+alias updatez="echo '--> Update zgen and plugins...'; zgen selfupdate; git -C '$THIS_DIR' add zgen; git -C '$THIS_DIR' commit -m '--> Pull latest zgen from origin'; sourcez"
 
 # ----> Useful Commands
 
