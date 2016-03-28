@@ -1,32 +1,32 @@
 THIS_DIR=$(dirname $0)
 
-# ----> Antigen Config
+# ----> zgen config
 # Note: Make sure this repo was cloned w/ submodules!
 
-source "$THIS_DIR/antigen/antigen.zsh"
+source "$THIS_DIR/zgen/zgen.zsh"
 
-antigen use oh-my-zsh
+if ! zgen saved; then
+  zgen oh-my-zsh
+  zgen oh-my-zsh themes/robbyrussell
+  zgen oh-my-zsh plugins/git # git completions and more
+  zgen oh-my-zsh plugins/sudo # Double-tap ESC to prefix current command with sudo
+  zgen oh-my-zsh plugins/fasd # Quick access to files and directories
+  zgen oh-my-zsh plugins/brew # Autocompletion for Homebrew, plus useful aliases
+  zgen oh-my-zsh plugins/osx # Finder, QuickLook and more integrations in the shell
+  zgen oh-my-zsh plugins/colorize # $ colorize [source file to display with syntax highlighting]
+  zgen oh-my-zsh plugins/colored-man-pages # Use man as always, now with color!
+  zgen oh-my-zsh plugins/extract # x [file to extract]
+  zgen oh-my-zsh plugins/gitignore # Generate default gitignores for various languages and IDE's: $ gi list; gi swift > .gitignore
+  zgen oh-my-zsh plugins/pod # Autocompletion for CocoaPods
 
-antigen theme robbyrussell
+  zgen load zsh-users/zsh-syntax-highlighting # Live command highlighting in the prompt
+  zgen load zsh-users/zsh-history-substring-search # Type partial command and press UP to find last command containing string
+  zgen load mollifier/cd-gitroot # Quickly cd to the current git root (alias in key-bindings.zsh)
+  zgen load supercrabtree/k # ls alternative
+  zgen load rupa/z # Quick navigation to recent folders
 
-antigen bundle git # git completions and more
-antigen bundle sudo # Double-tap ESC to prefix current command with sudo
-antigen bundle fasd # Quick access to files and directories
-antigen bundle brew # Autocompletion for Homebrew, plus useful aliases
-antigen bundle osx # Finder, QuickLook and more integrations in the shell
-antigen bundle colorize # $ colorize [source file to display with syntax highlighting]
-antigen bundle colored-man-pages # $ Use man as always, now with color!
-antigen bundle extract # $ x [file to extract]
-antigen bundle gitignore # Generate default gitignores for various languages and IDE's: $ gi list; gi swift > .gitignore
-antigen bundle pod # Autocompletion for CocoaPods
-
-antigen bundle zsh-users/zsh-syntax-highlighting # Live command highlighting in the prompt
-antigen bundle zsh-users/zsh-history-substring-search # Type partial command and press UP to find last command containing string
-antigen bundle mollifier/cd-gitroot # Quickly cd to the current git root (alias in key-bindings.zsh)
-antigen bundle supercrabtree/k # ls alternative
-antigen bundle rupa/z # Quick navigation to recent folders
-
-antigen apply
+  zgen save
+fi
 
 source "$THIS_DIR/env.zsh"
 source "$THIS_DIR/commands.zsh"
