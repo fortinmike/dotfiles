@@ -3,7 +3,7 @@
 alias cdz="cd $THIS_DIR"
 alias configz="vim $THIS_DIR/dotfiles.zsh" # Edit this repo rather than ~/.zshrc
 alias resetz="zgen reset; source ~/.zshrc"
-alias updatez="echo '--> Updating zgen and installed plugins...'; zgen selfupdate; zgen update; git -C '$THIS_DIR' add zgen; git -C '$THIS_DIR' commit -m '--> Pull latest zgen from origin'; source ~/.zshrc"
+alias updatez="echo '--> Updating zgen and installed plugins...'; zgen selfupdate; zgen update; git -C '$THIS_DIR' add zgen; git -C '$THIS_DIR' commit -m 'Pull latest zgen from origin'; source ~/.zshrc"
 
 # ----> Useful Commands
 
