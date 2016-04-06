@@ -10,5 +10,5 @@ This is my ZSH configuration and personal dotfiles. Please review everything bef
 
 2. Edit ~/.zshrc and replace its contents with:
 
-        source ~/.dotfiles/main.zsh
+        source ~/.dotfiles/bootstrap.zsh
 
