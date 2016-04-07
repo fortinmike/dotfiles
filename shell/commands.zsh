@@ -1,7 +1,6 @@
 # ----> Dotfiles Commands
 
 alias cdz="cd $THIS_DIR"
-alias reloadz="zgen reset; source ~/.zshrc"
 
 function configz () {
   if [[ -z "$1" ]]; then
@@ -14,6 +13,12 @@ function configz () {
       echo "No config file exists at path $file"
     fi
   fi
+}
+
+function reloadz () {
+  echo "--> Reloading shell configuration..."
+  zgen reset;
+  source ~/.zshrc
 }
 
 function updatez () {
