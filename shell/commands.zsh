@@ -1,10 +1,34 @@
 # ----> Dotfiles Commands
 
 alias cdz="cd $THIS_DIR"
-alias configz="vim $THIS_DIR/bootstrap.zsh"
 alias reloadz="zgen reset; source ~/.zshrc"
-alias updatez="echo '--> Updating zgen and plugins...'; zgen selfupdate; zgen update; git -C '$THIS_DIR' add zgen; git -C '$THIS_DIR/..' commit -m 'Fast-forward to latest zgen'; source ~/.zshrc"
-alias pullz="echo '--> Pulling latest dotfiles'; git -C '$THIS_DIR' pull"
+
+function configz () {
+  if [[ -z "$1" ]]; then
+    vim "$THIS_DIR/bootstrap.zsh"
+  else
+    file="$THIS_DIR/shell/$1.zsh"
+    if [ -f $file ]; then
+      vim $file
+    else
+      echo "No config file exists at path $file"
+    fi
+  fi
+}
+
+function updatez () {
+  echo "--> Updating zgen and plugins..."
+  zgen selfupdate
+  zgen update
+  git -C "$THIS_DIR" add zgen
+  git -C "$THIS_DIR/.." commit -m "Fast-forward to latest zgen"
+  source ~/.zshrc
+}
+
+function pullz () {
+  echo "--> Pulling latest dotfiles"
+  git -C "$THIS_DIR" pull
+}
 
 # ----> Useful Commands
 
