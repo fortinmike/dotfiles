@@ -1,0 +1,21 @@
+[user]
+	name = Michaël Fortin
+	email = fortinmike@irradiated.net
+[color]
+	diff = auto
+	status = auto
+	branch = auto
+[alias]
+	logd = log --decorate
+	logg = log --decorate --graph --oneline
+	logm = log --pretty=oneline --abbrev-commit
+	discard = reset --hard HEAD
+	find = "!f() { git log --all -- **/$1*; }; f"
+[core]
+	quotepath = false
+[branch]
+	autosetuprebase = always
+[push]
+	default = simple
+[gc]
+	autoDetach = false

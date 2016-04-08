@@ -1,0 +1,27 @@
+#!/usr/bin/ruby
+
+usage = "Usage: throttle [port-number] [KB/s]"
+
+# Arguments validity check
+if ARGV.count != 2 then; puts usage; exit; end
+
+# Store arguments
+port = ARGV.at(0)
+kbps = ARGV.at(1)
+
+# Throttle using ipfw
+%x[
+	sudo ipfw pipe 1 config bw #{kbps}KByte/s
+	sudo ipfw add 1 pipe 1 src-port #{port}
+]
+if $? != 0 then
+	puts "Oops! #{usage}"
+	exit
+end
+
+puts "Throttling port #{port} at #{kbps}KB/s."
+puts "Press ENTER to stop throttling..."
+STDIN.gets
+
+# Stop throttling
+%x[sudo ipfw delete 1]

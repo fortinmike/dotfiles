@@ -1,4 +1,4 @@
-source "$THIS_DIR/zgen/zgen.zsh"
+source "$DOTFILES_DIR/zgen/zgen.zsh"
 
 if ! zgen saved; then
   zgen oh-my-zsh

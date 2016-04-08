@@ -1,0 +1,14 @@
+- defaults:
+    link:
+      relink: true
+
+- clean: ['~']
+
+- link:
+    ~/.gitconfig: ../dotfiles/gitconfig
+    ~/.ssh/config:
+        path: ../dotfiles/ssh/config
+        create: true
+    ~/.zshrc: ../dotfiles/zshrc
+
+

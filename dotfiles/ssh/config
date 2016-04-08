@@ -1,0 +1,3 @@
+# Force-disable roaming to fix SSH vulnerability on old / misconfigured systems
+# https://www.suse.com/support/kb/doc.php?id=7017155 
+UseRoaming no

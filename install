@@ -1,0 +1,17 @@
+#!/usr/bin/env zsh
+
+DOTFILES_DIR=$(dirname $0)
+
+source "$DOTFILES_DIR/zgen/zgen.zsh"
+
+# Link dotfiles
+"$DOTFILES_DIR/dotbot/install"
+
+# Reset zgen so that the next shell
+# bootstrap reloads plugins
+zgen reset
+
+# Reload the newly linked .zshrc,
+# which updates zgen and boostraps everything
+source ~/.zshrc
+

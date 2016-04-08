@@ -8,7 +8,6 @@ This is my ZSH configuration and personal dotfiles. Please review everything bef
 
         git clone --recursive [this_repos_url] ~/.dotfiles
 
-2. Edit ~/.zshrc and replace its contents with:
+2. Run `./install` once (creates dotfile symlinks and such)
 
-        source ~/.dotfiles/bootstrap.zsh
-
+3. Open a new shell
