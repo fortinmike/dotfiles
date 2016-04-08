@@ -17,7 +17,7 @@ This is a public repository mostly for easy installs on additional machines, but
 ## Important Files
 
 - **install** : Installs everything on a new machine (mostly creating symlinks and reloading the shell)
-- **bootstrap.zsh** : The entry point for ZSH shell bootstrapping (sourced in .zshrc)
+- **bootstrap.zsh** : The entry point for ZSH shell bootstrapping (sourced in `.zshrc`)
 
 ## Directories
 
