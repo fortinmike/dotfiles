@@ -11,3 +11,16 @@ This is my ZSH configuration and personal dotfiles. Please review everything bef
 2. Run `./install` once (creates dotfile symlinks and such)
 
 3. Open a new shell
+
+# Important Files
+
+- **install** : Installs everything on a new machine (mostly creating symlinks and reloading the shell)
+- **bootstrap.zsh** : The entry point for ZSH shell bootstrapping (sourced in .zshrc)
+
+# Directories
+
+- **dotbot** : Contains dotbot (dotfile symlink manager) and its configuration
+- **dotfiles** : Contains dotfiles that are symlinked by dotbot in $HOME
+- **scripts** : Contains small scripts that are made available on the $PATH
+- **shell** : Contains shell configuration files (commands, key bindings and more)
+- **zgen** : The zgen submodule
