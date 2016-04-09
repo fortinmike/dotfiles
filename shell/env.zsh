@@ -1,8 +1,8 @@
-# ----> PATH
+# PATH
 
 export PATH="$PATH:$DOTFILES_DIR/scripts"
 
-# ----> Configuration
+# Configuration
 
 export EDITOR='vim'
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"

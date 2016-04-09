@@ -1,4 +1,4 @@
-# ----> Dotfiles Commands
+# Dotfiles Commands
 
 alias cdz="cd $DOTFILES_DIR"
 
@@ -34,7 +34,7 @@ function pullz () {
   git -C "$DOTFILES_DIR" pull
 }
 
-# ----> General Purpose Commands
+# General Purpose Commands
 
 alias weather="curl -4 wttr.in/montreal"
 alias fixopenwith="/System/Library/Frameworks/CoreServices.framework/Frameworks/LaunchServices.framework/Support/lsregister -kill -r -domain local -domain system -domain user"
@@ -42,7 +42,7 @@ alias lsl="ls -la"
 alias cdg="cd-gitroot"
 mkcd() { mkdir $1; cd $1; }
 
-# ----> OS X & Apps
+# OS X & Apps
 
 xcode() { open -a Xcode $1 &; }
 mou() { open -a Mou $1 &; }
