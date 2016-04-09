@@ -6,7 +6,7 @@ This is a public repository mostly for easy installs on additional machines, but
 
 ## Installation
 
-1. Clone this repository in ~/.dotfiles, **with submodules**:
+1. Clone this repository in `~/.dotfiles`:
 
         git clone --recursive [this_repos_url] ~/.dotfiles
 
@@ -21,8 +21,8 @@ This is a public repository mostly for easy installs on additional machines, but
 
 ## Directories
 
-- **dotbot** : Contains dotbot (dotfile symlink manager) and its configuration
-- **dotfiles** : Contains dotfiles that are symlinked by dotbot in $HOME
-- **scripts** : Contains small scripts that are made available on the $PATH
+- **dotbot** : Contains [dotbot](https://github.com/anishathalye/dotbot) (dotfile symlink manager) and its configuration
+- **dotfiles** : Contains dotfiles that are symlinked by dotbot in `$HOME`
+- **scripts** : Contains small scripts that are made available on the `$PATH`
 - **shell** : Contains shell configuration files (commands, key bindings and more)
-- **zgen** : The zgen submodule
+- **zgen** : The zgen submodule (for ZSH plugins and themes)
