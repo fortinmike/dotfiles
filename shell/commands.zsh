@@ -16,7 +16,7 @@ function configz () {
 }
 
 function reinstallz () {
-  echo "=> Reinstalling dotfiles..."
+  echo "=> Reinstalling..."
   "$DOTFILES_DIR/install"
 }
 
@@ -30,7 +30,7 @@ function updatez () {
 }
 
 function pullz () {
-  echo "=> Pulling latest dotfiles"
+  echo "=> Pulling latest dotfiles..."
   git -C "$DOTFILES_DIR" pull
 }
 
