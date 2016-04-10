@@ -16,12 +16,12 @@ function configz () {
 }
 
 function reinstallz () {
-  echo "--> Reinstalling dotfiles..."
+  echo "=> Reinstalling dotfiles..."
   "$DOTFILES_DIR/install"
 }
 
 function updatez () {
-  echo "--> Updating zgen and plugins..."
+  echo "=> Updating zgen and plugins..."
   zgen selfupdate
   zgen update
   git -C "$DOTFILES_DIR" add zgen
@@ -30,7 +30,7 @@ function updatez () {
 }
 
 function pullz () {
-  echo "--> Pulling latest dotfiles"
+  echo "=> Pulling latest dotfiles"
   git -C "$DOTFILES_DIR" pull
 }
 

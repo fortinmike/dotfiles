@@ -3,21 +3,21 @@
 DOTFILES_DIR=$(dirname $0)
 
 # Initialize submodules
-echo "--> Initializing submodules"
+echo "=> Initializing submodules"
 git submodule update --init --recursive
 
 # Link dotfiles
-echo "--> Symlinking dotfiles"
+echo "=> Symlinking dotfiles"
 "$DOTFILES_DIR/dotbot/install"
 
 # Reset zgen so that the next shell
 # bootstrap reloads plugins
-echo "--> Resetting zgen"
+echo "=> Resetting zgen"
 source "$DOTFILES_DIR/zgen/zgen.zsh"
 zgen reset
 
 # Reload the newly linked .zshrc,
 # which updates zgen and boostraps everything
-echo "--> Reloading!"
+echo "=> Reloading"
 source ~/.zshrc
 
