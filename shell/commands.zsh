@@ -25,7 +25,7 @@ function updatez () {
   zgen selfupdate
   zgen update
   git -C "$DOTFILES_DIR" add zgen
-  git -C "$DOTFILES_DIR/.." commit -m "Fast-forward to latest zgen"
+  git -C "$DOTFILES_DIR" commit -m "Fast-forward to latest zgen"
   source ~/.zshrc
 }
 
