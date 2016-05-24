@@ -8,3 +8,4 @@ source "$DOTFILES_DIR/shell/commands.zsh"
 source "$DOTFILES_DIR/shell/key-bindings.zsh"
 
 if [ -e ~/.zshrc_local ]; then source ~/.zshrc_local; fi
+
