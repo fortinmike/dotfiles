@@ -1,6 +1,7 @@
 # PATH
 
 export PATH="$PATH:$DOTFILES_DIR/scripts"
+export PATH="/usr/local/sbin:$PATH"
 
 # Configuration
 
