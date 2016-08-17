@@ -10,5 +10,6 @@
         path: ../dotfiles/ssh/config
         create: true
     ~/.zshrc: ../dotfiles/zshrc
+    ~/.gemrc: ../dotfiles/gemrc
 
 
