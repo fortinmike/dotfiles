@@ -14,7 +14,7 @@
 [core]
 	quotepath = false
 	excludesfile = ~/.gitignore
-  attributesfile = ~/.gitattributes
+	attributesfile = ~/.gitattributes
 [branch]
 	autosetuprebase = always
 [push]
@@ -24,6 +24,6 @@
 [credential]
 	helper = osxkeychain
 [diff "sketchtool"]
-  textconv = "sketchtool dump"
-  cachetextconv = true
-  binary = true
+	textconv = "sketchtool dump"
+	cachetextconv = true
+	binary = true
