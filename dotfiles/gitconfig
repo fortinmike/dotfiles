@@ -13,7 +13,8 @@
 	find = "!f() { git log --all -- **/$1*; }; f"
 [core]
 	quotepath = false
-	excludesfile = /Users/Michael/.gitignore_global
+	excludesfile = ~/.gitignore
+  attributesfile = ~/.gitattributes
 [branch]
 	autosetuprebase = always
 [push]
