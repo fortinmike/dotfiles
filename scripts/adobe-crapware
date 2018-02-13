@@ -14,4 +14,8 @@ elif [ $1 == "enable" ]; then
   echo "Not implemented! Why would you want to enable Adobe crapware??!?"
   echo "(seriously, this should be implemented in case the stuff is eventually needed)"
 
+else
+
+  echo "Use either 'disable' or 'enable'!"
+
 fi
