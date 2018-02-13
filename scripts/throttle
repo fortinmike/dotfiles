@@ -1,27 +1,23 @@
-#!/usr/bin/ruby
-
-usage = "Usage: throttle [port-number] [KB/s]"
+#!/usr/bin/env bash
 
 # Arguments validity check
-if ARGV.count != 2 then; puts usage; exit; end
+if [[ $# -ne 2 ]]; then
+  echo "Usage: throttle [port-number] [KB/s]"
+  exit 1
+fi
 
 # Store arguments
-port = ARGV.at(0)
-kbps = ARGV.at(1)
+PORT=$1
+KBPS=$2
 
-# Throttle using ipfw
-%x[
-	sudo ipfw pipe 1 config bw #{kbps}KByte/s
-	sudo ipfw add 1 pipe 1 src-port #{port}
-]
-if $? != 0 then
-	puts "Oops! #{usage}"
-	exit
-end
+# Throttle using the built-in traffic shaper
+echo "NOT IMPLEMENTED! MUST USE dnctl ON YOSEMITE+!"
+# dnctl pipe 1 config bw ${KBPS}KByte/s
+# TODO! This should be implemented using dnctl on Yosemite+
 
-puts "Throttling port #{port} at #{kbps}KB/s."
-puts "Press ENTER to stop throttling..."
-STDIN.gets
+echo "Throttling port $PORT at $KBPS KB/s."
+echo "Press ENTER to stop throttling..."
+read
 
 # Stop throttling
-%x[sudo ipfw delete 1]
+# TODO!
