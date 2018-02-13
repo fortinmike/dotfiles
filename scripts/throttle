@@ -12,6 +12,7 @@ KBPS=$2
 
 # Throttle using the built-in traffic shaper
 echo "NOT IMPLEMENTED! MUST USE dnctl ON YOSEMITE+!"
+# https://serverfault.com/questions/725030/traffic-shaping-on-osx-10-10-with-pfctl-and-dnctl#731404
 # dnctl pipe 1 config bw ${KBPS}KByte/s
 # TODO! This should be implemented using dnctl on Yosemite+
 
