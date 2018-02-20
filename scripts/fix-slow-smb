@@ -1,0 +1,17 @@
+#!/usr/bin/env bash
+
+# This script fixes slow SMB speeds on macOS
+
+# Excerpt from https://dpron.com/os-x-10-11-5-slow-smb/:
+# "SMB Signing digitally signs at the packet level of the SMB communication. This
+# enables the receiver of the packets to confirm the point of origination and
+# it’s authenticity. This security mechanism helps avoid issues like tampering
+# and “man in the middle” attacks. As long as you're on a secure network, this
+# should not be an issue. In addition, this causes bad performance and will not
+# allow you to connect via SMB to the NAS Gateway."
+
+# Note: To validate that the config file has been read, ensure that the
+# `SIGNING_ON` variable is NOT present after remounting a previously-signed SMB
+# share when running `smbutil statshares -a`.
+
+printf "[default]\nsigning_required=no\n" | sudo tee /etc/nsmb.conf >/dev/null
