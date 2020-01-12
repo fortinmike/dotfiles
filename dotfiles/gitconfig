@@ -24,6 +24,8 @@
 [credential]
 	helper = osxkeychain
 [diff "sketchtool"]
-	textconv = "sketchtool dump"
+	textconv = sketchtool dump
 	cachetextconv = true
 	binary = true
+[pull]
+	rebase = preserve
