@@ -36,6 +36,8 @@ main() {
 		exit
 	fi
 
+	echo "Finding node_modules directories to ignore in Spotlight..."
+
 	while read dir; do
 		if [[ ! -f "${dir}/.metadata_never_index" ]]; then
 			touch "${dir}/.metadata_never_index"
