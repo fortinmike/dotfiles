@@ -12,3 +12,4 @@
         create: true
     ~/.zshrc: ../dotfiles/zshrc
     ~/.gemrc: ../dotfiles/gemrc
+    ~/.vimrc: ../dotfiles/vimrc
