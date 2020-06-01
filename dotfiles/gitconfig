@@ -20,8 +20,6 @@
 	default = simple
 [gc]
 	autoDetach = false
-[credential]
-	helper = osxkeychain
 [diff "sketchtool"]
 	textconv = sketchtool dump
 	cachetextconv = true
