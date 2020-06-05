@@ -15,7 +15,7 @@
 	quotepath = false
 	attributesfile = ~/.gitattributes
 [branch]
-	autosetuprebase = always
+	autosetuprebase = never
 [push]
 	default = simple
 [gc]
