@@ -16,7 +16,6 @@ if ! zgen saved; then
 
   zgen load zsh-users/zsh-syntax-highlighting # Live command highlighting in the prompt
   zgen load zsh-users/zsh-history-substring-search # Type partial command and press UP to find last command containing string
-  zgen load mollifier/cd-gitroot # Quickly cd to the current git root (alias in key-bindings.zsh)
   zgen load supercrabtree/k # ls alternative
   zgen load rupa/z # Quick navigation to recent folders
 
