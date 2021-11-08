@@ -8,7 +8,7 @@ This is a public repository mostly for easy installs on additional machines, but
 
 1. Clone this repository in `~/.dotfiles`:
 
-        git clone --recursive [this_repos_url] ~/.dotfiles
+        git clone --recurse-submodules [this_repos_url] ~/.dotfiles
 
 2. Run `./install` once (creates dotfile symlinks and such)
 
