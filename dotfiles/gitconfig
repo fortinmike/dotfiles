@@ -25,4 +25,4 @@
 	cachetextconv = true
 	binary = true
 [pull]
-	rebase = preserve
+	rebase = false
