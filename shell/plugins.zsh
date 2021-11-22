@@ -6,7 +6,7 @@ if ! zgen saved; then
   zgen oh-my-zsh plugins/git # git completions and more
   zgen oh-my-zsh plugins/sudo # Double-tap ESC to prefix current command with sudo
   zgen oh-my-zsh plugins/brew # Autocompletion for Homebrew, plus useful aliases
-  zgen oh-my-zsh plugins/osx # Finder, QuickLook and more integrations in the shell
+  zgen oh-my-zsh plugins/macos # Finder, QuickLook and more integrations in the shell
   zgen oh-my-zsh plugins/colorize # $ colorize [source file to display with syntax highlighting]
   zgen oh-my-zsh plugins/colored-man-pages # Use man as always, now with color!
   zgen oh-my-zsh plugins/extract # x [file to extract]
