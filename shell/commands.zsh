@@ -41,3 +41,10 @@ mkcd() { mkdir $1; cd $1; }
 # OS X & Apps
 
 xcode() { open -a Xcode $1 &; }
+
+# View man pages in Preview
+# https://scriptingosx.com/2022/11/on-viewing-man-pages-ventura-update/
+
+preman() {
+  mandoc -T pdf "$(/usr/bin/man -w $@)" | open -fa Preview
+}
