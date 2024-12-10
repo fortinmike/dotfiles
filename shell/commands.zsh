@@ -34,17 +34,22 @@ function pullz () {
   git -C "$DOTFILES_DIR" pull
 }
 
-# General Purpose Commands
-
+# Create a directory and go inside it
 mkcd() { mkdir $1; cd $1; }
 
-# OS X & Apps
 
+# Open in Xcode
 xcode() { open -a Xcode $1 &; }
+
+# Delete local Time Machine snapshots
+delete_local_snapshots() {
+  for d in $(tmutil listlocalsnapshotdates | grep "-");
+  do sudo tmutil deletelocalsnapshots $d;
+  done
+}
 
 # View man pages in Preview
 # https://scriptingosx.com/2022/11/on-viewing-man-pages-ventura-update/
-
 preman() {
   mandoc -T pdf "$(/usr/bin/man -w $@)" | open -fa Preview
 }
