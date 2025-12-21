@@ -1,0 +1,32 @@
+#!/bin/sh
+set -e
+
+if [ "{{ .chezmoi.os }}" != "linux" ]; then
+  exit 0
+fi
+
+if command -v apt-get >/dev/null 2>&1; then
+  sudo apt-get update
+
+  if apt-cache show zoxide >/dev/null 2>&1; then
+    sudo apt-get install -y zoxide
+  fi
+
+  if apt-cache show eza >/dev/null 2>&1; then
+    sudo apt-get install -y eza
+  fi
+fi
+
+if ! command -v starship >/dev/null 2>&1; then
+  curl -fsSL https://starship.rs/install.sh | sh -s -- -y
+fi
+
+if ! command -v zoxide >/dev/null 2>&1; then
+  curl -fsSL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
+fi
+
+if [ -d "$HOME/.antidote/.git" ]; then
+  git -C "$HOME/.antidote" pull --ff-only
+elif [ ! -d "$HOME/.antidote" ]; then
+  git clone https://github.com/mattmc3/antidote.git "$HOME/.antidote"
+fi

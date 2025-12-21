@@ -4,17 +4,15 @@ This is my ZSH configuration and personal dotfiles. Please review everything bef
 
 ## Installation
 
-1. Clone this repository:
+1. Clone this repository in `~/.dotfiles`:
 
-        git clone [this_repos_url]
+        git clone [this_repos_url] ~/.dotfiles
 
-2. Install [chezmoi](https://www.chezmoi.io/)
+2. Run the installer:
 
-3. Apply the dotfiles:
+        ~/.dotfiles/install.sh
 
-        chezmoi init --apply /path/to/this/repo
-
-4. Open a new shell
+3. Open a new shell
 
 ## Important Files
 

@@ -1,0 +1,24 @@
+#!/bin/sh
+set -e
+
+if [ "{{ .chezmoi.os }}" != "darwin" ]; then
+  exit 0
+fi
+
+if ! command -v brew >/dev/null 2>&1; then
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+
+  if [ -x /opt/homebrew/bin/brew ]; then
+    eval "$(/opt/homebrew/bin/brew shellenv)"
+  elif [ -x /usr/local/bin/brew ]; then
+    eval "$(/usr/local/bin/brew shellenv)"
+  fi
+fi
+
+brew install chezmoi starship zoxide eza
+
+if [ -d "$HOME/.antidote/.git" ]; then
+  git -C "$HOME/.antidote" pull --ff-only
+elif [ ! -d "$HOME/.antidote" ]; then
+  git clone https://github.com/mattmc3/antidote.git "$HOME/.antidote"
+fi
