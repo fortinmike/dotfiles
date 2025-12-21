@@ -9,4 +9,3 @@ bindkey "$terminfo[kcud1]" history-substring-search-down
 # for Ubuntu 12.04, Fedora 21, and MacOSX 10.9)
 bindkey '^[[A' history-substring-search-up
 bindkey '^[[B' history-substring-search-down
-

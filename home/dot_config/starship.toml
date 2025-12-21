@@ -1,0 +1,13 @@
+# Minimal, fast prompt config
+add_newline = false
+command_timeout = 750
+
+[character]
+success_symbol = ">"
+error_symbol = ">"
+
+[git_branch]
+format = "[$branch]($style) "
+
+[git_status]
+format = "([$all_status$ahead_behind]($style) )"

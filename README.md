@@ -1,28 +1,28 @@
 # Dotfiles
 
 This is my ZSH configuration and personal dotfiles. Please review everything before you attempt to use this.
-Some things might be OS X specific, but I try to keep everything as platform-agnostic as possible.
+Some things might be macOS-specific, but I try to keep everything as platform-agnostic as possible.
 This is a public repository mostly for easy installs on additional machines, but feel free to take a look!
 
 ## Installation
 
-1. Clone this repository in `~/.dotfiles`:
+1. Clone this repository:
 
-        git clone --recurse-submodules [this_repos_url] ~/.dotfiles
+        git clone [this_repos_url]
 
-2. Run `./install` once (creates dotfile symlinks and such)
+2. Install [chezmoi](https://www.chezmoi.io/)
 
-3. Open a new shell
+3. Apply the dotfiles:
+
+        chezmoi init --apply /path/to/this/repo
+
+4. Open a new shell
 
 ## Important Files
 
-- **install** : Installs everything on a new machine (mostly creating symlinks and reloading the shell)
-- **bootstrap.zsh** : The entry point for ZSH shell bootstrapping (sourced in `.zshrc`)
+- **home/dot_zshrc** : The entry point for ZSH shell bootstrapping (sourced in `~/.zshrc`)
 
 ## Directories
 
-- **dotbot** : Contains [dotbot](https://github.com/anishathalye/dotbot) (dotfile symlink manager) and its configuration
-- **dotfiles** : Contains dotfiles that are symlinked by dotbot in `$HOME`
-- **scripts** : Contains small scripts that are made available on the `$PATH`
-- **shell** : Contains shell configuration files (commands, key bindings and more)
-- **zgen** : The zgen submodule (for ZSH plugins and themes)
+- **home** : Source state for chezmoi-managed dotfiles (maps into `$HOME`)
+- **home/bin** : Small scripts that are made available on the `$PATH`
