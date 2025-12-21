@@ -1,26 +1,4 @@
 # Dotfiles Commands
-
-function cdz () {
-  if [ -n "$DOTFILES_DIR" ] && [ -d "$DOTFILES_DIR" ]; then
-    cd "$DOTFILES_DIR"
-  else
-    echo "DOTFILES_DIR is not set or does not exist"
-  fi
-}
-
-function configz () {
-  if [[ -z "$1" ]]; then
-    vim "$HOME/.config/zsh/bootstrap.zsh"
-  else
-    file="$HOME/.config/zsh/$1.zsh"
-    if [ -f $file ]; then
-      vim $file
-    else
-      echo "No config file exists at path $file"
-    fi
-  fi
-}
-
 function reinstallz () {
   echo "=> Applying dotfiles..."
   if command -v chezmoi >/dev/null 2>&1; then
