@@ -11,31 +11,15 @@ if ! command -v apt-get >/dev/null 2>&1; then
 fi
 
 sudo apt-get update
-if ! command -v curl >/dev/null 2>&1; then
-  sudo apt-get install -y curl
-fi
 
-if apt-cache show zoxide >/dev/null 2>&1; then
-  sudo apt-get install -y zoxide
-else
-  echo "zoxide package not found via apt-get." >&2
-  exit 1
-fi
+for pkg in starship zoxide eza; do
+  if ! apt-cache show "$pkg" >/dev/null 2>&1; then
+    echo "$pkg package not found via apt-get." >&2
+    exit 1
+  fi
+done
 
-if apt-cache show eza >/dev/null 2>&1; then
-  sudo apt-get install -y eza
-else
-  echo "eza package not found via apt-get." >&2
-  exit 1
-fi
-
-if ! command -v starship >/dev/null 2>&1; then
-  curl -fsSL https://starship.rs/install.sh | sh -s -- -y
-fi
-
-if ! command -v zoxide >/dev/null 2>&1; then
-  curl -fsSL https://raw.githubusercontent.com/ajeetdsouza/zoxide/main/install.sh | sh
-fi
+sudo apt-get install -y starship zoxide eza
 
 if [ -d "$HOME/.antidote/.git" ]; then
   git -C "$HOME/.antidote" pull --ff-only
