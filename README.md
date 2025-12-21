@@ -14,9 +14,13 @@ This is my ZSH configuration and personal dotfiles. Please review everything bef
 
 3. Open a new shell
 
-## Important Files
+## Tooling
 
-- **home/dot_zshrc** : The entry point for ZSH shell bootstrapping (sourced in `~/.zshrc`)
+- chezmoi (dotfiles manager)
+- antidote (ZSH plugin manager)
+- starship (prompt)
+- zoxide (directory jumper)
+- eza (ls replacement)
 
 ## Directories
 
