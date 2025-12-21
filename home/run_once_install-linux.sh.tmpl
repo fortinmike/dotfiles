@@ -5,16 +5,28 @@ if [ "{{ .chezmoi.os }}" != "linux" ]; then
   exit 0
 fi
 
-if command -v apt-get >/dev/null 2>&1; then
-  sudo apt-get update
+if ! command -v apt-get >/dev/null 2>&1; then
+  echo "apt-get is required but not installed." >&2
+  exit 1
+fi
 
-  if apt-cache show zoxide >/dev/null 2>&1; then
-    sudo apt-get install -y zoxide
-  fi
+sudo apt-get update
+if ! command -v curl >/dev/null 2>&1; then
+  sudo apt-get install -y curl
+fi
 
-  if apt-cache show eza >/dev/null 2>&1; then
-    sudo apt-get install -y eza
-  fi
+if apt-cache show zoxide >/dev/null 2>&1; then
+  sudo apt-get install -y zoxide
+else
+  echo "zoxide package not found via apt-get." >&2
+  exit 1
+fi
+
+if apt-cache show eza >/dev/null 2>&1; then
+  sudo apt-get install -y eza
+else
+  echo "eza package not found via apt-get." >&2
+  exit 1
 fi
 
 if ! command -v starship >/dev/null 2>&1; then

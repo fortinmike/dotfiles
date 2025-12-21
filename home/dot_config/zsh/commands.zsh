@@ -1,20 +1,32 @@
 # Dotfiles Commands
-function dot-reinstall () {
-  echo "=> Applying dotfiles..."
-  chezmoi apply
-}
-
-function dot-update () {
-  echo "=> Updating antidote and plugins..."
-  antidote update
-  antidote bundle <"$HOME/.config/zsh/antidote/plugins.txt" >| "$HOME/.config/zsh/antidote/.zsh_plugins.zsh"
-  source "$HOME/.config/zsh/antidote/.zsh_plugins.zsh"
+function _dot-reload () {
   source ~/.zshrc
 }
 
-function dot-pull () {
-  echo "=> Pulling latest dotfiles..."
-  chezmoi update
+function _dot-update-plugins () {
+  git -C "$HOME/.antidote" pull --ff-only # Update antidote itself
+  antidote update # Update the plugin repos
+  antidote bundle <"$HOME/.config/zsh/antidote/plugins.txt" >| "$HOME/.config/zsh/antidote/.zsh_plugins.zsh" # Install or update our plugins
+  source "$HOME/.config/zsh/antidote/.zsh_plugins.zsh" # Source the plugins so they apply instantly
+}
+
+function dot-apply () {
+  echo "=> Applying dotfiles using chezmoi..."
+  chezmoi apply
+  _dot-reload
+}
+
+function dot-upgrade () {
+  echo "=> Applying dotfiles using chezmoi and updating antidote and plugins..."
+  chezmoi apply
+  _dot-update-plugins
+  _dot-reload
+}
+
+function dot-upgrade-plugins () {
+  echo "=> Updating antidote and plugins..."
+  _dot-update-plugins
+  _dot-reload
 }
 
 # Create a directory and go inside it
