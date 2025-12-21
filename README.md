@@ -1,8 +1,6 @@
 # Dotfiles
 
-This is my ZSH configuration and personal dotfiles. Please review everything before you attempt to use this.
-Some things might be macOS-specific, but I try to keep everything as platform-agnostic as possible.
-This is a public repository mostly for easy installs on additional machines, but feel free to take a look!
+This is my ZSH configuration and personal dotfiles. Please review everything before you attempt to use this. Some things might be macOS-specific, but I try to keep everything as platform-agnostic as possible. This is a public repository mostly for easy installs on additional machines, but feel free to take a look!
 
 ## Installation
 
