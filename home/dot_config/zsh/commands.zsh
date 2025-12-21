@@ -1,35 +1,31 @@
 # Dotfiles Commands
-function _dot-reload () {
-  source ~/.zshrc
+function dot-apply () {
+  echo "Applying dotfiles using chezmoi..."
+  chezmoi apply
+  echo "Restart your shell to load changes."
 }
 
-function _dot-update-plugins () {
+function dot-upgrade () {
+  echo "Applying dotfiles using chezmoi and updating antidote and plugins..."
+  chezmoi apply
   if [ -d "$HOME/.antidote/.git" ]; then
     # On linux, update the antidote clone itself
     git -C "$HOME/.antidote" pull --ff-only
   fi
   antidote update # Update the plugin repos
   antidote bundle <"$HOME/.config/zsh/antidote/plugins.txt" >| "$HOME/.config/zsh/antidote/.zsh_plugins.zsh" # Install or update our plugins
-  source "$HOME/.config/zsh/antidote/.zsh_plugins.zsh" # Source the plugins so they apply instantly
-}
-
-function dot-apply () {
-  echo "=> Applying dotfiles using chezmoi..."
-  chezmoi apply
-  _dot-reload
-}
-
-function dot-upgrade () {
-  echo "=> Applying dotfiles using chezmoi and updating antidote and plugins..."
-  chezmoi apply
-  _dot-update-plugins
-  _dot-reload
+  echo "Restart your shell to load changes."
 }
 
 function dot-upgrade-plugins () {
-  echo "=> Updating antidote and plugins..."
-  _dot-update-plugins
-  _dot-reload
+  echo "Updating antidote and plugins..."
+  if [ -d "$HOME/.antidote/.git" ]; then
+    # On linux, update the antidote clone itself
+    git -C "$HOME/.antidote" pull --ff-only
+  fi
+  antidote update # Update the plugin repos
+  antidote bundle <"$HOME/.config/zsh/antidote/plugins.txt" >| "$HOME/.config/zsh/antidote/.zsh_plugins.zsh" # Install or update our plugins
+  echo "Restart your shell to load changes."
 }
 
 # Create a directory and go inside it
