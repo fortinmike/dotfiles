@@ -4,7 +4,10 @@ function _dot-reload () {
 }
 
 function _dot-update-plugins () {
-  git -C "$HOME/.antidote" pull --ff-only # Update antidote itself
+  if [ -d "$HOME/.antidote/.git" ]; then
+    # On linux, update the antidote clone itself
+    git -C "$HOME/.antidote" pull --ff-only
+  fi
   antidote update # Update the plugin repos
   antidote bundle <"$HOME/.config/zsh/antidote/plugins.txt" >| "$HOME/.config/zsh/antidote/.zsh_plugins.zsh" # Install or update our plugins
   source "$HOME/.config/zsh/antidote/.zsh_plugins.zsh" # Source the plugins so they apply instantly

@@ -10,10 +10,4 @@ if ! command -v brew >/dev/null 2>&1; then
   exit 1
 fi
 
-brew install starship zoxide eza
-
-if [ -d "$HOME/.antidote/.git" ]; then
-  git -C "$HOME/.antidote" pull --ff-only
-elif [ ! -d "$HOME/.antidote" ]; then
-  git clone https://github.com/mattmc3/antidote.git "$HOME/.antidote"
-fi
+brew install antidote starship zoxide eza
