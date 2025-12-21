@@ -12,5 +12,8 @@ source "$ANTIDOTE_CACHE"
 
 autoload -Uz compinit
 if [[ -z "$_comps" ]]; then
-  compinit
+  # Cache zcompdump in XDG cache dir and skip fpath security checks for faster startup
+  ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
+  mkdir -p "$ZSH_CACHE_DIR"
+  compinit -C -d "$ZSH_CACHE_DIR/zcompdump"
 fi
