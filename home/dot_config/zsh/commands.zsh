@@ -1,5 +1,5 @@
 # Dotfiles Commands
-function reinstallz () {
+function dot-reinstall () {
   echo "=> Applying dotfiles..."
   if command -v chezmoi >/dev/null 2>&1; then
     chezmoi apply
@@ -8,7 +8,7 @@ function reinstallz () {
   fi
 }
 
-function updatez () {
+function dot-update () {
   echo "=> Updating antidote and plugins..."
   if [ -r "$HOME/.antidote/antidote.zsh" ]; then
     antidote update
@@ -20,7 +20,7 @@ function updatez () {
   fi
 }
 
-function pullz () {
+function dot-pull () {
   echo "=> Pulling latest dotfiles..."
   if command -v chezmoi >/dev/null 2>&1; then
     chezmoi update
