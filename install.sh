@@ -14,13 +14,17 @@ if ! command -v chezmoi >/dev/null 2>&1; then
   elif [ -x "$(command -v apt-get)" ]; then
     sudo apt-get update
     sudo apt-get install -y chezmoi
-  elif [ -x "$(command -v curl)" ]; then
-    sh -c "$(curl -fsSL https://chezmoi.io/get)" -- -b "$HOME/.local/bin"
-    export PATH="$HOME/.local/bin:$PATH"
   else
-    echo "chezmoi is required but could not be installed (missing brew/apt-get/curl)." >&2
+    echo "chezmoi is required but could not be installed (missing brew/apt-get)." >&2
     exit 1
   fi
+fi
+
+if chezmoi source-path >/dev/null 2>&1; then
+  CURRENT_SOURCE="$(chezmoi source-path)"
+  echo "chezmoi is already initialized at $CURRENT_SOURCE" >&2
+  echo "Run 'chezmoi apply' or 'chezmoi update' instead." >&2
+  exit 1
 fi
 
 chezmoi init --apply "$REPO_DIR"
