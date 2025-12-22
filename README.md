@@ -29,8 +29,8 @@ This is my ZSH configuration and personal dotfiles. Please review everything bef
 - zoxide (directory jumper)
 - eza (ls replacement)
 
-Chezmoi applies the files in `home/` to your `$HOME`. Antidote manages ZSH plugins
-from `home/dot_config/zsh/antidote/plugins.txt`. Starship provides the prompt,
+Chezmoi applies the files in this repo to your `$HOME`. Antidote manages ZSH plugins
+from `dot_config/zsh/antidote/plugins.txt`. Starship provides the prompt,
 zoxide improves directory jumping, and eza replaces `ls`.
 
 ## Fonts
@@ -46,5 +46,5 @@ If you chose this font, install these files and select the regular font in the T
 
 ## Directories
 
-- **home** : Source state for chezmoi-managed dotfiles (maps into `$HOME`)
-- **home/bin** : Small scripts that are made available on the `$PATH`
+- **dot_config** : ZSH config and prompt config (maps into `$HOME/.config`)
+- **bin** : Small scripts that are made available on the `$PATH`
