@@ -6,7 +6,7 @@ This is my ZSH configuration and personal dotfiles. Please review everything bef
 
 - ZSH configured as the default shell (it is by default on macOS)
 - Git is installed (on macOS, install using `xcode-select --install`)
-- Homebrew is installed (install from [text](https://brew.sh))
+- Homebrew is installed (install from [brew.sh](https://brew.sh))
 
 ## Installation
 
