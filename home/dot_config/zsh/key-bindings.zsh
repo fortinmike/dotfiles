@@ -2,6 +2,7 @@
 zmodload zsh/complist
 zstyle ':completion:*' menu select
 setopt auto_menu
+bindkey '^[[Z' reverse-menu-complete
 
 # Key bindings for the "zsh-history-substring-search" plugin
 
