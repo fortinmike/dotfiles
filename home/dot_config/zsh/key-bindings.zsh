@@ -2,6 +2,7 @@
 zmodload zsh/complist
 zstyle ':completion:*' menu select
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=*'
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
 setopt auto_menu
 bindkey '^[[Z' reverse-menu-complete
 

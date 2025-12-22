@@ -10,6 +10,11 @@ export HOMEBREW_CASK_OPTS="--appdir=/Applications"
 export ANSIBLE_LOAD_CALLBACK_PLUGINS=1
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES # Fixes python fork() issue on recent macOS
 
+# History (OMZ-style defaults)
+export HISTSIZE=10000
+export SAVEHIST=10000
+export HISTFILE="$HOME/.zsh_history"
+
 # Ruby
 
 export LC_ALL=en_US.UTF-8
@@ -24,6 +29,16 @@ export LESS_TERMCAP_se=$'\e[0m'
 export LESS_TERMCAP_so=$'\e[1;44;33m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;32m'
+
+# History behavior (OMZ-style)
+setopt append_history
+setopt hist_ignore_dups
+setopt hist_ignore_space
+setopt hist_verify
+setopt inc_append_history
+setopt share_history
+setopt extended_history
+setopt hist_expire_dups_first
 
 # macOS/Homebrew completions
 if [ -d /opt/homebrew/share/zsh/site-functions ]; then
