@@ -13,7 +13,7 @@ This is my ZSH configuration and personal dotfiles. Please review everything bef
 0. Optionally, fork this project and use your own repo below (best so you can customize it and push your changes back)
 1. Install a Nerd Font (which contains nice glyphs, see "Fonts" below) and setup your terminal to use it
 2. Install `chezmoi` using `brew` or `apt-get`
-3. Run `chezmoi init --apply [this_repos_url]`
+3. Run `chezmoi init --force --apply [this_repos_url]`
 4. Open a new shell to view the results
 
 ## Keeping Stuff Updated
