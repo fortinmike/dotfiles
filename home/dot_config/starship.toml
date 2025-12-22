@@ -1,3 +1,5 @@
+add_newline = false # Avoid extra newline before each prompt
+
 "$schema" = 'https://starship.rs/config-schema.json'
 
 [aws]
