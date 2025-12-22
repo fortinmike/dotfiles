@@ -1,10 +1,10 @@
 # Completion menu selection
 zmodload zsh/complist
-zstyle ':completion:*' menu select
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=*'
-zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS}
-setopt auto_menu
-bindkey '^[[Z' reverse-menu-complete
+zstyle ':completion:*' menu select # Enable menu selection for completion
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=*' # Case-insensitive + substring matches
+zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS} # Use LS_COLORS for completion listing
+setopt auto_menu # Automatically show the completion menu on repeated tab
+bindkey '^[[Z' reverse-menu-complete # Shift-Tab cycles backward
 
 # Key bindings for the "zsh-history-substring-search" plugin
 

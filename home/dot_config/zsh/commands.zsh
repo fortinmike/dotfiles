@@ -32,18 +32,18 @@ alias ll='eza -l --group-directories-first'
 alias la='eza -la --group-directories-first'
 
 # Navigation helpers (OMZ-like)
-setopt auto_cd
-setopt auto_pushd
-setopt pushd_ignore_dups
-setopt pushd_minus
+setopt auto_cd # Allow typing a dir name to cd into it
+setopt auto_pushd # Push dirs onto stack when changing
+setopt pushd_ignore_dups # Avoid duplicate entries in dir stack
+setopt pushd_minus # Swap meanings of +/- for dir stack
 
-alias ..='cd ..'
-alias ...='cd ../..'
-alias ....='cd ../../..'
-alias .....='cd ../../../..'
+alias ..='cd ..' # Up one directory
+alias ...='cd ../..' # Up two directories
+alias ....='cd ../../..' # Up three directories
+alias .....='cd ../../../..' # Up four directories
 
 # Grep color
-alias grep='grep --color=auto'
+alias grep='grep --color=auto' # Highlight matches
 
 # Open in Xcode
 xcode() { open -a Xcode $1 &; }
