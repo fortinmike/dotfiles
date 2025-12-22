@@ -1,3 +1,8 @@
+# Completion menu selection
+zmodload zsh/complist
+zstyle ':completion:*' menu select
+setopt auto_menu
+
 # Key bindings for the "zsh-history-substring-search" plugin
 
 # Bind UP and DOWN arrow keys
