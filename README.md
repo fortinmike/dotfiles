@@ -2,14 +2,19 @@
 
 This is my ZSH configuration and personal dotfiles. Please review everything before you attempt to use this. Some things might be macOS-specific, but I try to keep everything as platform-agnostic as possible. This is a public repository mostly for easy installs on additional machines, but feel free to take a look!
 
+## Prerequisites
+
+- ZSH configured as the default shell (it is by default on macOS)
+- Git is installed (on macOS, install using `xcode-select --install`)
+- Homebrew is installed (install from [text](https://brew.sh))
+
 ## Installation
 
-This repo assumes that ZSH is configured as the active shell.
-
+0. Optionally, fork this project and use your own repo below (best so you can customize it and push your changes back)
 1. Install a Nerd Font (which contains nice glyphs, see "Fonts" below) and setup your terminal to use it
 2. Install `chezmoi` using `brew` or `apt-get`
 3. Run `chezmoi init --apply [this_repos_url]`
-4. Open a new shell
+4. Open a new shell to view the results
 
 ## Keeping Stuff Updated
 
@@ -19,25 +24,21 @@ This repo assumes that ZSH is configured as the active shell.
 
 ## What These Do
 
-- `dot-apply` applies the repo state to your home directory via chezmoi.
-- `dot-upgrade-plugins` updates antidote and plugin repos, then rebuilds the bundle.
-- `dot-upgrade` applies dotfiles and updates plugins in one step.
+- `dot-update` pulls the latest changes and applies them in one go via chezmoi
+- `dot-apply` applies the working copy's state to your home directory via chezmoi
+- `dot-update-plugins` updates ZSH plugins using antidote
 
 ## Tooling
 
-- chezmoi (dotfiles manager)
-- antidote (ZSH plugin manager)
-- starship (prompt)
-- zoxide (directory jumper)
+- chezmoi (dotfiles manager, applies the files in this repo to your `$HOME`)
+- antidote (ZSH plugin manager, reads plugins from `dot_config/zsh/antidote/plugins.txt`)
+- starship (modern customizable prompt)
+- zoxide (`z` directory jumper command)
 - eza (ls replacement)
-
-Chezmoi applies the files in this repo to your `$HOME`. Antidote manages ZSH plugins
-from `dot_config/zsh/antidote/plugins.txt`. Starship provides the prompt,
-zoxide improves directory jumping, and eza replaces `ls`.
 
 ## Fonts
 
-To get nice glyphs in the Starship prompt, install a Nerd Font. This font is derived from the Menlo font by Apple, patched with additional glyphs: MesloLG Nerd Font, downloadable [here](https://www.nerdfonts.com/font-downloads).
+To get nice glyphs in the pre-configured Starship prompt, install a Nerd Font. The `MesloLG Nerd Font` is derived from the Menlo font by Apple (the Mac's default Terminal font), patched with additional glyphs. Download it [here](https://www.nerdfonts.com/font-downloads).
 
 If you chose this font, install these files and select the regular font in the Terminal app's settings.
 
@@ -45,8 +46,3 @@ If you chose this font, install these files and select the regular font in the T
 - MesloLGSNerdFontMono-Bold.ttf
 - MesloLGSNerdFontMono-Italic.ttf
 - MesloLGSNerdFontMono-BoldItalic.ttf
-
-## Directories
-
-- **dot_config** : ZSH config and prompt config (maps into `$HOME/.config`)
-- **dot_local/bin** : Small scripts that are made available on the `$PATH`
