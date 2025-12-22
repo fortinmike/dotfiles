@@ -2,12 +2,11 @@
 function dot-update () {
   echo "Updating from remote and applying dotfiles using chezmoi..."
   chezmoi update
-  chezmoi apply
   echo "Restart your shell to load changes."
 }
 
 function dot-apply () {
-  echo "Applying dotfiles using chezmoi..."
+  echo "Applying dotfiles from working copy using chezmoi..."
   chezmoi apply
   echo "Restart your shell to load changes."
 }
