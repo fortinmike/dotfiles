@@ -48,14 +48,15 @@ alias grep='grep --color=auto' # Highlight matches
 xcode() { open -a Xcode $1 &; }
 
 # Delete local Time Machine snapshots
-delete_local_snapshots() {
+delete-local-snapshots() {
   for d in $(tmutil listlocalsnapshotdates | grep "-");
   do sudo tmutil deletelocalsnapshots $d;
   done
 }
 
-# View man pages in Preview
-# https://scriptingosx.com/2022/11/on-viewing-man-pages-ventura-update/
-preman() {
-  mandoc -T pdf "$(/usr/bin/man -w $@)" | open -fa Preview
+# Flush DNS cache
+flush-dns-cache() {
+  sudo dscacheutil -flushcache
+  sudo killall -HUP mDNSResponder
+  echo "DNS cache flushed"
 }
