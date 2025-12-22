@@ -14,6 +14,20 @@ bindkey '^?' backward-delete-char # Delete/Backspace
 bindkey '^H' backward-delete-char # Backspace on some terminals
 bindkey '^[[3~' delete-char # Forward delete
 
+# Word navigation for common terminal sequences
+bindkey '^[b' backward-word # Option-Left (Esc-b) jump by word
+bindkey '^[f' forward-word # Option-Right (Esc-f) jump by word
+bindkey '^[[1;3D' backward-word # Option-Left (xterm) jump by word
+bindkey '^[[1;3C' forward-word # Option-Right (xterm) jump by word
+
+# Line navigation for common terminal sequences
+bindkey '^[[1;5D' beginning-of-line # Ctrl-Left jump to line start
+bindkey '^[[1;5C' end-of-line # Ctrl-Right jump to line end
+bindkey '^[[H' beginning-of-line # Home
+bindkey '^[[F' end-of-line # End
+bindkey '^[OH' beginning-of-line # Home (xterm)
+bindkey '^[OF' end-of-line # End (xterm)
+
 # Key bindings for the "zsh-history-substring-search" plugin
 
 # Bind UP and DOWN arrow keys
