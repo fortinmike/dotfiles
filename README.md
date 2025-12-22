@@ -4,15 +4,10 @@ This is my ZSH configuration and personal dotfiles. Please review everything bef
 
 ## Installation
 
-1. Clone this repository in `~/.dotfiles`:
-
-        git clone [this_repos_url] ~/.dotfiles
-
-2. Install chezmoi and apply the dotfiles:
-
-        chezmoi init --apply ~/.dotfiles
-
-3. Open a new shell
+1. Install a Nerd Font (which contains nice glyphs, see "Fonts" below)
+1. Install `chezmoi` using `brew` or `apt-get`
+2. Run `chezmoi init --apply [this_repos_url]`
+4. Open a new shell
 
 ## Keeping Stuff Updated
 
@@ -20,7 +15,7 @@ This is my ZSH configuration and personal dotfiles. Please review everything bef
 - Only apply dotfile changes: `dot-apply`
 - Only update plugins: `dot-upgrade-plugins`
 
-## Commands
+## What These Do
 
 - `dot-apply` applies the repo state to your home directory via chezmoi.
 - `dot-upgrade-plugins` updates antidote and plugin repos, then rebuilds the bundle.
@@ -33,6 +28,21 @@ This is my ZSH configuration and personal dotfiles. Please review everything bef
 - starship (prompt)
 - zoxide (directory jumper)
 - eza (ls replacement)
+
+Chezmoi applies the files in `home/` to your `$HOME`. Antidote manages ZSH plugins
+from `home/dot_config/zsh/antidote/plugins.txt`. Starship provides the prompt,
+zoxide improves directory jumping, and eza replaces `ls`.
+
+## Fonts
+
+To get nice glyphs in the Starship prompt, install a Nerd Font. This font is derived from the Menlo font by Apple, patched with additional glyphs: MesloLG Nerd Font, downloadable [here](https://www.nerdfonts.com/font-downloads).
+
+If you chose this font, install these files and select the regular font in the Terminal app's settings.
+
+- MesloLGSNerdFontMono-Regular.ttf
+- MesloLGSNerdFontMono-Bold.ttf
+- MesloLGSNerdFontMono-Italic.ttf
+- MesloLGSNerdFontMono-BoldItalic.ttf
 
 ## Directories
 
