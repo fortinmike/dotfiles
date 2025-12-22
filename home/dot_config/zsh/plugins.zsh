@@ -12,6 +12,7 @@ fi
 
 source "$ANTIDOTE_ZSH"
 
+# This fetches missing plugins and builds the bundle cache once during the first shell load
 if [ ! -f "$ANTIDOTE_CACHE" ] || [ "$ANTIDOTE_BUNDLE" -nt "$ANTIDOTE_CACHE" ]; then
   antidote bundle <"$ANTIDOTE_BUNDLE" >| "$ANTIDOTE_CACHE"
 fi
