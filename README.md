@@ -4,16 +4,18 @@ This is my ZSH configuration and personal dotfiles. Please review everything bef
 
 ## Installation
 
-1. Install a Nerd Font (which contains nice glyphs, see "Fonts" below)
-1. Install `chezmoi` using `brew` or `apt-get`
-2. Run `chezmoi init --apply [this_repos_url]`
+This repo assumes that ZSH is configured as the active shell.
+
+1. Install a Nerd Font (which contains nice glyphs, see "Fonts" below) and setup your terminal to use it
+2. Install `chezmoi` using `brew` or `apt-get`
+3. Run `chezmoi init --apply [this_repos_url]`
 4. Open a new shell
 
 ## Keeping Stuff Updated
 
-- Full refresh: `dot-upgrade`
-- Only apply dotfile changes: `dot-apply`
-- Only update plugins: `dot-upgrade-plugins`
+- Full refresh: `dot-update` (runs `chezmoi update` which pulls the latest changes from the remote and applies them)
+- Only apply dotfile changes: `dot-apply` (runs `chezmoi apply` which applies the changes from the working copy into the home folder)
+- Only update plugins: `dot-update-plugins`
 
 ## What These Do
 

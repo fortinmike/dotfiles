@@ -1,18 +1,18 @@
 # Dotfiles Commands
-function dot-update () {
-  echo "Updating from remote and applying dotfiles using chezmoi..."
+function dot-update() {
+  echo "Updating dotfiles from remote and applying using chezmoi..."
   chezmoi update
   echo "Restart your shell to load changes."
 }
 
-function dot-apply () {
-  echo "Applying dotfiles from working copy using chezmoi..."
+function dot-apply() {
+  echo "Applying dotfiles using chezmoi..."
   chezmoi apply
   echo "Restart your shell to load changes."
 }
 
-function dot-upgrade-plugins () {
-  echo "Updating antidote and plugins..."
+function dot-update-plugins() {
+  echo "Updating antidote plugins..."
   if [ -d "$HOME/.antidote/.git" ]; then
     # On linux, update the antidote clone itself
     git -C "$HOME/.antidote" pull --ff-only
