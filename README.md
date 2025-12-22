@@ -8,11 +8,23 @@ This is my ZSH configuration and personal dotfiles. Please review everything bef
 
         git clone [this_repos_url] ~/.dotfiles
 
-2. Run the installer:
+2. Install chezmoi and apply the dotfiles:
 
-        ~/.dotfiles/install.sh
+        chezmoi init --apply ~/.dotfiles
 
 3. Open a new shell
+
+## Keeping Stuff Updated
+
+- Full refresh: `dot-upgrade`
+- Only apply dotfile changes: `dot-apply`
+- Only update plugins: `dot-upgrade-plugins`
+
+## Commands
+
+- `dot-apply` applies the repo state to your home directory via chezmoi.
+- `dot-upgrade-plugins` updates antidote and plugin repos, then rebuilds the bundle.
+- `dot-upgrade` applies dotfiles and updates plugins in one step.
 
 ## Tooling
 
