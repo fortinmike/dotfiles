@@ -45,7 +45,7 @@ color_8 = '#22262a'
 
 [os]
 disabled = false
-style = "bg:color_1 fg:color_fg"
+style = "bg:color_1 fg:color_8"
 
 [os.symbols]
 Windows = "󰍲"
@@ -159,8 +159,8 @@ format = '[[ $symbol( $version)( $environment) ](fg:color_fg bg:color_7)]($style
 [time]
 disabled = false
 time_format = "%R"
-style = "bg:color_1 fg:color_fg"
-format = '[[ $time ](fg:color_fg bg:color_1)]($style)'
+style = "bg:color_1 fg:color_8"
+format = '[[ $time ](fg:color_8 bg:color_1)]($style)'
 
 [line_break]
 disabled = false
