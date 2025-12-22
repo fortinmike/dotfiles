@@ -1,7 +1,7 @@
 # PATH
 
 export PATH="/usr/local/sbin:$PATH"
-export PATH="$PATH:$HOME/.local/bin"
+export PATH="$PATH:$HOME/.local/bin" # Contains the binaries included in this repo
 
 # Configuration
 

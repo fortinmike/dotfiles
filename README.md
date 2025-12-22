@@ -47,4 +47,4 @@ If you chose this font, install these files and select the regular font in the T
 ## Directories
 
 - **dot_config** : ZSH config and prompt config (maps into `$HOME/.config`)
-- **bin** : Small scripts that are made available on the `$PATH`
+- **dot_local/bin** : Small scripts that are made available on the `$PATH`
