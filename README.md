@@ -16,25 +16,36 @@ This is my ZSH configuration and personal dotfiles. Please review everything bef
 3. Run `chezmoi init --force --apply [this_repos_url]`
 4. Open a new shell to view the results
 
+## Main Moving Parts
+
+- chezmoi (dotfiles manager, applies the files in this repo to your `$HOME`)
+- antidote (ZSH plugin manager, reads plugins from `dot_config/zsh/antidote/plugins.txt`)
+- starship (modern customizable prompt)
+
+## Extras
+
+- zoxide (`z` directory jumper command)
+- eza (ls replacement)
+- Various ZSH plugins and niceties
+- A few aliases and tools to make life easier (`mkcd`, etc.)
+
 ## Keeping Stuff Updated
 
 - Full refresh: `dot-update` (runs `chezmoi update` which pulls the latest changes from the remote and applies them)
 - Only apply dotfile changes: `dot-apply` (runs `chezmoi apply` which applies the changes from the working copy into the home folder)
 - Only update plugins: `dot-update-plugins`
 
-## What These Do
+## Modifying Your Setup
 
-- `dot-update` pulls the latest changes and applies them in one go via chezmoi
-- `dot-apply` applies the working copy's state to your home directory via chezmoi
-- `dot-update-plugins` updates ZSH plugins using antidote
+Use `chezmoi` commands such as `chezmoi edit` or open `~/local/share/chezmoi` (which contains the dotfiles working copy) in your editor of choice. Make any changes you want, commit them, then run `chezmoi apply` to apply those changes to your home folder. Make sure to push the changes back to the remote for backup and sharing with your other machines!
 
-## Tooling
+## Helper Commands
 
-- chezmoi (dotfiles manager, applies the files in this repo to your `$HOME`)
-- antidote (ZSH plugin manager, reads plugins from `dot_config/zsh/antidote/plugins.txt`)
-- starship (modern customizable prompt)
-- zoxide (`z` directory jumper command)
-- eza (ls replacement)
+These commands can be used instead of the `chezmoi` and `antidote` commands in certain cases and simplify management.
+
+- `dot-update` pulls the latest changes and applies them in one go via chezmoi (mostly a proxy for `chezmoi update`)
+- `dot-apply` applies the working copy's state to your home directory via chezmoi (mostly a proxy for `chezmoi apply`)
+- `dot-update-plugins` updates ZSH plugins using antidote (they don't update automatically when applying
 
 ## Fonts
 
