@@ -5,6 +5,7 @@ zstyle ':completion:*' menu select # Enable menu selection for completion
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=*' # Case-insensitive + substring matches
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS} # Use LS_COLORS for completion listing
 setopt auto_menu # Automatically show the completion menu on repeated tab
+setopt no_list_beep # Don't beep when listing completions
 bindkey '^[[Z' reverse-menu-complete # Shift-Tab cycles backward
 
 # Ensure common keybindings work in all terminals
