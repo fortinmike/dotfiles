@@ -18,14 +18,14 @@ This is my ZSH configuration and personal dotfiles. Please review everything bef
 
 ## Main Moving Parts
 
-- chezmoi (dotfiles manager, applies the files in this repo to your `$HOME`)
-- antidote (ZSH plugin manager, reads plugins from `dot_config/zsh/antidote/plugins.txt`)
-- starship (modern customizable prompt)
+- `chezmoi` (dotfiles manager, applies the files in this repo to your `$HOME`)
+- `antidote` (ZSH plugin manager, reads plugins from `dot_config/zsh/antidote/plugins.txt`)
+- `starship` (modern customizable prompt)
 
 ## Extras
 
-- zoxide (`z` directory jumper command)
-- eza (ls replacement)
+- `zoxide` (`z` directory jumper command)
+- `eza` (ls replacement)
 - Various ZSH plugins and niceties
 - A few aliases and tools to make life easier (`mkcd`, etc.)
 
