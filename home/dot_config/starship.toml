@@ -33,15 +33,15 @@ $line_break$character"""
 palette = 'mono_gradient'
 
 [palettes.mono_gradient]
-color_fg = '#e6edf3'
-color_1 = '#5a7bb4'
-color_2 = '#4c6aa3'
-color_3 = '#3f5a92'
-color_4 = '#354b80'
-color_5 = '#2f4775'
-color_6 = '#2b3f68'
-color_7 = '#253050'
-color_8 = '#20283f'
+color_fg = '#e5e5e5'
+color_1 = '#7f8489'
+color_2 = '#6d7277'
+color_3 = '#5c6065'
+color_4 = '#4c5055'
+color_5 = '#3f4347'
+color_6 = '#34383c'
+color_7 = '#2b2f33'
+color_8 = '#22262a'
 
 [os]
 disabled = false
@@ -167,8 +167,8 @@ disabled = false
 
 [character]
 disabled = false
-success_symbol = '[](bold fg:color_6)'
-error_symbol = '[](bold fg:color_4)'
+success_symbol = '[❯](bold fg:color_1)'
+error_symbol = '[❯](bold fg:color_1)'
 vimcmd_symbol = '[](bold fg:color_6)'
 vimcmd_replace_one_symbol = '[](bold fg:color_2)'
 vimcmd_replace_symbol = '[](bold fg:color_2)'
