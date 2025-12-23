@@ -12,14 +12,21 @@ fi
 
 sudo apt-get update
 
-for pkg in starship zoxide eza; do
+for pkg in zoxide eza; do
   if ! apt-cache show "$pkg" >/dev/null 2>&1; then
     echo "$pkg package not found via apt-get." >&2
     exit 1
   fi
 done
 
-sudo apt-get install -y starship zoxide eza
+sudo apt-get install -y zoxide eza
+
+if ! command -v starship >/dev/null 2>&1; then
+  if ! command -v curl >/dev/null 2>&1; then
+    sudo apt-get install -y curl
+  fi
+  curl -sS https://starship.rs/install.sh | sh -s -- -y
+fi
 
 if [ -d "$HOME/.antidote/.git" ]; then
   git -C "$HOME/.antidote" pull --ff-only
