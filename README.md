@@ -10,11 +10,11 @@ This is my ZSH configuration and personal dotfiles. Please review everything bef
 
 ## Installation
 
-0. Optionally, fork this project and use your own repo below (best so you can customize it and push your changes back)
-1. Install a Nerd Font (which contains nice glyphs, see "Fonts" below) and setup your terminal to use it
-2. Install `chezmoi` using `brew` or `apt-get`
-3. Run `chezmoi init --force --apply [this_repos_url]`
-4. Open a new shell to view the results
+1. Optionally, fork this project and use your own repo below (best so you can customize it and push your changes back)
+2. Install and select a Nerd Font in Terminal (see "Font" below)
+3. Install `chezmoi` using `brew` or `apt-get`
+4. Run `chezmoi init --force --apply [this_repos_url]`
+5. Open a new shell to view the results
 
 ## Main Moving Parts
 
@@ -47,13 +47,8 @@ These commands can be used instead of the `chezmoi` and `antidote` commands in c
 - `dot-apply` applies the working copy's state to your home directory via chezmoi (mostly a proxy for `chezmoi apply`)
 - `dot-update-plugins` updates ZSH plugins using antidote (they don't update automatically when applying
 
-## Fonts
+## Font
 
-To get nice glyphs in the pre-configured Starship prompt, install a Nerd Font. The `MesloLG Nerd Font` is derived from the Menlo font by Apple (the Mac's default Terminal font), patched with additional glyphs. Download it [here](https://www.nerdfonts.com/font-downloads).
+To get nice glyphs in the pre-configured Starship prompt, install a Nerd Font. You can choose any font that has been patched with the Nerd Fonts patcher (many options [here](https://www.nerdfonts.com)), but I recommend using `SF Mono Nerd Font` which is derived from the SF Mono font by Apple (the Mac's default Terminal font).
 
-If you chose this font, install these files and select the regular font in the Terminal app's settings.
-
-- MesloLGSNerdFontMono-Regular.ttf
-- MesloLGSNerdFontMono-Bold.ttf
-- MesloLGSNerdFontMono-Italic.ttf
-- MesloLGSNerdFontMono-BoldItalic.ttf
+Install it through homebrew: `brew tap epk/epk && brew install font-sf-mono-nerd-font` then select the regular weight in your Terminal profile.
