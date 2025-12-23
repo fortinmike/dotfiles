@@ -12,20 +12,35 @@ fi
 
 sudo apt-get update
 
-for pkg in zoxide eza; do
+for pkg in zoxide; do
   if ! apt-cache show "$pkg" >/dev/null 2>&1; then
     echo "$pkg package not found via apt-get." >&2
     exit 1
   fi
 done
 
-sudo apt-get install -y zoxide eza
+sudo apt-get install -y zoxide
 
 if ! command -v starship >/dev/null 2>&1; then
   if ! command -v curl >/dev/null 2>&1; then
     sudo apt-get install -y curl
   fi
   curl -sS https://starship.rs/install.sh | sh -s -- -y
+fi
+
+if ! command -v eza >/dev/null 2>&1; then
+  if ! command -v gpg >/dev/null 2>&1; then
+    sudo apt-get install -y gpg
+  fi
+  if ! command -v wget >/dev/null 2>&1; then
+    sudo apt-get install -y wget
+  fi
+  sudo mkdir -p /etc/apt/keyrings
+  wget -qO- https://raw.githubusercontent.com/eza-community/eza/main/deb.asc | sudo gpg --dearmor -o /etc/apt/keyrings/gierens.gpg
+  echo "deb [signed-by=/etc/apt/keyrings/gierens.gpg] http://deb.gierens.de stable main" | sudo tee /etc/apt/sources.list.d/gierens.list >/dev/null
+  sudo chmod 644 /etc/apt/keyrings/gierens.gpg /etc/apt/sources.list.d/gierens.list
+  sudo apt-get update
+  sudo apt-get install -y eza
 fi
 
 if [ -d "$HOME/.antidote/.git" ]; then
