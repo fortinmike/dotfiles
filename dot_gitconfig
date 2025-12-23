@@ -11,6 +11,8 @@
 	logm = log --pretty=oneline --abbrev-commit
 	discard = reset --hard HEAD
 	find = "!f() { git log --all -- **/$1*; }; f"
+[init]
+  defaultBranch = main
 [core]
 	quotepath = false
 	attributesfile = ~/.gitattributes
