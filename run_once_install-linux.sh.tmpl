@@ -12,14 +12,14 @@ fi
 
 sudo apt-get update
 
-for pkg in zoxide; do
+for pkg in micro zoxide; do
   if ! apt-cache show "$pkg" >/dev/null 2>&1; then
     echo "$pkg package not found via apt-get." >&2
     exit 1
   fi
 done
 
-sudo apt-get install -y zoxide
+sudo apt-get install -y micro zoxide
 
 if ! command -v starship >/dev/null 2>&1; then
   if ! command -v curl >/dev/null 2>&1; then
