@@ -15,6 +15,11 @@ bindkey '^?' backward-delete-char # Delete/Backspace
 bindkey '^H' backward-delete-char # Backspace on some terminals
 bindkey '^[[3~' delete-char # Forward delete
 
+# Edit current command line in $VISUAL/$EDITOR (Ctrl-X Ctrl-E)
+autoload -Uz edit-command-line
+zle -N edit-command-line
+bindkey '^X^E' edit-command-line
+
 # Word navigation for common terminal sequences
 bindkey '^[b' backward-word # Option-Left (Esc-b) jump by word
 bindkey '^[f' forward-word # Option-Right (Esc-f) jump by word
