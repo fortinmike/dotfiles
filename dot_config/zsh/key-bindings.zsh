@@ -20,6 +20,10 @@ autoload -Uz edit-command-line
 zle -N edit-command-line
 bindkey '^X^E' edit-command-line
 
+# Quick command snippets
+bindkey -s '^Xgc' 'git commit -m ""\C-b' # Insert `git commit -m ""` and place cursor between quotes (Ctrl-X g c)
+bindkey -s '^Xga' 'git commit --amend -m ""\C-b' # Insert `git commit --amend -m ""` and place cursor between quotes (Ctrl-X g a)
+
 # Word navigation for common terminal sequences
 bindkey '^[b' backward-word # Option-Left (Esc-b) jump by word
 bindkey '^[f' forward-word # Option-Right (Esc-f) jump by word
