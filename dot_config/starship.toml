@@ -5,7 +5,7 @@ add_newline = false
 format = """
 [](color_1)\
 $os\
-$time\
+$hostname\
 [](bg:color_3 fg:color_1)\
 $directory\
 [](fg:color_3 bg:color_5)\
@@ -46,6 +46,13 @@ color_8 = '#22262a'
 [os]
 disabled = false
 style = "bg:color_1 fg:color_8"
+format = "[$symbol ]($style)"
+
+[hostname]
+disabled = false
+ssh_only = false
+style = "bg:color_1 fg:color_8"
+format = "[$hostname ]($style)"
 
 [os.symbols]
 Windows = "󰍲"
