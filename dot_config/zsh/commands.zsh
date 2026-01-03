@@ -60,3 +60,10 @@ flush-dns-cache() {
   sudo killall -HUP mDNSResponder
   echo "DNS cache flushed"
 }
+
+# Keep window/tab title in sync so it resets after SSH exits.
+function _set_terminal_title() {
+  # %n = user, %m = host (short), %~ = cwd
+  print -Pn "\e]0;%n@%m: %~\a"
+}
+precmd_functions+=(_set_terminal_title)
