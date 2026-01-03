@@ -54,3 +54,10 @@ fi
 if [ -d /usr/share/zsh/site-functions ]; then
   fpath=(/usr/share/zsh/site-functions $fpath)
 fi
+
+# Keep window/tab title in sync so it resets after SSH exits.
+function _set_terminal_title() {
+  # %n = user, %m = host (short)
+  print -Pn "\e]0;%n@%m\a"
+}
+precmd_functions+=(_set_terminal_title)
