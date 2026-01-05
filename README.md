@@ -10,6 +10,7 @@ This is my ZSH configuration and personal dotfiles. Please review everything bef
 
 ## Installation
 
+0. Make sure zsh is the default shell: `echo $SHELL` (if not, set it as default using `chsh -s /usr/bin/zsh`)
 1. Optionally, fork this project and use your own repo below (best so you can customize it and push your changes back)
 2. Install and select a Nerd Font in Terminal (see "Font" below)
 3. Install `chezmoi` using `brew` or using the install script on Linux
