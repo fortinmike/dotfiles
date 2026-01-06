@@ -1,4 +1,5 @@
 {
   "tabstospaces": true,
-  "tabsize": 2
+  "tabsize": 2,
+  "autosu": true
 }
