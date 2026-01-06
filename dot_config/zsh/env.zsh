@@ -3,6 +3,20 @@
 export PATH="/usr/local/sbin:$PATH"
 export PATH="$PATH:$HOME/.local/bin" # Contains the binaries included in this repo
 
+# Disable Analytics and Telemetry
+
+export HOMEBREW_NO_ANALYTICS=1
+export DOTNET_CLI_TELEMETRY_OPTOUT=1
+export POWERSHELL_TELEMETRY_OPTOUT=1
+export AZURE_CLI_DISABLE_TELEMETRY=1
+export CHECKPOINT_DISABLE=1 # HashiCorp tools (terraform/packer/vault/etc.)
+export GOTELEMETRY=off # Go toolchain telemetry
+export NPM_CONFIG_FUND=false # Disable npm "funding" message after installs
+export YARN_ENABLE_TELEMETRY=0 # Yarn telemetry
+export NEXT_TELEMETRY_DISABLED=1 # Next.js telemetry
+export HF_HUB_DISABLE_TELEMETRY=1 # Hugging Face Hub telemetry
+export WANDB_DISABLED=true # Weights & Biases telemetry (ML / AI libs)
+
 # Configuration
 
 export EDITOR='micro'
