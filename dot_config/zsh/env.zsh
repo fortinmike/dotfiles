@@ -51,7 +51,7 @@ export LESS_TERMCAP_us=$'\e[1;32m'
 # History behavior (OMZ-style)
 setopt append_history # Append to history file, don't overwrite
 setopt hist_ignore_dups # Skip duplicate commands in history
-setopt hist_ignore_space # Ignore commands that start with a space
+setopt hist_ignore_space # Do not add commands that start with a space to the history
 setopt hist_verify # Edit expanded history before running
 setopt inc_append_history # Write to history file immediately
 setopt share_history # Share history across sessions
