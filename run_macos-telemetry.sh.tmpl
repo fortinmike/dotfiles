@@ -1,0 +1,17 @@
+#!/bin/sh
+set -e
+
+if [ "{{ .chezmoi.os }}" != "darwin" ]; then
+  exit 0
+fi
+
+# Disable some Apple diagnostics & analytics sharing for the current user.
+# Note: Some settings may require a logout/restart to fully apply.
+
+defaults write com.apple.SubmitDiagInfo AutoSubmit -bool false # Share Mac Analytics
+defaults write com.apple.SubmitDiagInfo ThirdPartyDataSubmit -bool false # Share with app developers
+defaults write com.apple.applicationaccess allowDiagnosticSubmission -bool false # Share iCloud Analytics (and related diagnostics)
+defaults write com.apple.Accessibility AXSAudioDonationSiriImprovementEnabled -bool false # Improve Assistive Voice Features
+
+# Suppress crash report dialogs (does not stop local crash logs).
+defaults write com.apple.CrashReporter DialogType -string "none"
