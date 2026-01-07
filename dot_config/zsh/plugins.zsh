@@ -1,16 +1,8 @@
 ANTIDOTE_BUNDLE="$HOME/.config/zsh/antidote/plugins.txt"
 ANTIDOTE_CACHE="$HOME/.config/zsh/antidote/.zsh_plugins.zsh"
 
-# Prefer Homebrew's antidote on macOS; fall back to the git clone on Linux.
-if [ -x /opt/homebrew/bin/brew ]; then
-  ANTIDOTE_ZSH="$(/opt/homebrew/bin/brew --prefix antidote)/share/antidote/antidote.zsh"
-elif [ -x /usr/local/bin/brew ]; then
-  ANTIDOTE_ZSH="$(/usr/local/bin/brew --prefix antidote)/share/antidote/antidote.zsh"
-else
-  ANTIDOTE_ZSH="$HOME/.antidote/antidote.zsh"
-fi
-
-source "$ANTIDOTE_ZSH"
+# Use Homebrew's antidote (macOS + Linuxbrew)
+source "$(brew --prefix antidote)/share/antidote/antidote.zsh"
 
 # This fetches missing plugins and builds the bundle cache once during the first shell load
 if [ ! -f "$ANTIDOTE_CACHE" ] || [ "$ANTIDOTE_BUNDLE" -nt "$ANTIDOTE_CACHE" ]; then
