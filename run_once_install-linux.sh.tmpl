@@ -12,14 +12,14 @@ fi
 
 sudo apt-get update
 
-for pkg in zoxide ripgrep micro; do
+for pkg in zoxide ripgrep micro fzf tldr; do
   if ! apt-cache show "$pkg" >/dev/null 2>&1; then
     echo "$pkg package not found via apt-get." >&2
     exit 1
   fi
 done
 
-sudo apt-get install -y zoxide ripgrep micro
+sudo apt-get install -y zoxide ripgrep micro fzf tldr
 
 if ! command -v starship >/dev/null 2>&1; then
   if ! command -v curl >/dev/null 2>&1; then
