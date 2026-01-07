@@ -27,8 +27,15 @@ This is my ZSH configuration and personal dotfiles. Please review everything bef
 
 - `zoxide` (`z` directory jumper command)
 - `eza` (ls replacement)
-- Various ZSH plugins and niceties
-- A few aliases and tools to make life easier (`mkcd`, etc.)
+- `rg` (ripgrep, fast search)
+- `fzf` (fuzzy finder) + `fzf-tab` plugin (fzf-enhanced tab completion)
+- `bat` (replaces `cat` with an alias)
+- `btop` (replaces `top` with an alias)
+- `moor` (replaces `less` with an alias)
+- `tlrc` (modern tldr client with quick cheat sheets)
+- `lazygit` (git TUI)
+- Some other ZSH plugins and niceties (installed using antidote)
+- A few aliases and tools to make life easier (`mkcd`, `reveal`, git and ripgrep shorthands, etc.)
 
 ## Keeping Stuff Updated
 
