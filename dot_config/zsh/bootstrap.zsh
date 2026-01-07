@@ -7,9 +7,9 @@ source "$ZSH_CONFIG_DIR/key-bindings.zsh"
 
 # Load starship and zoxide using their explicit homebrew paths because
 # homebrew might not yet have added its paths to PATH at this point.
-STARSHIP_BIN="$("$BREW" --prefix starship)/bin/starship"
+STARSHIP_BIN="$("$BREW_BIN" --prefix starship)/bin/starship"
 eval "$("$STARSHIP_BIN" init zsh)"
-ZOXIDE_BIN="$("$BREW" --prefix zoxide)/bin/zoxide"
+ZOXIDE_BIN="$("$BREW_BIN" --prefix zoxide)/bin/zoxide"
 eval "$("$ZOXIDE_BIN" init zsh)"
 
 if [ -e ~/.zshrc_local ]; then source ~/.zshrc_local; fi
