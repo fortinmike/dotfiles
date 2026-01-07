@@ -22,6 +22,7 @@ export WANDB_DISABLED=true # Weights & Biases telemetry (ML / AI libs)
 export EDITOR='micro'
 export VISUAL='micro'
 export HOMEBREW_CASK_OPTS="--appdir=/Applications"
+export HOMEBREW_NO_ENV_HINTS=1
 export ANSIBLE_LOAD_CALLBACK_PLUGINS=1
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES # Fixes python fork() issue on recent macOS
 
