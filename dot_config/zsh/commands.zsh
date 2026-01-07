@@ -47,6 +47,10 @@ alias grep='grep --color=auto' # Highlight matches
 # Replace common commands with modern versions
 alias cat='bat'
 alias top='btop'
+alias less='moor'
+
+# Moor
+alias mo='moor'
 
 # Ripgrep helpers
 alias rgf='rg --files' # List files rg would search
