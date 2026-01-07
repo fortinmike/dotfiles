@@ -5,11 +5,11 @@ export PATH="$PATH:$HOME/.local/bin" # Contains the binaries included in this re
 
 # Homebrew location for early initialization (avoid PATH duplication)
 if [ -x /opt/homebrew/bin/brew ]; then
-  export BREW=/opt/homebrew/bin/brew
+  BREW=/opt/homebrew/bin/brew
 elif [ -x /usr/local/bin/brew ]; then
-  export BREW=/usr/local/bin/brew
+  BREW=/usr/local/bin/brew
 elif [ -x /home/linuxbrew/.linuxbrew/bin/brew ]; then
-  export BREW=/home/linuxbrew/.linuxbrew/bin/brew
+  BREW=/home/linuxbrew/.linuxbrew/bin/brew
 fi
 
 # Disable Analytics and Telemetry
