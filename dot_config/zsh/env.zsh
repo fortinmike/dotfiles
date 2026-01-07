@@ -37,11 +37,6 @@ export SAVEHIST=10000 # Number of history entries to save to disk
 # Autosuggestions: only use completion results to avoid stale history paths
 export ZSH_AUTOSUGGEST_STRATEGY=(completion)
 
-# Ruby
-
-export LC_ALL=en_US.UTF-8
-export LANG=en_US.UTF-8
-
 # Colored man pages (replacement for OMZ colored-man-pages plugin)
 export LESS='-R'
 export LESSHISTFILE=- # Disable less history file
