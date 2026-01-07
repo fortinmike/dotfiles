@@ -44,6 +44,31 @@ alias .....='cd ../../../..' # Up four directories
 # Grep color
 alias grep='grep --color=auto' # Highlight matches
 
+# Ripgrep helpers
+alias rgf='rg --files' # List files rg would search
+alias rgi='rg -i' # Case-insensitive search
+alias rgl='rg -l' # List matching files only
+alias rgw='rg -w' # Match whole words
+alias rgh='rg --hidden --glob "!.git/*"' # Include hidden files, skip .git
+
+# Git helpers
+alias g='git'
+alias gs='git status -sb'
+alias ga='git add'
+alias gaa='git add -A'
+alias gc='git commit'
+alias gca='git commit --amend'
+alias gco='git checkout'
+alias gsw='git switch'
+alias gb='git branch'
+alias gl='git log --oneline --decorate --graph --all'
+alias gp='git pull --ff-only'
+alias gpr='git pull --rebase'
+alias gpu='git push'
+
+# Finder reveal
+alias reveal='open -R'
+
 # Open in Xcode
 xcode() { open -a Xcode $1 &; }
 
