@@ -29,9 +29,9 @@ function dot-update-plugins() {
 mkcd() { mkdir $1; cd $1; }
 
 # Use eza for better defaults
-alias ls='eza --group-directories-first'
-alias ll='eza -l --group-directories-first'
-alias la='eza -la --group-directories-first'
+alias ls='eza'
+alias ll='eza -l'
+alias la='eza -la'
 
 # Navigation helpers (OMZ-like)
 setopt auto_cd # Allow typing a dir name to cd into it
