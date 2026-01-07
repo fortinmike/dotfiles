@@ -10,14 +10,14 @@ function dot-update() {
   echo "Updating dotfiles from remote, applying, and updating plugins..."
   chezmoi update || return $?
   _dot_update_plugins || return $?
-  echo "Restart your shell to load changes."
+  printf '\033[0;32m%s\033[0m\n' "Restart your shell to load changes."
 }
 
 function dot-apply() {
   echo "Applying dotfiles and updating plugins..."
   chezmoi apply || return $?
   _dot_update_plugins || return $?
-  echo "Restart your shell to load changes."
+  printf '\033[0;32m%s\033[0m\n' "Restart your shell to load changes."
 }
 
 # Create a directory and go inside it
