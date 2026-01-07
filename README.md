@@ -26,7 +26,7 @@ This is my ZSH configuration and personal dotfiles. Please review everything bef
 ## Extras
 
 - `zoxide` (`z` directory jumper command)
-- `eza` (ls replacement)
+- `eza` (replaces `ls` with an alias)
 - `rg` (ripgrep, fast search)
 - `fzf` (fuzzy finder) + `fzf-tab` plugin (fzf-enhanced tab completion)
 - `bat` (replaces `cat` with an alias)
