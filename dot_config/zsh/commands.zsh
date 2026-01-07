@@ -44,6 +44,10 @@ alias .....='cd ../../../..' # Up four directories
 # Grep color
 alias grep='grep --color=auto' # Highlight matches
 
+# Replace common commands with modern versions
+alias cat='bat'
+alias top='btop'
+
 # Ripgrep helpers
 alias rgf='rg --files' # List files rg would search
 alias rgi='rg -i' # Case-insensitive search
