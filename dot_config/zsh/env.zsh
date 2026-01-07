@@ -1,5 +1,9 @@
 # PATH
 
+# On linux, setup the homebrew shell environment earlier so that starship can load
+if [ -d /home/linuxbrew/.linuxbrew/bin ]; then
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+fi
 export PATH="/usr/local/sbin:$PATH"
 export PATH="$PATH:$HOME/.local/bin" # Contains the binaries included in this repo
 
