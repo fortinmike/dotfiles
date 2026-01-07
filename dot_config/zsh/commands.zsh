@@ -69,6 +69,17 @@ alias gpu='git push'
 # Finder reveal
 alias reveal='open -R'
 
+# Kill process via fuzzy finder
+alias fk='ps -ef | fzf | awk '\''{print $2}'\'' | xargs kill -9'
+
+# Kill apps via fuzzy finder
+fka() {
+  local app
+  app="$(osascript -e 'tell application "System Events" to get name of (processes where background only is false)' \
+    | tr ', ' '\n' | sed '/^$/d' | fzf)"
+  [ -n "$app" ] && killall "$app"
+}
+
 # Open in Xcode
 xcode() { open -a Xcode $1 &; }
 
