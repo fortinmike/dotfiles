@@ -1,27 +1,22 @@
 # Dotfiles Commands
-function dot-update() {
-  echo "Updating dotfiles from remote and applying using chezmoi..."
-  if chezmoi update; then
-    echo "Restart your shell to load changes."
-  fi
-}
-
-function dot-apply() {
-  echo "Applying dotfiles using chezmoi..."
-  if chezmoi apply; then
-    echo "Restart your shell to load changes."
-  fi
-}
-
-function dot-update-plugins() {
+_dot_update_plugins() {
   echo "Updating antidote plugins..."
-  if [ -d "$HOME/.antidote/.git" ]; then
-    # On linux, update the antidote clone itself
-    git -C "$HOME/.antidote" pull --ff-only || return $?
-  fi
   antidote update || return $?
   # Install or update our plugins
   antidote bundle <"$HOME/.config/zsh/antidote/plugins.txt" >| "$HOME/.config/zsh/antidote/.zsh_plugins.zsh" || return $?
+}
+
+function dot-update() {
+  echo "Updating dotfiles from remote, applying, and updating plugins..."
+  chezmoi update || return $?
+  _dot_update_plugins || return $?
+  echo "Restart your shell to load changes."
+}
+
+function dot-apply() {
+  echo "Applying dotfiles and updating plugins..."
+  chezmoi apply || return $?
+  _dot_update_plugins || return $?
   echo "Restart your shell to load changes."
 }
 
