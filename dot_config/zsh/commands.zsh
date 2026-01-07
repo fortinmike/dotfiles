@@ -56,7 +56,7 @@ alias rgw='rg -w' # Match whole words
 alias rgh='rg --hidden --glob "!.git/*"' # Include hidden files, skip .git
 
 # Git helpers
-alias g='git'
+alias lg='lazygit'
 alias gs='git status -sb'
 alias ga='git add'
 alias gaa='git add -A'
