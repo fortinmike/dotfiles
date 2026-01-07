@@ -5,4 +5,4 @@ if [ "{{ .chezmoi.os }}" != "darwin" ]; then
   exit 0
 fi
 
-{{ template "install-tools" . }}
+{{ template "install-tools.tmpl" . }}

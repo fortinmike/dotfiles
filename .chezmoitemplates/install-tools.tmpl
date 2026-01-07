@@ -1,8 +1,6 @@
-{{ define "install-tools" -}}
 if ! command -v brew >/dev/null 2>&1; then
   echo "Homebrew is required but not installed." >&2
   exit 1
 fi
 
 brew install antidote starship eza zoxide ripgrep micro fzf tlrc bat btop lazygit moor
-{{- end }}
