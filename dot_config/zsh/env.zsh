@@ -42,6 +42,9 @@ export SAVEHIST=10000 # Number of history entries to save to disk
 # Autosuggestions: only use completion results to avoid stale history paths
 export ZSH_AUTOSUGGEST_STRATEGY=(completion)
 
+# fzf: make matching case-insensitive everywhere (including `fzf-tab` completions)
+export FZF_DEFAULT_OPTS='--ignore-case'
+
 # Colored man pages (replacement for OMZ colored-man-pages plugin)
 export LESS='-R'
 export LESSHISTFILE=- # Disable less history file
