@@ -9,6 +9,9 @@ setopt auto_menu # Automatically show the completion menu on repeated tab
 setopt no_list_beep # Don't beep when listing completions
 bindkey '^[[Z' reverse-menu-complete # Shift-Tab cycles backward
 
+# fzf keybindings + completion (Ctrl-T, Ctrl-R, Alt-C)
+source <("$("$BREW_BIN" --prefix fzf)/bin/fzf" --zsh)
+
 # Ensure common keybindings work in all terminals
 bindkey '^A' beginning-of-line # Ctrl-A
 bindkey '^K' kill-line # Ctrl-K
