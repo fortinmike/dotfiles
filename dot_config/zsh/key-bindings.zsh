@@ -14,6 +14,9 @@ bindkey '^[[Z' reverse-menu-complete # Shift-Tab cycles backward
 # fzf keybindings + completion (Ctrl-T, Ctrl-R, Alt-C)
 source <("$("$BREW_BIN" --prefix fzf)/bin/fzf" --zsh)
 
+# fzf-cd-widget alternative binding (keeps Option free for special characters)
+bindkey '^Xc' fzf-cd-widget
+
 # Ensure common keybindings work in all terminals
 bindkey '^A' beginning-of-line # Ctrl-A
 bindkey '^K' kill-line # Ctrl-K
@@ -24,7 +27,7 @@ bindkey '^[[3~' delete-char # Forward delete
 # Edit current command line in $VISUAL/$EDITOR (Ctrl-X Ctrl-E)
 autoload -Uz edit-command-line
 zle -N edit-command-line
-bindkey '^X^E' edit-command-line
+bindkey '^Xe' edit-command-line
 
 # Word navigation for common terminal sequences
 bindkey '^[b' backward-word # Option-Left (Esc-b) jump by word
