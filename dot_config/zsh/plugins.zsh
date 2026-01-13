@@ -6,8 +6,8 @@ source "$($BREW_BIN --prefix antidote)/share/antidote/antidote.zsh"
 
 autoload -Uz compinit
 if [[ -z "$_comps" ]]; then
-  # Cache zcompdump in XDG cache dir and skip fpath security checks for faster startup
-  ZSH_CACHE_DIR="${XDG_CACHE_HOME:-$HOME/.cache}/zsh"
+  # Cache zcompdump in cache dir and skip fpath security checks for faster startup
+  ZSH_CACHE_DIR="$HOME/.cache/zsh"
   mkdir -p "$ZSH_CACHE_DIR"
   compinit -C -d "$ZSH_CACHE_DIR/zcompdump"
 fi
