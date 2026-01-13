@@ -16,6 +16,7 @@
 [core]
 	quotepath = false
 	attributesfile = ~/.gitattributes
+	pager = delta
 [branch]
 	autosetuprebase = never
 [push]
@@ -26,5 +27,11 @@
 	textconv = sketchtool dump
 	cachetextconv = true
 	binary = true
+[interactive]
+	diffFilter = delta --color-only
+[delta]
+	navigate = true
+	line-numbers = true
+	side-by-side = true
 [pull]
 	rebase = false
