@@ -1,6 +1,10 @@
 # Dotfiles Commands
 _dot_update_plugins() {
   echo "Updating antidote plugins..."
+  # Refresh antidote function in case Homebrew updated it during chezmoi apply.
+  local brew_bin="${BREW_BIN:-$(command -v brew 2>/dev/null)}"
+  [ -n "$brew_bin" ] && source "$("$brew_bin" --prefix antidote 2>/dev/null)/share/antidote/antidote.zsh"
+  # Update antidote plugin database
   antidote update || return $?
   # Install or update our plugins
   antidote bundle <"$HOME/.config/zsh/antidote/plugins.txt" >| "$HOME/.config/zsh/antidote/.zsh_plugins.zsh" || return $?
