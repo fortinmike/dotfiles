@@ -10,12 +10,13 @@ This is my ZSH configuration and personal dotfiles. Please review everything bef
 
 ## Installation
 
-0. Make sure zsh is the default shell: `echo $SHELL` (if not, set it as default using `chsh -s /usr/bin/zsh`)
-1. Optionally, fork this project and use your own repo below (best so you can customize it and push your changes back)
-2. Install and select a Nerd Font in Terminal (see "Font" below)
-3. Install `chezmoi` using `brew` or using the install script on Linux
-4. Run `chezmoi init --force --apply [this_repos_url]`
-5. Open a new shell to view the results
+1. Make sure zsh is the default shell: `echo $SHELL` (if not, set it as default using `chsh -s [path_to_zsh]`)
+2. Optionally, fork this project and use your own repo below (best so you can customize it and push your changes back)
+3. Install and select a Nerd Font in Terminal (see "Font" below)
+4. Install [homebrew](https://brew.sh) (also required on Linux for many tools that are very boilerplatey to install on various distros otherwise)
+5. Install `chezmoi` using `brew`
+6. Run `chezmoi init --force --apply [this_repos_url]`
+7. Open a new shell to view the results
 
 ## Main Moving Parts
 
