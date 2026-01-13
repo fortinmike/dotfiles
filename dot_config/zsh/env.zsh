@@ -55,7 +55,6 @@ export LESS_TERMCAP_se=$'\e[0m'
 export LESS_TERMCAP_so=$'\e[1;44;33m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;32m'
-export PAGER='moor'
 
 # History behavior (OMZ-style)
 setopt append_history # Append to history file, don't overwrite
