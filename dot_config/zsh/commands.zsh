@@ -21,7 +21,7 @@ function dot-apply() {
 }
 
 # Create a directory and go inside it
-mkcd() { mkdir $1; cd $1; }
+mkcd() { mkdir -p -- "$1" && cd -- "$1"; }
 
 # Use eza for better defaults
 alias ls='eza'
