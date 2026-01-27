@@ -46,7 +46,7 @@ alias .....='cd ../../../..' # Up four directories
 alias grep='grep --color=auto' # Highlight matches
 
 # Replace common commands with modern versions
-alias cat='bat'
+[[ -o interactive ]] && alias cat='bat' # Use bat only for interactive shells to avoid breaking scripts/pipelines
 alias top='btop'
 
 # Ripgrep helpers
