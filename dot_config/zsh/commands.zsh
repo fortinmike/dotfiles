@@ -49,7 +49,8 @@ alias grep='grep --color=auto' # Highlight matches
 alias cat='bat'
 alias top='btop'
 
-# Moor
+# Command shorthands
+alias rf='rm -rf'
 
 # Ripgrep helpers
 alias rgf='rg --files' # List files rg would search
