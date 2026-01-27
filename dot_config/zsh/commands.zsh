@@ -75,7 +75,12 @@ alias gpu='git push'
 alias reveal='open -R'
 
 # Kill process via fuzzy finder
-alias fk='ps -ef | fzf | awk '\''{print $2}'\'' | xargs kill -9'
+fk() {
+  local selection pid
+  selection="$(ps -axo pid=,command= | fzf)"
+  pid="${selection%% *}"
+  [ -n "$pid" ] && kill -9 "$pid"
+}
 
 # Kill apps via fuzzy finder
 fka() {
