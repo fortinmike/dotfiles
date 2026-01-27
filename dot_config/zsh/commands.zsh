@@ -90,9 +90,6 @@ fka() {
   [ -n "$app" ] && killall "$app"
 }
 
-# Open in Xcode
-xcode() { open -a Xcode $1 &; }
-
 # Delete local Time Machine snapshots
 delete-local-snapshots() {
   for d in $(tmutil listlocalsnapshotdates | grep "-");
