@@ -24,7 +24,10 @@ function dot-apply() {
 }
 
 # Create a directory and go inside it
-mkcd() { mkdir -p -- "$1" && cd -- "$1"; }
+mkcd() {
+  [ -n "$1" ] || { echo "mkcd: missing directory argument" >&2; return 1; }
+  mkdir -p -- "$1" && cd -- "$1"
+}
 
 # Use eza for better defaults
 alias ls='eza'
