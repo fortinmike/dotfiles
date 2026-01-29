@@ -29,7 +29,7 @@ mkcd() {
   mkdir -p -- "$1" && cd -- "$1"
 }
 
-# Cd to the directory of a symlink's real target.
+# Cd to the directory of a symlink's real target
 cdl() {
   [ -n "$1" ] || { echo "cdl: missing symlink argument" >&2; return 1; }
   local link="$1"
