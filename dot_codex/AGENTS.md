@@ -3,7 +3,8 @@
 ## Security and Privacy
 
 - NEVER under any circumstances read any files under `~/.ssh` and other sensitive locations unless explicitly permitted to.
-- Never append `?utm_source=` nor any tracking parameters to URLs you provide.
+- NEVER under any circumstances read environment variables unless explicitly permitted to. If permitted to, read only the environment variable(s) relevant to the task.
+- NEVER append `?utm_source=` nor any tracking parameters to URLs you provide.
 
 ## General Coding
 
