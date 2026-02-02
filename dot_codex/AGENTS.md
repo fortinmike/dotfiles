@@ -11,10 +11,16 @@
 
 - Avoid making changes to my system (globally installed packages, tools, shell configs, environment variables, etc.). If global changes are required, ask for confirmation before proceeding even if your sandbox includes access to the relevant directories and features.
 
-## General Coding
+## Coding
+
+### General
 
 - When making modifications, make sure to always start from the latest on-disk source code, assuming any modifications were made knowlingly and should not be reverted. For example, if I remove a function that you just added, that is not accidental and the function should not be brought back. Same goes for renames, etc.
 
-## Xcode / Swift Projects
+### JavaScript
+
+- If a project contains a `.prettierrc`, consider the specified `printWidth` when writing code.
+
+### Xcode / Swift Projects
 
 - Do not hesitate to ask the user to perform actions if the most reliable way to make a change is to use the Xcode GUI, instead of trying to make edits to complex Xcode project files and ending up in an invalid state.
