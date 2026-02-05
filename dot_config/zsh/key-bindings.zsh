@@ -50,6 +50,6 @@ zmodload zsh/terminfo
 bindkey "$terminfo[kcuu1]" fzf-history-widget
 bindkey '^[[A' fzf-history-widget
 
-# Down arrow: keep inline history-substring behavior.
-bindkey "$terminfo[kcud1]" history-substring-search-down
-bindkey '^[[B' history-substring-search-down
+# Down arrow: default history navigation.
+bindkey "$terminfo[kcud1]" down-line-or-history
+bindkey '^[[B' down-line-or-history
