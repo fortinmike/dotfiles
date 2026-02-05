@@ -33,6 +33,3 @@
 ### Linear MCP
 
 - When using the Linear MCP and asked to complete a task, set it to Delivered, not Accepted.
-- When setting a task as Delivered:
-  - Add a comment indicating which git commit delivered the issue, in the same language as the task title.
-  - Make the git commit a link to the actual commit in the origin repo.
