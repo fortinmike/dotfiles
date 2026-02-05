@@ -27,3 +27,12 @@
 ### Xcode / Swift Projects
 
 - Do not hesitate to ask the user to perform actions if the most reliable way to make a change is to use the Xcode GUI, instead of trying to make edits to complex Xcode project files and ending up in an invalid state.
+
+## MCP
+
+### Linear MCP
+
+- When using the Linear MCP and asked to complete a task, set it to Delivered, not Accepted.
+- When setting a task as Delivered:
+  - Add a comment indicating which git commit delivered the issue, in the same language as the task title.
+  - Make the git commit a link to the actual commit in the origin repo.
