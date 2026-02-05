@@ -43,14 +43,13 @@ bindkey '^[[F' end-of-line # End
 bindkey '^[OH' beginning-of-line # Home (xterm)
 bindkey '^[OF' end-of-line # End (xterm)
 
-# Key bindings for the "zsh-history-substring-search" plugin
-
-# Bind UP and DOWN arrow keys
+# Key bindings for history search/navigation
 zmodload zsh/terminfo
-bindkey "$terminfo[kcuu1]" history-substring-search-up
-bindkey "$terminfo[kcud1]" history-substring-search-down
 
-# Bind UP and DOWN arrow keys (compatibility fallback
-# for Ubuntu 12.04, Fedora 21, and MacOSX 10.9)
-bindkey '^[[A' history-substring-search-up
+# Up arrow: use the same fzf history widget as Ctrl-R.
+bindkey "$terminfo[kcuu1]" fzf-history-widget
+bindkey '^[[A' fzf-history-widget
+
+# Down arrow: keep inline history-substring behavior.
+bindkey "$terminfo[kcud1]" history-substring-search-down
 bindkey '^[[B' history-substring-search-down
