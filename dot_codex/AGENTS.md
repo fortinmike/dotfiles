@@ -1,5 +1,9 @@
 # Global Guidelines
 
+## General Behavior
+
+- If there is any ambiguity in the request, ask for clarification before proceeding.
+
 ## Security and Privacy
 
 - NEVER under any circumstances read any files under `~/.ssh` and other sensitive locations unless explicitly permitted to.
@@ -12,8 +16,6 @@
 - Avoid making changes to my system (globally installed packages, tools, shell configs, environment variables, etc.). If global changes are required, ask for confirmation before proceeding even if your sandbox includes access to the relevant directories and features.
 
 ## Coding
-
-### General
 
 - Favor answering and reflecting on the implications of interrogative prompts instead of jumping into action too quickly.
 - When making modifications, make sure to always start from the latest on-disk source code, assuming any modifications were made knowlingly and should not be reverted. For example, if I remove a function that you just added, that is not accidental and the function should not be brought back. Same goes for renames, etc.
