@@ -62,7 +62,6 @@ setopt hist_ignore_dups # Skip duplicate commands in history
 setopt hist_ignore_space # Do not add commands that start with a space to the history
 setopt hist_verify # Edit expanded history before running
 setopt inc_append_history # Write to history file immediately
-setopt share_history # Share history across sessions
 setopt extended_history # Save timestamps in history
 setopt hist_expire_dups_first # Expire duplicate entries first
 
