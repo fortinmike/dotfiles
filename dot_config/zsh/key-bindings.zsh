@@ -49,28 +49,46 @@ typeset -g _history_up_or_fzf_saved_buffer=""
 typeset -gi _history_up_or_fzf_saved_cursor=0
 typeset -gi _history_up_or_fzf_armed=0
 
-# Up arrow: first press shows latest history entry, second press opens fzf history.
+# Up arrow:
+# - Empty prompt: first Up recalls latest history, second Up opens unfiltered fzf.
+# - Non-empty prompt: open fzf history immediately, using prompt text as query.
 _history_up_or_fzf() {
-  # Second consecutive Up: open fzf history and optionally execute selection.
+  # Second Up after empty-prompt recall: open fzf with an empty query.
   if (( _history_up_or_fzf_armed )) && [[ $LASTWIDGET == _history_up_or_fzf ]]; then
     local FZF_CTRL_R_OPTS="${FZF_CTRL_R_OPTS:+$FZF_CTRL_R_OPTS }--height 40% --layout=default"
     BUFFER=""
     zle fzf-history-widget
     local _fzf_status=$?
+    _history_up_or_fzf_armed=0
     if (( _fzf_status == 0 )); then
-      # Enter in fzf selected a command; run it immediately.
-      _history_up_or_fzf_armed=0
       zle accept-line
       return 0
     fi
-    # fzf canceled: restore the prompt exactly as it was before first Up.
     BUFFER=$_history_up_or_fzf_saved_buffer
     CURSOR=$_history_up_or_fzf_saved_cursor
-    _history_up_or_fzf_armed=0
     return 0
   fi
 
-  # First Up: save current prompt state, arm second Up, then show latest history.
+  # Non-empty prompt: open fzf immediately, using current prompt text as query.
+  if [[ -n $BUFFER ]]; then
+    _history_up_or_fzf_saved_buffer=$BUFFER
+    _history_up_or_fzf_saved_cursor=$CURSOR
+    _history_up_or_fzf_armed=0
+    local FZF_CTRL_R_OPTS="${FZF_CTRL_R_OPTS:+$FZF_CTRL_R_OPTS }--height 40% --layout=default"
+    zle fzf-history-widget
+    local _fzf_status=$?
+    if (( _fzf_status == 0 )); then
+      # Enter in fzf selected a command; run it immediately.
+      zle accept-line
+      return 0
+    fi
+    # fzf canceled: restore the prompt exactly as it was before opening fzf.
+    BUFFER=$_history_up_or_fzf_saved_buffer
+    CURSOR=$_history_up_or_fzf_saved_cursor
+    return 0
+  fi
+
+  # Empty prompt: recall latest history entry once.
   _history_up_or_fzf_saved_buffer=$BUFFER
   _history_up_or_fzf_saved_cursor=$CURSOR
   _history_up_or_fzf_armed=1
