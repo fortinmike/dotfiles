@@ -45,8 +45,8 @@ bindkey '^[OF' end-of-line # End (xterm)
 
 # Key bindings for history search/navigation
 zmodload zsh/terminfo
-typeset -g _history_up_or_fzf_initial_buffer=""
-typeset -gi _history_up_or_fzf_initial_cursor=0
+typeset -g _history_up_or_fzf_saved_buffer=""
+typeset -gi _history_up_or_fzf_saved_cursor=0
 typeset -gi _history_up_or_fzf_armed=0
 
 # Up arrow: first press shows latest history entry, second press opens fzf history.
@@ -55,23 +55,20 @@ _history_up_or_fzf() {
     local FZF_CTRL_R_OPTS="${FZF_CTRL_R_OPTS:+$FZF_CTRL_R_OPTS }--height 40% --layout=default"
     BUFFER=""
     zle fzf-history-widget
-    local _fzf_status=$?
-    if (( _fzf_status != 0 )); then
-      BUFFER=$_history_up_or_fzf_initial_buffer
-      CURSOR=$_history_up_or_fzf_initial_cursor
-    fi
+    [[ $? -eq 0 ]] || {
+      BUFFER=$_history_up_or_fzf_saved_buffer
+      CURSOR=$_history_up_or_fzf_saved_cursor
+    }
     _history_up_or_fzf_armed=0
     return 0
   fi
 
-  _history_up_or_fzf_initial_buffer=$BUFFER
-  _history_up_or_fzf_initial_cursor=$CURSOR
+  _history_up_or_fzf_saved_buffer=$BUFFER
+  _history_up_or_fzf_saved_cursor=$CURSOR
   _history_up_or_fzf_armed=1
 
-  local _latest_history_entry
-  _latest_history_entry=$(fc -ln -1 2>/dev/null)
-  if [[ -n $_latest_history_entry ]]; then
-    BUFFER=$_latest_history_entry
+  BUFFER=$(fc -ln -1 2>/dev/null)
+  if [[ -n $BUFFER ]]; then
     CURSOR=${#BUFFER}
   else
     zle up-line-or-history
