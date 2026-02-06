@@ -48,6 +48,20 @@ zmodload zsh/terminfo
 typeset -g _history_up_or_fzf_saved_buffer=""
 typeset -gi _history_up_or_fzf_saved_cursor=0
 typeset -gi _history_up_or_fzf_armed=0
+typeset -g _history_up_or_fzf_base_opts="--height 40% --layout=default --with-nth=2.. --bind='down:transform:[[ \$FZF_POS -eq 1 ]] && echo abort || echo down'"
+
+_history_up_or_fzf_open() {
+  local _extra_opts="$1"
+  local FZF_CTRL_R_OPTS="${FZF_CTRL_R_OPTS:+$FZF_CTRL_R_OPTS }${_history_up_or_fzf_base_opts}${_extra_opts:+ ${_extra_opts}}"
+  zle fzf-history-widget
+  if (( $? == 0 )); then
+    zle accept-line
+    return 0
+  fi
+  BUFFER=$_history_up_or_fzf_saved_buffer
+  CURSOR=$_history_up_or_fzf_saved_cursor
+  return 0
+}
 
 # Up arrow:
 # - Empty prompt: first Up recalls latest history, second Up opens unfiltered fzf.
@@ -55,17 +69,9 @@ typeset -gi _history_up_or_fzf_armed=0
 _history_up_or_fzf() {
   # Second Up after empty-prompt recall: open fzf with an empty query.
   if (( _history_up_or_fzf_armed )) && [[ $LASTWIDGET == _history_up_or_fzf ]]; then
-    local FZF_CTRL_R_OPTS="${FZF_CTRL_R_OPTS:+$FZF_CTRL_R_OPTS }--height 40% --layout=default --with-nth=2.. --bind=result:first+up --bind='down:transform:[[ \$FZF_POS -eq 1 ]] && echo abort || echo down'"
     BUFFER=""
-    zle fzf-history-widget
-    local _fzf_status=$?
     _history_up_or_fzf_armed=0
-    if (( _fzf_status == 0 )); then
-      zle accept-line
-      return 0
-    fi
-    BUFFER=$_history_up_or_fzf_saved_buffer
-    CURSOR=$_history_up_or_fzf_saved_cursor
+    _history_up_or_fzf_open "--bind=result:first+up"
     return 0
   fi
 
@@ -74,17 +80,7 @@ _history_up_or_fzf() {
     _history_up_or_fzf_saved_buffer=$BUFFER
     _history_up_or_fzf_saved_cursor=$CURSOR
     _history_up_or_fzf_armed=0
-    local FZF_CTRL_R_OPTS="${FZF_CTRL_R_OPTS:+$FZF_CTRL_R_OPTS }--height 40% --layout=default --with-nth=2.. --bind='down:transform:[[ \$FZF_POS -eq 1 ]] && echo abort || echo down'"
-    zle fzf-history-widget
-    local _fzf_status=$?
-    if (( _fzf_status == 0 )); then
-      # Enter in fzf selected a command; run it immediately.
-      zle accept-line
-      return 0
-    fi
-    # fzf canceled: restore the prompt exactly as it was before opening fzf.
-    BUFFER=$_history_up_or_fzf_saved_buffer
-    CURSOR=$_history_up_or_fzf_saved_cursor
+    _history_up_or_fzf_open
     return 0
   fi
 
