@@ -55,7 +55,7 @@ typeset -gi _history_up_or_fzf_armed=0
 _history_up_or_fzf() {
   # Second Up after empty-prompt recall: open fzf with an empty query.
   if (( _history_up_or_fzf_armed )) && [[ $LASTWIDGET == _history_up_or_fzf ]]; then
-    local FZF_CTRL_R_OPTS="${FZF_CTRL_R_OPTS:+$FZF_CTRL_R_OPTS }--height 40% --layout=default --with-nth=2.."
+    local FZF_CTRL_R_OPTS="${FZF_CTRL_R_OPTS:+$FZF_CTRL_R_OPTS }--height 40% --layout=default --with-nth=2.. --bind=result:first+up"
     BUFFER=""
     zle fzf-history-widget
     local _fzf_status=$?
