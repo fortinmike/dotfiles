@@ -51,18 +51,26 @@ typeset -gi _history_up_or_fzf_armed=0
 
 # Up arrow: first press shows latest history entry, second press opens fzf history.
 _history_up_or_fzf() {
+  # Second consecutive Up: open fzf history and optionally execute selection.
   if (( _history_up_or_fzf_armed )) && [[ $LASTWIDGET == _history_up_or_fzf ]]; then
     local FZF_CTRL_R_OPTS="${FZF_CTRL_R_OPTS:+$FZF_CTRL_R_OPTS }--height 40% --layout=default"
     BUFFER=""
     zle fzf-history-widget
-    [[ $? -eq 0 ]] || {
-      BUFFER=$_history_up_or_fzf_saved_buffer
-      CURSOR=$_history_up_or_fzf_saved_cursor
-    }
+    local _fzf_status=$?
+    if (( _fzf_status == 0 )); then
+      # Enter in fzf selected a command; run it immediately.
+      _history_up_or_fzf_armed=0
+      zle accept-line
+      return 0
+    fi
+    # fzf canceled: restore the prompt exactly as it was before first Up.
+    BUFFER=$_history_up_or_fzf_saved_buffer
+    CURSOR=$_history_up_or_fzf_saved_cursor
     _history_up_or_fzf_armed=0
     return 0
   fi
 
+  # First Up: save current prompt state, arm second Up, then show latest history.
   _history_up_or_fzf_saved_buffer=$BUFFER
   _history_up_or_fzf_saved_cursor=$CURSOR
   _history_up_or_fzf_armed=1
