@@ -86,6 +86,16 @@ zle -N _history_up_or_fzf
 bindkey "$terminfo[kcuu1]" _history_up_or_fzf
 bindkey '^[[A' _history_up_or_fzf
 
-# Down arrow: default history navigation.
-bindkey "$terminfo[kcud1]" down-line-or-history
-bindkey '^[[B' down-line-or-history
+# Down arrow: if first-Up recall is active, restore original prompt once.
+_history_down_or_restore() {
+  if (( _history_up_or_fzf_armed )); then
+    BUFFER=$_history_up_or_fzf_saved_buffer
+    CURSOR=$_history_up_or_fzf_saved_cursor
+    _history_up_or_fzf_armed=0
+  else
+    zle down-line-or-history
+  fi
+}
+zle -N _history_down_or_restore
+bindkey "$terminfo[kcud1]" _history_down_or_restore
+bindkey '^[[B' _history_down_or_restore
