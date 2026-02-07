@@ -18,3 +18,11 @@ if [ ! -f "$ANTIDOTE_CACHE" ] || [ "$ANTIDOTE_BUNDLE" -nt "$ANTIDOTE_CACHE" ]; t
 fi
 
 source "$ANTIDOTE_CACHE"
+
+# zsh-autosuggestions may wrap its own internal completion-capture widget.
+# With completion strategy + custom Up/fzf history widgets, that re-entry can
+# recurse through ZLE and leave stray high-CPU zsh processes.
+# Excluding this internal widget prevents self-wrapping, while preserving the
+# normal autosuggestion behavior for user-facing widgets.
+typeset -ga ZSH_AUTOSUGGEST_IGNORE_WIDGETS
+ZSH_AUTOSUGGEST_IGNORE_WIDGETS+=(autosuggest-capture-completion)
