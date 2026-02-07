@@ -42,9 +42,8 @@ export SAVEHIST=10000 # Number of history entries to save to disk
 # Autosuggestions: only use completion results to avoid stale history paths
 export ZSH_AUTOSUGGEST_STRATEGY=(completion)
 
-# fzf: case-insensitive matching + Ctrl-k kill-line override
-# (Ctrl-a / Ctrl-e are already built-in defaults)
-export FZF_DEFAULT_OPTS='--ignore-case --bind=ctrl-k:kill-line'
+# fzf: case-insensitive matching + Ctrl-k kill-line + enable text selection (no mouse)
+export FZF_DEFAULT_OPTS='--ignore-case --bind=ctrl-k:kill-line --no-mouse'
 
 # Colored man pages (replacement for OMZ colored-man-pages plugin)
 export LESS='-R'
