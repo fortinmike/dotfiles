@@ -54,12 +54,10 @@ _history_up_or_fzf_open() {
   local _extra_opts="$1"
   local FZF_CTRL_R_OPTS="${FZF_CTRL_R_OPTS:+$FZF_CTRL_R_OPTS }${_history_up_or_fzf_base_opts}${_extra_opts:+ ${_extra_opts}}"
   zle fzf-history-widget
-  if (( $? == 0 )); then
-    zle accept-line
-    return 0
+  if (( $? != 0 )); then
+    BUFFER=$_history_up_or_fzf_saved_buffer
+    CURSOR=$_history_up_or_fzf_saved_cursor
   fi
-  BUFFER=$_history_up_or_fzf_saved_buffer
-  CURSOR=$_history_up_or_fzf_saved_cursor
   return 0
 }
 
