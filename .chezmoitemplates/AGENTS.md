@@ -20,6 +20,7 @@
 
 - If a prompt contains a question, favor elaborating and answering the question rather than immediately jumping into action.
 - When making modifications, make sure to always start from the latest on-disk source code, assuming any modifications were made knowlingly and should not be reverted. For example, if I remove a function that you just added, that is not accidental and the function should not be brought back. Same goes for renames, etc.
+- When writing code or commands, when an argument or a flag is the same as the default value, omit it instead of passing it explicitly.
 
 ### JavaScript
 
