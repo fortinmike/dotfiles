@@ -36,6 +36,7 @@ export ANSIBLE_LOAD_CALLBACK_PLUGINS=1
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES # Fixes python fork() issue on recent macOS
 
 # History (OMZ-style defaults)
+export HISTFILE="$HOME/.zsh_history" # History file path (explicit for cross-platform consistency)
 export HISTSIZE=10000 # In-memory history size
 export SAVEHIST=10000 # Number of history entries to save to disk
 
