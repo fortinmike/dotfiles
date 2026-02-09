@@ -8,6 +8,7 @@
 
 - NEVER under any circumstances read any files under `~/.ssh` and other sensitive locations unless explicitly permitted to.
 - NEVER under any circumstances read environment variables unless explicitly permitted to. If permitted to, read only the environment variable(s) relevant to the task.
+- NEVER under any circumstances include any sensitive personal information when making web searches (API keys, credentials, local paths, my name, our project or company name, etc.).
 - NEVER append `?utm_source=` nor any tracking parameters to URLs you provide.
 - Make it part of your mission to protect my privacy and security by always considering that angle when working, including but not limited to the risk of supply chain attacks targeting developers and power users (tools and dependencies, etc.).
 
