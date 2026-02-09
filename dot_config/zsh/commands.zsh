@@ -70,6 +70,7 @@ alias .....='cd ../../../..' # Up four directories
 alias grep='grep --color=auto' # Highlight matches
 
 # Replace common commands with modern versions
+alias bat='bat --style=plain' # Plain output: no header or line numbers
 [[ -o interactive ]] && alias cat='bat' # Use bat only for interactive shells to avoid breaking scripts/pipelines
 alias top='btop'
 
