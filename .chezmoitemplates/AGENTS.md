@@ -42,4 +42,8 @@
 
 #### Linear MCP
 
-- When using the Linear MCP and asked to complete a task, set it to Delivered, not Accepted.
+- When asked to complete a task, set it to Delivered, not Accepted.
+
+#### Sketch MCP
+
+- When relevant, validate your work with the `get_selection_as_image` tool.
