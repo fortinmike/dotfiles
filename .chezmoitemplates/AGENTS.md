@@ -3,6 +3,7 @@
 ## General Behavior
 
 - If there is any ambiguity in the request, ask for clarification before proceeding.
+- Avoid hacks and workarounds unless required and if so explain why.
 
 ## Security and Privacy
 
