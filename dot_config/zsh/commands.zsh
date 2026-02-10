@@ -62,7 +62,7 @@ function dot-status() {
       printf '\033[38;5;208m%s\033[0m %s\n' "$hash" "${line#* }"
     done < <(chezmoi git -- log --oneline --no-decorate @{u}..HEAD)
   else
-    print -P "%F{green}None%f"
+    print "None"
   fi
   print
 
@@ -73,7 +73,7 @@ function dot-status() {
       printf '\033[38;5;141m%s\033[0m %s\n' "$hash" "${line#* }"
     done < <(chezmoi git -- log --oneline --no-decorate HEAD..@{u})
   else
-    print -P "%F{green}None%f"
+    print "None"
   fi
 
   if [ "$ahead" -gt 0 ] && [ "$behind" -eq 0 ]; then
@@ -86,7 +86,7 @@ function dot-status() {
     print -P "%F{yellow}Update available. Consider running dot-update.%f"
   else
     print -- ""
-    print "Up to date with upstream."
+    print -P "%F{green}Up to date with upstream.%f"
   fi
 }
 
