@@ -14,15 +14,15 @@ _dot_suggest_push_if_ahead() {
   ahead="$(chezmoi git -- rev-list --count @{u}..HEAD 2>/dev/null)" || return 0
   [[ "$ahead" == <-> ]] || return 0
   [ "$ahead" -gt 0 ] || return 0
-  print -P "%F{yellow}[dotfiles]%f Local dotfiles are ahead of upstream by %B${ahead}%b commit(s). Consider running %Bdot-push%b."
+  print -P "%F{yellow}Local dotfiles are ahead of upstream by %B${ahead}%b commit(s). Consider running %Bdot-push%b.%f"
 }
 
 function dot-update() {
   echo "Updating dotfiles from remote, applying, and updating plugins..."
   chezmoi update || return $?
   _dot_update_plugins || return $?
-  _dot_suggest_push_if_ahead
   printf '\033[0;32m%s\033[0m\n' "Restart your shell to load changes."
+  _dot_suggest_push_if_ahead
 }
 
 function dot-push() {
@@ -35,6 +35,30 @@ function dot-apply() {
   chezmoi apply || return $?
   _dot_update_plugins || return $?
   printf '\033[0;32m%s\033[0m\n' "Restart your shell to load changes."
+  _dot_suggest_push_if_ahead
+}
+
+function dot-status() {
+  local counts ahead behind
+  counts="$(chezmoi git -- rev-list --left-right --count HEAD...@{u} 2>/dev/null)" || {
+    print -P "%F{yellow}[dotfiles]%f Unable to determine upstream status."
+    return 1
+  }
+
+  ahead="${counts%%[[:space:]]*}"
+  behind="${counts##*[[:space:]]}"
+
+  print -P "%F{yellow}[dotfiles]%f Ahead: %B${ahead}%b Behind: %B${behind}%b"
+
+  if [ "$ahead" -gt 0 ] && [ "$behind" -gt 0 ]; then
+    print -P "%F{yellow}[dotfiles]%f Branch is diverged from upstream."
+  elif [ "$behind" -gt 0 ]; then
+    print -P "%F{yellow}[dotfiles]%f Update available. Run %Bdot-update%b."
+  elif [ "$ahead" -gt 0 ]; then
+    print -P "%F{yellow}[dotfiles]%f Local commits not pushed. Run %Bdot-push%b."
+  else
+    print -P "%F{green}[dotfiles]%f Up to date with upstream."
+  fi
 }
 
 # Create a directory and go inside it
