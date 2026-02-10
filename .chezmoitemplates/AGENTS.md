@@ -46,4 +46,5 @@
 
 #### Sketch MCP
 
-- When relevant, validate your work by selecting the appropriate element and capturing images with the `get_selection_as_image` tool.
+- When inspecting layout, measure precisely by digging into the document structure and extracting dimensions, font sizes, etc. rather than relying too much on visual previews.
+- After performing operations, validate your work by selecting the appropriate element and capturing images with the `get_selection_as_image` tool.
