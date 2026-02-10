@@ -46,4 +46,4 @@
 
 #### Sketch MCP
 
-- When relevant, validate your work with the `get_selection_as_image` tool.
+- When relevant, validate your work by selecting the appropriate element and capturing images with the `get_selection_as_image` tool.
