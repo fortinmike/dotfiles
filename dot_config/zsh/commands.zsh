@@ -27,7 +27,7 @@ function dot-update() {
 
 function dot-push() {
   echo "Pushing dotfiles commits to upstream..."
-  chezmoi git -- push || return $?
+  command git -C "$(chezmoi source-path)" push
 }
 
 function dot-apply() {
