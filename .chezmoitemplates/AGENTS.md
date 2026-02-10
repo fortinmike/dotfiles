@@ -3,36 +3,43 @@
 ## General Behavior
 
 - If there is any ambiguity in the request, ask for clarification before proceeding.
-- Avoid hacks and workarounds unless required and if so explain why.
 
-## Security and Privacy
+## Computing
 
-- NEVER under any circumstances read any files under `~/.ssh` and other sensitive locations unless explicitly permitted to.
-- NEVER under any circumstances read environment variables unless explicitly permitted to. If permitted to, read only the environment variable(s) relevant to the task.
+- Avoid brittle hacks and workarounds unless required and if so explain why.
+- Always thing long-term maintenance when making decisions about setup or software.
+
+### Security and Privacy
+
+- NEVER under any circumstances read any files under `~/.ssh` and other similarly sensitive locations unless EXPLICITLY permitted to.
+- NEVER under any circumstances read environment variables unless EXPLICITLY permitted to. If permitted, read only the environment variable(s) relevant to the task.
 - NEVER under any circumstances include any sensitive personal information when making web searches (API keys, credentials, local paths, my name, our project or company name, etc.).
-- NEVER append `?utm_source=` nor any tracking parameters to URLs you provide.
-- Make it part of your mission to protect my privacy and security by always considering that angle when working, including but not limited to the risk of supply chain attacks targeting developers and power users (tools and dependencies, etc.).
+- NEVER append `?utm_source=` nor any tracking parameters to URLs you provide to me.
+- Make it an important part of your mission to protect my privacy and security by always considering that angle when working, including but not limited to the risk of supply chain attacks targeting developers and power users (tools and dependencies, etc.).
+- When there are security or privacy risks to an approach, make sure to mention them.
 
-## System
+### System
 
-- Avoid making changes to my system (globally installed packages, tools, shell configs, environment variables, etc.). If global changes are required, ask for confirmation before proceeding even if your sandbox includes access to the relevant directories and features.
+- NEVER make changes to my system (globally installed packages, tools, shell configs, environment variables, etc.) unless EXPLICITLY permitted, even if your sandbox includes access to the relevant directories and tools. If global changes are required, ask me to make the changes myself or to allow you to make them.
+- Avoid global conflicts by using tools such as fnm, pyenv, uv and such to isolate installs.
 
-## Coding
+### Coding & Software
 
-- If a prompt contains a question, favor elaborating and answering the question rather than immediately jumping into action.
-- When making modifications, make sure to always start from the latest on-disk source code, assuming any modifications were made knowlingly and should not be reverted. For example, if I remove a function that you just added, that is not accidental and the function should not be brought back. Same goes for renames, etc.
+- If a prompt contains a question, answer the question instead of immediately jumping into action.
+- When making modifications, make sure to always start from the latest on-disk source code, assuming any modifications were made knowlingly and should not be reverted. For example, if I remove a function that you just added, that is not accidental and the function should NOT be brought back unless required. Same goes for renames, etc.
 - When writing code or commands, when an argument or a flag is the same as the default value, omit it instead of passing it explicitly.
+- Favor reproducibility and predictability.
 
-### JavaScript
+#### JavaScript
 
 - If a project contains a `.prettierrc`, consider the specified `printWidth` when writing code.
 
-### Xcode / Swift Projects
+#### Xcode / Swift Projects
 
 - Do not hesitate to ask the user to perform actions if the most reliable way to make a change is to use the Xcode GUI, instead of trying to make edits to complex Xcode project files and ending up in an invalid state.
 
 ## MCP
 
-### Linear MCP
+#### Linear MCP
 
 - When using the Linear MCP and asked to complete a task, set it to Delivered, not Accepted.
