@@ -19,33 +19,32 @@ function _autols_small_dir() {
 }
 chpwd_functions+=(_autols_small_dir)
 
-# Dotfiles update notification (async fetch + one check per shell session)
-typeset -g _dotfiles_update_checked=0
-typeset -g _dotfiles_update_fetch_started=0
-typeset -g _dotfiles_update_fetch_pid=0
+# Dotfiles update notification (start async on first prompt, print on later prompt)
+typeset -g _dotfiles_update_state=0
+typeset -g DOTFILES_UPDATE_RESULT_FILE="${${TMPDIR:-/tmp}%/}/dotfiles-update-${UID}-$$.result"
 
-_dotfiles_update_notice() {
-  [ "$_dotfiles_update_checked" -eq 0 ] || return
-
-  if [ "$_dotfiles_update_fetch_started" -eq 0 ]; then
-    chezmoi git fetch --quiet --no-tags >/dev/null 2>&1 &!
-    _dotfiles_update_fetch_pid="$!"
-    _dotfiles_update_fetch_started=1
+_dotfiles_update_precmd() {
+  if [ "$_dotfiles_update_state" -eq 0 ]; then
+    _dotfiles_update_state=1
+    (
+      local behind=0
+      GIT_TERMINAL_PROMPT=0 GIT_SSH_COMMAND='ssh -o BatchMode=yes' \
+        chezmoi git -- fetch --quiet --no-tags >/dev/null 2>&1 || true
+      behind="$(chezmoi git -- rev-list --count HEAD..@{u} 2>/dev/null)" || behind=0
+      print -r -- "$behind" >| "$DOTFILES_UPDATE_RESULT_FILE"
+    ) &!
     return
   fi
 
-  [ "$_dotfiles_update_fetch_pid" -gt 0 ] || return
-  kill -0 "$_dotfiles_update_fetch_pid" 2>/dev/null && return
+  [ "$_dotfiles_update_state" -eq 1 ] || return
+  [ -r "$DOTFILES_UPDATE_RESULT_FILE" ] || return
+  _dotfiles_update_state=2
 
   local behind
-  behind="$(chezmoi git rev-list --count HEAD..@{u} 2>/dev/null)" || {
-    _dotfiles_update_checked=1
-    return
-  }
-  _dotfiles_update_checked=1
+  read -r behind < "$DOTFILES_UPDATE_RESULT_FILE" || return
   [[ "$behind" == <-> ]] || return
   [ "$behind" -gt 0 ] || return
 
   print -P "%F{yellow}[dotfiles]%f Update available: %B${behind}%b commit(s) behind upstream. Run %Bdot-update%b."
 }
-precmd_functions+=(_dotfiles_update_notice)
+precmd_functions+=(_dotfiles_update_precmd)
