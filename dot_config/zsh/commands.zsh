@@ -40,6 +40,12 @@ function dot-apply() {
 
 function dot-status() {
   local counts ahead behind line hash
+  GIT_TERMINAL_PROMPT=0 GIT_SSH_COMMAND='ssh -o BatchMode=yes' \
+    chezmoi git -- fetch --quiet --no-tags >/dev/null 2>&1 || {
+    print "Unable to fetch upstream status."
+    return 1
+  }
+
   counts="$(chezmoi git -- rev-list --left-right --count HEAD...@{u} 2>/dev/null)" || {
     print "Unable to determine upstream status."
     return 1
