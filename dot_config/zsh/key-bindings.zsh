@@ -6,6 +6,7 @@ zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=*' # Case
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS} # Use LS_COLORS for completion listing
 zstyle ':completion:*' use-cache on # Cache completion results for speed
 zstyle ':completion:*' cache-path "$HOME/.cache/zsh/compcache" # Cache location
+zstyle ':completion:*' sort false # Disable completion sorting so fzf-tab keeps source order
 zstyle ':fzf-tab:*' fzf-flags --ignore-case # fzf-tab: force case-insensitive matching
 setopt auto_menu # Automatically show the completion menu on repeated tab
 setopt no_list_beep # Don't beep when listing completions
