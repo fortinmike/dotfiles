@@ -77,7 +77,7 @@ function dot-status() {
     print "Branch is diverged from upstream."
   elif [ "$behind" -gt 0 ]; then
     print -- ""
-    print "Update available. Consider running dot-update."
+    print -P "%F{yellow}Update available. Consider running dot-update.%f"
   else
     print -- ""
     print "Up to date with upstream."

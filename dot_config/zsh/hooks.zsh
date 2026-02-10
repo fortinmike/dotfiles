@@ -45,6 +45,6 @@ _dotfiles_update_precmd() {
   [[ "$behind" == <-> ]] || return
   [ "$behind" -gt 0 ] || return
 
-  print -P "%F{yellow}[dotfiles]%f Update available: %B${behind}%b commit(s) behind upstream. Run %Bdot-update%b."
+  print -P "%F{yellow}[dotfiles]%f %B${behind}%b commit(s) behind upstream. Run %Bdot-update%b to update or %Bdot-status%b to view changes."
 }
 precmd_functions+=(_dotfiles_update_precmd)
