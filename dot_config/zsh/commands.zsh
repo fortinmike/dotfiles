@@ -26,7 +26,7 @@ function dot-update() {
 }
 
 function dot-push() {
-  echo "Pushing dotfiles source commits to upstream..."
+  echo "Pushing dotfiles commits to upstream..."
   chezmoi git -- push || return $?
 }
 
@@ -39,25 +39,48 @@ function dot-apply() {
 }
 
 function dot-status() {
-  local counts ahead behind
+  local counts ahead behind line hash
   counts="$(chezmoi git -- rev-list --left-right --count HEAD...@{u} 2>/dev/null)" || {
-    print -P "%F{yellow}[dotfiles]%f Unable to determine upstream status."
+    print "Unable to determine upstream status."
     return 1
   }
 
   ahead="${counts%%[[:space:]]*}"
   behind="${counts##*[[:space:]]}"
 
-  print -P "%F{yellow}[dotfiles]%f Ahead: %B${ahead}%b Behind: %B${behind}%b"
-
-  if [ "$ahead" -gt 0 ] && [ "$behind" -gt 0 ]; then
-    print -P "%F{yellow}[dotfiles]%f Branch is diverged from upstream."
-  elif [ "$behind" -gt 0 ]; then
-    print -P "%F{yellow}[dotfiles]%f Update available. Run %Bdot-update%b."
-  elif [ "$ahead" -gt 0 ]; then
-    print -P "%F{yellow}[dotfiles]%f Local commits not pushed. Run %Bdot-push%b."
+  print
+  print -P "%BLocal Only:%b"
+  if [ "$ahead" -gt 0 ]; then
+    while IFS= read -r line; do
+      hash="${line%% *}"
+      printf '\033[38;5;208m%s\033[0m %s\n' "$hash" "${line#* }"
+    done < <(chezmoi git -- log --oneline --no-decorate @{u}..HEAD)
   else
-    print -P "%F{green}[dotfiles]%f Up to date with upstream."
+    print -P "%F{green}None%f"
+  fi
+  print
+
+  print -P "%BRemote Only:%b"
+  if [ "$behind" -gt 0 ]; then
+    while IFS= read -r line; do
+      hash="${line%% *}"
+      printf '\033[38;5;141m%s\033[0m %s\n' "$hash" "${line#* }"
+    done < <(chezmoi git -- log --oneline --no-decorate HEAD..@{u})
+  else
+    print -P "%F{green}None%f"
+  fi
+
+  if [ "$ahead" -gt 0 ] && [ "$behind" -eq 0 ]; then
+    print -P "\n%F{yellow}%B${ahead}%b local commits not pushed. Consider running %Bdot-push%b.%f"
+  elif [ "$ahead" -gt 0 ] && [ "$behind" -gt 0 ]; then
+    print -- ""
+    print "Branch is diverged from upstream."
+  elif [ "$behind" -gt 0 ]; then
+    print -- ""
+    print "Update available. Consider running dot-update."
+  else
+    print -- ""
+    print "Up to date with upstream."
   fi
 }
 
