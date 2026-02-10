@@ -9,11 +9,25 @@ _dot_update_plugins() {
   antidote bundle <"$HOME/.config/zsh/antidote/plugins.txt" >| "$HOME/.config/zsh/antidote/.zsh_plugins.zsh" || return $?
 }
 
+_dot_suggest_push_if_ahead() {
+  local ahead
+  ahead="$(chezmoi git -- rev-list --count @{u}..HEAD 2>/dev/null)" || return 0
+  [[ "$ahead" == <-> ]] || return 0
+  [ "$ahead" -gt 0 ] || return 0
+  print -P "%F{yellow}[dotfiles]%f Local dotfiles are ahead of upstream by %B${ahead}%b commit(s). Consider running %Bdot-push%b."
+}
+
 function dot-update() {
   echo "Updating dotfiles from remote, applying, and updating plugins..."
   chezmoi update || return $?
   _dot_update_plugins || return $?
+  _dot_suggest_push_if_ahead
   printf '\033[0;32m%s\033[0m\n' "Restart your shell to load changes."
+}
+
+function dot-push() {
+  echo "Pushing dotfiles source commits to upstream..."
+  chezmoi git -- push || return $?
 }
 
 function dot-apply() {
