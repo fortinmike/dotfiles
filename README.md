@@ -60,3 +60,14 @@ These commands can be used instead of the `chezmoi` and `antidote` commands in c
 To get nice glyphs in the pre-configured Starship prompt, install a Nerd Font. You can choose any font that has been patched with the Nerd Fonts patcher (many options [here](https://www.nerdfonts.com)), but I recommend using `SF Mono Nerd Font` which is derived from the SF Mono font by Apple (the Mac's default Terminal font).
 
 Install it through homebrew: `brew tap epk/epk && brew install font-sf-mono-nerd-font` then select the regular weight in your Terminal profile.
+
+## SSH Clipboard Support in Terminal.app
+
+This setup integrates [`fortinmike/osc52pty`](https://github.com/fortinmike/osc52pty) (an updated fork of [`roy2220/osc52pty`](https://github.com/roy2220/osc52pty)) so supported terminal editors such as `micro` can copy text to the local Mac clipboard from a remote host while running in SSH sessions in Terminal.app which normally does not support that.
+
+This requires the remote host to also have these dotfiles installed OR `alias micro=micro -clipboard terminal` in its ZSH config OR manually running micro with the `-clipboard terminal` flag, otherwise the clipboard won't propagate to the local Mac. The keyboard shortcuts are the same as `micro` running locally:
+
+- `Ctrl-C`: copy selected text in the editor to your local Mac clipboard
+- `Cmd-V`: paste from your local Mac clipboard
+
+`Ctrl-V` is not implemented in our `osc52pty` fork because it would allow remote processes to grab the local clipboard without user interaction at any time.
