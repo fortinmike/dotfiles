@@ -15,6 +15,51 @@ bindkey '^[[Z' reverse-menu-complete # Shift-Tab cycles backward
 # fzf keybindings + completion (Ctrl-T, Ctrl-R, Alt-C)
 source <("$("$BREW_BIN" --prefix fzf)/bin/fzf" --zsh)
 
+# Success-only history widget (used for Ctrl-R and Up-arrow fzf history).
+typeset -gi _fzf_success_history_include_last=0
+
+_fzf_success_history_list() {
+  local latest_history=""
+  (( _fzf_success_history_include_last )) && latest_history="$(fc -ln -1 2>/dev/null)"
+
+  if [ ! -r "$HISTFILE_SUCCESS" ]; then
+    [[ -n $latest_history ]] && print -r -- "0\t$latest_history"
+    return
+  fi
+
+  awk -v latest="$latest_history" '
+    BEGIN {
+      if (length(latest) > 0) {
+        printf "0\t%s\n", latest
+        seen[latest] = 1
+      }
+    }
+    NF { lines[++count] = $0 }
+    END {
+      for (i = count; i >= 1; i--) {
+        cmd = lines[i]
+        if (!seen[cmd]++) {
+          printf "%d\t%s\n", i, cmd
+        }
+      }
+    }
+  ' "$HISTFILE_SUCCESS"
+}
+
+fzf-success-history-widget() {
+  local selected
+  selected="$(_fzf_success_history_list | FZF_DEFAULT_OPTS=$(__fzf_defaults "" "-n2..,.. --scheme=history --bind=ctrl-r:toggle-sort --highlight-line ${FZF_CTRL_R_OPTS-} --query=${(qqq)LBUFFER} +m") FZF_DEFAULT_OPTS_FILE='' $(__fzfcmd))"
+  [ -n "$selected" ] || return 1
+
+  BUFFER="${selected#*$'\t'}"
+  CURSOR=${#BUFFER}
+  zle redisplay
+}
+zle -N fzf-success-history-widget
+bindkey -M emacs '^R' fzf-success-history-widget
+bindkey -M vicmd '^R' fzf-success-history-widget
+bindkey -M viins '^R' fzf-success-history-widget
+
 # fzf-cd-widget alternative binding (keeps Option free for special characters)
 bindkey '^Xc' fzf-cd-widget
 
@@ -53,9 +98,14 @@ typeset -g _history_up_or_fzf_base_opts="--height 40% --layout=default --with-nt
 
 _history_up_or_fzf_open() {
   local _extra_opts="$1"
+  local _include_last="${2:-0}"
+  local widget_status=0
   local FZF_CTRL_R_OPTS="${FZF_CTRL_R_OPTS:+$FZF_CTRL_R_OPTS }${_history_up_or_fzf_base_opts}${_extra_opts:+ ${_extra_opts}}"
-  zle fzf-history-widget
-  if (( $? != 0 )); then
+  _fzf_success_history_include_last=$_include_last
+  zle fzf-success-history-widget
+  widget_status=$?
+  _fzf_success_history_include_last=0
+  if (( widget_status != 0 )); then
     BUFFER=$_history_up_or_fzf_saved_buffer
     CURSOR=$_history_up_or_fzf_saved_cursor
   fi
@@ -70,7 +120,7 @@ _history_up_or_fzf() {
   if (( _history_up_or_fzf_armed )) && [[ $LASTWIDGET == _history_up_or_fzf ]]; then
     BUFFER=""
     _history_up_or_fzf_armed=0
-    _history_up_or_fzf_open "--bind=result:first+up"
+    _history_up_or_fzf_open "--bind=result:first+up" 1
     return 0
   fi
 
