@@ -61,7 +61,9 @@ To get nice glyphs in the pre-configured Starship prompt, install a Nerd Font. Y
 
 Install it through homebrew: `brew tap epk/epk && brew install font-sf-mono-nerd-font` then select the regular weight in your Terminal profile.
 
-## SSH Clipboard Support in Terminal.app
+## Implementation Details
+
+### SSH Clipboard Support in Terminal.app
 
 This setup integrates [`fortinmike/osc52pty`](https://github.com/fortinmike/osc52pty) (an updated fork of [`roy2220/osc52pty`](https://github.com/roy2220/osc52pty)) so supported terminal editors such as `micro` can copy text to the local Mac clipboard from a remote host while running in SSH sessions in Terminal.app which normally does not support that.
 
