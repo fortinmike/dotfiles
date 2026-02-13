@@ -112,6 +112,10 @@ function dot-status() {
   fi
 }
 
+function dot-log() {
+  chezmoi git -- log --graph --oneline --decorate --all "$@"
+}
+
 # Create a directory and go inside it
 mkcd() {
   [ -n "$1" ] || { echo "mkcd: missing directory argument" >&2; return 1; }
