@@ -1,33 +1,5 @@
 # Shell hooks (precmd/chpwd, etc.)
 
-# Keep a separate success-only history file for high-signal fzf history search.
-typeset -g _history_success_last_command=""
-typeset -g _history_success_last_saved_command=""
-
-_history_success_preexec() {
-  _history_success_last_command=$1
-}
-preexec_functions+=(_history_success_preexec)
-
-_history_success_precmd() {
-  local exit_code=$?
-  local last_command=$_history_success_last_command
-  _history_success_last_command=""
-
-  (( exit_code == 0 )) || return
-  [[ -n $last_command ]] || return
-  [[ $last_command == ' '* ]] && return
-  [[ $last_command == $_history_success_last_saved_command ]] && return
-
-  if [ ! -e "$HISTFILE_SUCCESS" ]; then
-    (umask 077; : >| "$HISTFILE_SUCCESS")
-  fi
-
-  print -r -- "$last_command" >> "$HISTFILE_SUCCESS"
-  _history_success_last_saved_command=$last_command
-}
-precmd_functions=(_history_success_precmd $precmd_functions)
-
 # Keep window/tab title in sync so it resets after SSH exits.
 function _set_terminal_title() {
   # %n = user, %m = host (short)

@@ -37,7 +37,6 @@ export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES # Fixes python fork() issue on re
 
 # History (OMZ-style defaults)
 export HISTFILE="$HOME/.zsh_history" # History file path (explicit for cross-platform consistency)
-export HISTFILE_SUCCESS="$HOME/.zsh_history_success" # Success-only history for fzf search (not standard, we handle this ourselves)
 export HISTSIZE=10000 # In-memory history size
 export SAVEHIST=10000 # Number of history entries to save to disk
 

@@ -15,44 +15,49 @@ bindkey '^[[Z' reverse-menu-complete # Shift-Tab cycles backward
 # fzf keybindings + completion (Ctrl-T, Ctrl-R, Alt-C)
 source <("$("$BREW_BIN" --prefix fzf)/bin/fzf" --zsh)
 
-# Success-only history widget (used for Ctrl-R and Up-arrow fzf history).
-typeset -gi _fzf_success_history_exclude_latest=0
+typeset -gi _fzf_history_exclude_latest=0
 
-_fzf_success_history_list() {
-  [ -r "$HISTFILE_SUCCESS" ] || return
+# Keep fzf's built-in widget for normal history search.
+functions -c fzf-history-widget _fzf_builtin_history_widget
+zle -N _fzf_builtin_history_widget
 
+_fzf_history_build_list() {
   local latest_history=""
-  (( _fzf_success_history_exclude_latest )) && latest_history="$(fc -ln -1 2>/dev/null)"
+  (( _fzf_history_exclude_latest )) && latest_history="$(fc -ln -1 2>/dev/null)"
 
-  awk -v latest="$latest_history" '
-    NF { lines[++count] = $0 }
-    END {
-      for (i = count; i >= 1; i--) {
-        cmd = lines[i]
-        if (length(latest) > 0 && cmd == latest) {
-          continue
-        }
-        if (!seen[cmd]++) {
-          printf "%d\t%s\n", i, cmd
-        }
+  fc -rl 1 | __fzf_exec_awk -v latest="$latest_history" '
+    {
+      cmd=$0
+      sub(/^[ \t]*[0-9]+\**[ \t]+/, "", cmd)
+      if (length(latest) > 0 && cmd == latest) {
+        next
+      }
+      if (!seen[cmd]++) {
+        print $0
       }
     }
-  ' "$HISTFILE_SUCCESS"
+  '
 }
 
-fzf-success-history-widget() {
+# Wrapper only needed to support the second-Up "exclude latest" behavior (252300f).
+fzf-history-widget() {
+  if (( _fzf_history_exclude_latest == 0 )); then
+    zle _fzf_builtin_history_widget
+    return $?
+  fi
+
   local selected
-  selected="$(_fzf_success_history_list | FZF_DEFAULT_OPTS=$(__fzf_defaults "" "-n2..,.. --scheme=history --bind=ctrl-r:toggle-sort --highlight-line ${FZF_CTRL_R_OPTS-} --query=${(qqq)LBUFFER} +m") FZF_DEFAULT_OPTS_FILE='' $(__fzfcmd))"
+  selected="$(_fzf_history_build_list | FZF_DEFAULT_OPTS=$(__fzf_defaults "" "-n2..,.. --scheme=history --bind=ctrl-r:toggle-sort --highlight-line ${FZF_CTRL_R_OPTS-} --query=${(qqq)LBUFFER} +m") FZF_DEFAULT_OPTS_FILE='' $(__fzfcmd))"
   [ -n "$selected" ] || return 1
 
   BUFFER="${selected#*$'\t'}"
   CURSOR=${#BUFFER}
   zle redisplay
 }
-zle -N fzf-success-history-widget
-bindkey -M emacs '^R' fzf-success-history-widget
-bindkey -M vicmd '^R' fzf-success-history-widget
-bindkey -M viins '^R' fzf-success-history-widget
+zle -N fzf-history-widget
+bindkey -M emacs '^R' fzf-history-widget
+bindkey -M vicmd '^R' fzf-history-widget
+bindkey -M viins '^R' fzf-history-widget
 
 # fzf-cd-widget alternative binding (keeps Option free for special characters)
 bindkey '^Xc' fzf-cd-widget
@@ -95,10 +100,10 @@ _history_up_or_fzf_open() {
   local _exclude_latest="${2:-0}"
   local widget_status=0
   local FZF_CTRL_R_OPTS="${FZF_CTRL_R_OPTS:+$FZF_CTRL_R_OPTS }${_history_up_or_fzf_base_opts}${_extra_opts:+ ${_extra_opts}}"
-  _fzf_success_history_exclude_latest=$_exclude_latest
-  zle fzf-success-history-widget
+  _fzf_history_exclude_latest=$_exclude_latest
+  zle fzf-history-widget
   widget_status=$?
-  _fzf_success_history_exclude_latest=0
+  _fzf_history_exclude_latest=0
   if (( widget_status != 0 )); then
     BUFFER=$_history_up_or_fzf_saved_buffer
     CURSOR=$_history_up_or_fzf_saved_cursor
