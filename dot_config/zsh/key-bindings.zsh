@@ -48,11 +48,16 @@ fzf-history-widget() {
 
   local selected
   selected="$(_fzf_history_build_list | FZF_DEFAULT_OPTS=$(__fzf_defaults "" "-n2..,.. --scheme=history --bind=ctrl-r:toggle-sort --highlight-line ${FZF_CTRL_R_OPTS-} --query=${(qqq)LBUFFER} +m") FZF_DEFAULT_OPTS_FILE='' $(__fzfcmd))"
-  [ -n "$selected" ] || return 1
-
-  BUFFER="${selected#*$'\t'}"
-  CURSOR=${#BUFFER}
-  zle redisplay
+  local ret=$?
+  if [ -n "$selected" ]; then
+    if [[ $(__fzf_exec_awk '{print $1; exit}' <<< "$selected") =~ ^[1-9][0-9]* ]]; then
+      zle vi-fetch-history -n $MATCH
+    else
+      LBUFFER="$selected"
+    fi
+  fi
+  zle reset-prompt
+  return $ret
 }
 zle -N fzf-history-widget
 bindkey -M emacs '^R' fzf-history-widget
