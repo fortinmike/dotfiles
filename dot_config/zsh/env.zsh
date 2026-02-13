@@ -64,7 +64,7 @@ setopt hist_ignore_dups # Skip duplicate commands in history
 setopt hist_ignore_space # Do not add commands that start with a space to the history
 setopt hist_verify # Edit expanded history before running
 setopt inc_append_history # Write to history file immediately
-setopt extended_history # Save timestamps in history
+setopt noextended_history # Keep plain history format (no timestamps)
 setopt hist_expire_dups_first # Expire duplicate entries first
 
 # macOS/Homebrew completions
