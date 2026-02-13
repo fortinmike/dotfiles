@@ -28,21 +28,22 @@ _history_latest_entry() {
 }
 
 _fzf_history_build_list() {
-  local latest_history=""
-  (( _fzf_history_exclude_latest )) && latest_history="$(fc -ln -1 2>/dev/null)"
+  local latest_history="$1"
+  local -a ids
+  local -A seen
+  local id command display
 
-  fc -rl 1 | __fzf_exec_awk -v latest="$latest_history" '
-    {
-      cmd=$0
-      sub(/^[ \t]*[0-9]+\**[ \t]+/, "", cmd)
-      if (length(latest) > 0 && cmd == latest) {
-        next
-      }
-      if (!seen[cmd]++) {
-        print $0
-      }
-    }
-  '
+  ids=(${(k)history})
+  for id in ${(On)ids}; do
+    command="${history[$id]-}"
+    [[ -z $command ]] && continue
+    [[ -n $latest_history && $command == $latest_history ]] && continue
+    [[ -n ${seen[$command]-} ]] && continue
+    seen[$command]=1
+
+    display=${command//$'\n'/$'\n  '}
+    print -rn -- "${id}"$'\t'"${display}"$'\0'
+  done
 }
 
 # Wrapper only needed to support the second-Up "exclude latest" behavior (252300f).
@@ -53,7 +54,8 @@ fzf-history-widget() {
   fi
 
   local selected
-  selected="$(_fzf_history_build_list | FZF_DEFAULT_OPTS=$(__fzf_defaults "" "-n2..,.. --scheme=history --bind=ctrl-r:toggle-sort --highlight-line ${FZF_CTRL_R_OPTS-} --query=${(qqq)LBUFFER} +m") FZF_DEFAULT_OPTS_FILE='' $(__fzfcmd))"
+  local latest_history="$(_history_latest_entry)"
+  selected="$(_fzf_history_build_list "$latest_history" | FZF_DEFAULT_OPTS=$(__fzf_defaults "" "-n2..,.. --scheme=history --bind=ctrl-r:toggle-sort --highlight-line ${FZF_CTRL_R_OPTS-} --query=${(qqq)LBUFFER} +m --read0 --wrap-sign '\t↳ '") FZF_DEFAULT_OPTS_FILE='' $(__fzfcmd))"
   local ret=$?
   if [ -n "$selected" ]; then
     if [[ $(__fzf_exec_awk '{print $1; exit}' <<< "$selected") =~ ^[1-9][0-9]* ]]; then
