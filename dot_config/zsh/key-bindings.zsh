@@ -21,6 +21,12 @@ typeset -gi _fzf_history_exclude_latest=0
 functions -c fzf-history-widget _fzf_builtin_history_widget
 zle -N _fzf_builtin_history_widget
 
+_history_latest_entry() {
+  local latest="${history[$HISTCMD]-}"
+  [[ -n $latest ]] || latest="${history[$((HISTCMD - 1))]-}"
+  print -r -- "$latest"
+}
+
 _fzf_history_build_list() {
   local latest_history=""
   (( _fzf_history_exclude_latest )) && latest_history="$(fc -ln -1 2>/dev/null)"
@@ -142,7 +148,8 @@ _history_up_or_fzf() {
   _history_up_or_fzf_saved_cursor=$CURSOR
   _history_up_or_fzf_armed=1
 
-  BUFFER=$(fc -ln -1 2>/dev/null)
+  BUFFER="$(_history_latest_entry)"
+  [[ -n $BUFFER ]] || BUFFER=$(fc -ln -1 2>/dev/null)
   if [[ -n $BUFFER ]]; then
     CURSOR=${#BUFFER}
   else
