@@ -36,6 +36,7 @@
 #### JavaScript
 
 - If a project contains a `.prettierrc`, consider the specified `printWidth` when writing code.
+- Avoid excessive defensive coding. If the environment includes an API or dependency, there is no need to perform availability checks at runtime.
 
 #### Xcode / Swift Projects
 
