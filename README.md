@@ -31,7 +31,7 @@ This is my ZSH configuration and personal dotfiles. Please review everything bef
 - `rg` (ripgrep, fast search)
 - `fzf` (fuzzy finder) + `fzf-tab` plugin (fzf-enhanced tab completion)
 - `bat` (replaces `cat` with an alias)
-- `btop` (replaces `top` with an alias)
+- `btop` (`top` alternative)
 - `tlrc` (modern tldr client with quick cheat sheets)
 - `lazygit` (git TUI)
 - Some other ZSH plugins and niceties (installed using antidote)
