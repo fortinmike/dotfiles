@@ -37,10 +37,11 @@
 
 #### JavaScript
 
-- If a project contains a `.prettierrc`, consider the specified `printWidth` when writing code.
+- If a project contains a `.prettierrc`, consider the specified `printWidth` when writing code and run Prettier after making changes. Favor the locally-installed version of Prettier if available.
 - Avoid excessive defensive coding. If the environment includes an API or dependency, there is no need to perform availability checks at runtime.
 - Favor arrow functions, const, operator assignment, null coalescing, async/await, functional programming patterns like map and reduce and other state-of-the art JS features and syntax.
 - Avoid using older code patterns for backwards compatibility with older browsers and Node.js versions. Assume a bleeding edge environment and/or transpilation.
+- Use single-line `.forEach()`, `.map()` (and others) when short.
 
 #### Xcode / Swift Projects
 
