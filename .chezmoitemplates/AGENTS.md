@@ -37,6 +37,8 @@
 
 #### JavaScript
 
+- Favor `pnpm` as a package manager.
+- Use corepack to pin the package manager to the latest available version.
 - If a project contains a `.prettierrc`, consider the specified `printWidth` when writing code and run Prettier after making changes. Favor the locally-installed version of Prettier if available.
 - Avoid excessive defensive coding. If the environment includes an API or dependency, there is no need to perform availability checks at runtime.
 - Favor arrow functions, const, operator assignment, null coalescing, async/await, functional programming patterns like map and reduce and other state-of-the art JS features and syntax.
