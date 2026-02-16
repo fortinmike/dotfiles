@@ -53,7 +53,7 @@ These commands can be used instead of the `chezmoi` and `antidote` commands in c
 
 - `dot-update` pulls the latest changes and applies them in one go via chezmoi (mostly a proxy for `chezmoi update`)
 - `dot-apply` applies the working copy's state to your home directory via chezmoi (mostly a proxy for `chezmoi apply`)
-- `dot-update-plugins` updates ZSH plugins using antidote (they don't update automatically when applying
+- `dot-update-plugins` updates ZSH plugins using antidote (they don't update automatically when applying)
 
 ## Font
 
