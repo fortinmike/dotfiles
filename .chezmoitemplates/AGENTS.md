@@ -35,6 +35,7 @@
 - Use early returns to simplify and flatten logic.
 - Use brace-less single-line ifs in languages that support them (only when the line length stays reasonable).
 - When refactoring, aim to make code easier to read and more succinct while not altering behavior in any way. Avoid adding more code unless there is good architectural motivation for it.
+- When asked to fix an issue given only an issue identifier like XXX-XXXX (or similar formats), try using a tool to obtain the actual issue details.
 
 #### JavaScript
 
