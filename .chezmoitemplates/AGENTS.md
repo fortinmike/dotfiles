@@ -38,7 +38,7 @@
 #### Issue Tracking
 
 - When asked to fix an issue given only an issue identifier like XXX-XXXX (or similar formats), try using a tool to obtain the actual issue details.
-- When committing a fix for an issue with a specific identifier, start the commit message with `[ISSUE-ID]: [short description]`
+- When committing a fix for an issue with a specific identifier, start the commit message with `[ISSUE-ID]: [Short description starting with a capital letter]`
 
 #### JavaScript
 
