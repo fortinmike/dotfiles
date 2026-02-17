@@ -35,13 +35,17 @@
 - Use early returns to simplify and flatten logic.
 - Use brace-less single-line ifs in languages that support them (only when the line length stays reasonable).
 - When refactoring, aim to make code easier to read and more succinct while not altering behavior in any way. Avoid adding more code unless there is good architectural motivation for it.
+
+#### Issue Tracking
+
 - When asked to fix an issue given only an issue identifier like XXX-XXXX (or similar formats), try using a tool to obtain the actual issue details.
+- When committing a fix for an issue with a specific identifier, start the commit message with `[ISSUE-ID]: [short description]`
 
 #### JavaScript
 
 - Favor `pnpm` as a package manager.
 - Use corepack to pin the package manager to the latest available version.
-- If a project contains a `.prettierrc`, consider the specified `printWidth` when writing code and run Prettier after making changes. Favor the locally-installed version of Prettier if available.
+- If a project contains a `.prettierrc`, consider the specified `printWidth` when writing code. If the project contains a local Prettier install, run it using `pnpm exec` after any change.
 - Avoid excessive defensive coding. If the environment includes an API or dependency, there is no need to perform availability checks at runtime.
 - Favor arrow functions, const, operator assignment, null coalescing, async/await, functional programming patterns like map and reduce and other state-of-the art JS features and syntax.
 - Avoid using older code patterns for backwards compatibility with older browsers and Node.js versions. Assume a bleeding edge environment and/or transpilation.
