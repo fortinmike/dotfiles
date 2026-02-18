@@ -40,7 +40,7 @@
 #### Issue Tracking
 
 - When asked to fix an issue given only an issue identifier like XXX-XXXX (or similar formats), try using a tool to obtain the actual issue details.
-- When committing a fix for an issue with a specific identifier, start the commit message with `[ISSUE-ID]: [Short description starting with a capital letter]`
+- When committing a fix for an issue with a specific identifier, format the commit message like so: `ISSUE-ID: Short description starting with a capital letter`
 - Ask the user before updating issue status.
 
 #### JavaScript
