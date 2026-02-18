@@ -29,7 +29,7 @@
 ### Coding & Software
 
 - If a prompt contains a question, answer the question instead of immediately jumping into action.
-- When making modifications, make sure to always start from the latest on-disk source code, assuming any modifications were made knowlingly and should not be reverted. For example, if I remove a function that you just added, that is not accidental and the function should NOT be brought back unless required. Same goes for renames, etc.
+- When making modifications, make sure to always start from the latest on-disk source code, assuming any modifications were made knowlingly and should not be reverted. For example, if I remove a function that you just added, that is not accidental and the function should NOT be brought back unless required. Same goes for additions or removals within functions, renames, etc.
 - When writing code or commands, when an argument or a flag is the same as the default value, omit it instead of passing it explicitly.
 - Use early returns to simplify and flatten logic.
 - Use brace-less single-line ifs in languages that support them (only when the line length stays reasonable).
