@@ -36,6 +36,7 @@
 - When refactoring, aim to make code easier to read and more succinct while not altering behavior in any way. Avoid adding more code unless there is good architectural motivation for it.
 - Comments should not end with a dot unless there are multiple sentences in a single comment.
 - Avoid making parameters and props optional unless necessary. This often complexifies code by adding multiple layers of default values and logic to handle "value not provided" cases.
+- Avoid excessive churn when making changes.
 
 #### Issue Tracking
 
