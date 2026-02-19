@@ -63,7 +63,7 @@
 
 #### Linear MCP
 
-- When asked to complete a task, set it to Delivered, not Accepted.
+- When asked to complete a task, set it to Implemented.
 
 #### Sketch MCP
 
