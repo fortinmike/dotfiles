@@ -28,7 +28,8 @@ _dotfiles_update_precmd() {
     _dotfiles_update_state=1
     (
       local behind=0
-      GIT_TERMINAL_PROMPT=0 GIT_SSH_COMMAND='ssh -o BatchMode=yes' \
+      # Fail fast so this async check does not leave long-lived ssh/git processes
+      GIT_TERMINAL_PROMPT=0 GIT_SSH_COMMAND='ssh -o BatchMode=yes -o ConnectTimeout=3 -o ConnectionAttempts=1 -o ServerAliveInterval=3 -o ServerAliveCountMax=1' \
         chezmoi git -- fetch --quiet --no-tags >/dev/null 2>&1 || true
       behind="$(chezmoi git -- rev-list --count HEAD..@{u} 2>/dev/null)" || behind=0
       print -r -- "$behind" >| "$DOTFILES_UPDATE_RESULT_FILE"
