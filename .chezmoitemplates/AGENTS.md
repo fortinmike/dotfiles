@@ -3,6 +3,7 @@
 ## General Behavior
 
 - If there is any ambiguity in the request, ask for clarification before proceeding.
+- When answering questions, give me the TLDR first (without explicitly saying "TLDR" please), then elaborate if necessary.
 
 ## Computing
 
