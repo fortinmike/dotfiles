@@ -24,8 +24,8 @@
 
 - NEVER make changes to my system (globally installed packages, tools, shell configs, environment variables, etc.) unless EXPLICITLY permitted, even if your sandbox includes access to the relevant directories and tools. If global changes are required, ask me to make the changes myself or to allow you to make them.
 - Avoid global conflicts by using tools such as fnm, pyenv, uv and such to isolate installs.
-- Favor working inside the current working directory as much as possible, avoiding side-effects that could "leak" out of the sandbox directory.
-- For work that requires creating temporary files create a `.tmp` directory in the current working directory instead of using a global folder like `/tmp`, and make sure to remove the temp folder after the job is done. Do not force output to the `.tmp` folder for tools that have default output directories such as Xcode, just let them put their temporary files wherever they want.
+- Favor working inside the current working directory as much as possible, avoiding any side-effects outside of it.
+- For work that requires temporary files, create a `.tmp` directory in the current working directory instead of using a global folder like `/tmp`. After the job is done and if the user does not directly need the files, delete the `.tmp` folder root (not individual files inside of it). Do not force output to the `.tmp` folder for tools that have default output directories such as Xcode, just let them put their temporary files wherever they want.
 
 ### Coding & Software
 
