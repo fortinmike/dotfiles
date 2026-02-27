@@ -40,6 +40,7 @@
 - Avoid making parameters and props optional unless necessary. This often complexifies code by adding multiple layers of default values and logic to handle "value not provided" cases.
 - Limit modifications to the specific task being worked on. If additional changes feel warranted, ask and do them as a second step if allowed to so that they can be committed independently.
 - Do not build projects for me. Verifying syntax with linting tools is fine though.
+- When a dependency is explicitly added to handle a capability, use that dependency directly for the implementation. Do not re-implement the same functionality manually unless explicitly requested.
 
 #### Issue Tracking
 
@@ -47,7 +48,7 @@
 - When committing a fix for an issue with a specific identifier, format the commit message like so: `ISSUE-ID: Short description starting with a capital letter`
 - Ask the user before updating issue status.
 
-#### JavaScript
+#### JavaScript & Web
 
 - Favor `pnpm` as a package manager.
 - Use corepack to pin the package manager to the latest available version.
@@ -56,6 +57,7 @@
 - Favor arrow functions, const, operator assignment, null coalescing, async/await, functional programming patterns like map and reduce and other state-of-the art JS features and syntax.
 - Avoid using older code patterns for backwards compatibility with older browsers and Node.js versions. Assume a bleeding edge environment and/or transpilation.
 - Use single-line `.forEach()`, `.map()` (and others) when short.
+- Ideally, styles should be scoped to the component/page/element to which they apply. Only use global styles for things that should apply everywhere.
 
 #### Xcode / Swift Projects
 
