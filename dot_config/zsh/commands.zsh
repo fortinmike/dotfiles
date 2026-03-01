@@ -261,4 +261,4 @@ flush-dns-cache() {
 }
 
 # Show public IP info as JSON
-alias public-ip='curl https://ifconfig.co/json'
+alias public-ip='curl https://ifconfig.co/json; printf "\n"'
