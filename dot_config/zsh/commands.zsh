@@ -259,3 +259,6 @@ flush-dns-cache() {
   sudo killall -HUP mDNSResponder
   echo "DNS cache flushed"
 }
+
+# Show public IP info as JSON
+alias public-ip='curl https://ifconfig.co/json'
