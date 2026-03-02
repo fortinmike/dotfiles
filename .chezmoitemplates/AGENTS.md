@@ -29,7 +29,7 @@
 ### System
 
 - NEVER make changes to my system (globally installed packages, tools, shell configs, environment variables, etc.) unless EXPLICITLY permitted to, even if your sandbox includes access to the relevant directories and tools. If global changes are required, ask me to make the changes myself or to allow you to make them.
-- Avoid global conflicts by using tools such as fnm, pyenv, uv and such to isolate installs.
+- Avoid global conflicts by using tools such as `fnm`, `pyenv`, `uv` and such to isolate installs.
 - Favor working inside the current working directory as much as possible, avoiding any side-effects outside of it.
 - For work that requires temporary files, create a `.tmp` directory in the current working directory instead of using a global folder like `/tmp`. After the job is done and if the user does not directly need the files, delete the `.tmp` folder root (not individual files inside of it). Do not force output to the `.tmp` folder for tools that have default output directories such as Xcode, just let them put their temporary files wherever they want.
 
@@ -66,7 +66,7 @@
 
 #### Xcode / Swift Projects
 
-- Do not hesitate to ask the user to perform actions if the most reliable way to make a change is to use the Xcode GUI, instead of trying to make edits to complex Xcode project files and ending up in an invalid state.
+- Do not hesitate to ask the user to perform actions if the most reliable way to make a change is to use the Xcode GUI, instead of trying to make edits to complex Xcode project files and ending up in an invalid state, UNLESS you have access to the Xcode MCP to perform the operations yourself in a reliable manner.
 
 ## MCP
 
