@@ -39,7 +39,7 @@
 - When making modifications, make sure to always start from the latest on-disk source code, assuming any modifications were made knowlingly and should not be reverted. For example, if I remove a function that you just added, that is not accidental and the function should NOT be brought back unless required. Same goes for additions or removals within functions, renames, etc.
 - When writing code or commands, when an argument or a flag is the same as the default value, omit it instead of passing it explicitly.
 - Use early returns to simplify and flatten logic.
-- Use brace-less single-line ifs in languages that support them (only when the line length stays reasonable).
+- Use brace-less single-line ifs in languages that support them, unless the condition or the statement to run span multiple lines.
 - When refactoring, aim to make code easier to read and more succinct while not altering behavior in any way. Avoid adding more code unless there is good architectural motivation for it.
 - Comments should not end with a dot unless there are multiple sentences in a single comment.
 - Avoid making parameters and props optional unless necessary. This often complexifies code by adding multiple layers of default values and logic to handle "value not provided" cases.
