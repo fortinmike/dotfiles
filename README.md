@@ -35,7 +35,7 @@ This is my ZSH configuration and personal dotfiles. Please review everything bef
 - `tlrc` (modern tldr client with quick cheat sheets)
 - `lazygit` (git TUI)
 - Some other ZSH plugins and niceties (installed using antidote)
-- A few aliases and tools to make life easier (`mkcd`, `reveal`, git and ripgrep shorthands, etc.)
+- A few aliases and tools to make life easier (`mkcd`, `uuid`, `reveal`, git and ripgrep shorthands, etc.)
 
 ## Keeping Stuff Updated
 

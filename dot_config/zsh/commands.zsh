@@ -159,6 +159,9 @@ alias ...='cd ../..' # Up two directories
 alias ....='cd ../../..' # Up three directories
 alias .....='cd ../../../..' # Up four directories
 
+# Utility helpers
+alias uuid='uuidgen | tr "[:upper:]" "[:lower:]"' # Generate a random lowercase UUID
+
 # Grep color
 alias grep='grep --color=auto' # Highlight matches
 
