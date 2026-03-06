@@ -34,6 +34,7 @@ This is my ZSH configuration and personal dotfiles. Please review everything bef
 - `btop` (`top` alternative)
 - `tlrc` (modern tldr client with quick cheat sheets)
 - `lazygit` (git TUI)
+- `jq` (JSON processor and URI encoding/decoding helper)
 - Some other ZSH plugins and niceties (installed using antidote)
 - A few aliases and tools to make life easier (`mkcd`, `uuid`, `reveal`, git and ripgrep shorthands, etc.)
 
@@ -54,6 +55,8 @@ These commands can be used instead of the `chezmoi` and `antidote` commands in c
 - `dot-update` pulls the latest changes and applies them in one go via chezmoi (mostly a proxy for `chezmoi update`)
 - `dot-apply` applies the working copy's state to your home directory via chezmoi (mostly a proxy for `chezmoi apply`)
 - `dot-update-plugins` updates ZSH plugins using antidote (they don't update automatically when applying)
+- `url-encode` percent-encodes a string or stdin for use in URLs
+- `url-decode` decodes percent-encoded URL text from an argument or stdin
 
 ## Font
 
