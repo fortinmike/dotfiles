@@ -1,4 +1,4 @@
-COMMANDS_DIR="${${(%):-%x}:A:h}/commands"
+COMMANDS_DIR="$ZSH_CONFIG_DIR/commands"
 
 source "$COMMANDS_DIR/dotfiles.zsh"
 source "$COMMANDS_DIR/shell-wrappers.zsh"
