@@ -36,7 +36,7 @@ This is my ZSH configuration and personal dotfiles. Please review everything bef
 - `lazygit` (git TUI)
 - `jq` (JSON processor and URI encoding/decoding helper)
 - Some other ZSH plugins and niceties (installed using antidote)
-- A few aliases and tools to make life easier (`mkcd`, `uuid`, `url-encode`, `url-decode`, `base64-encode`, `base64-decode`, `md5-file`, `sha256-file`, `reveal`, git and ripgrep shorthands, etc.)
+- A few aliases and tools to make life easier (`mkcd`, `uuid`, `url-encode`, `url-decode`, `escape-json`, `unescape-json`, `escape-xml`, `unescape-xml`, `escape-js`, `unescape-js`, `base64-encode`, `base64-decode`, `md5-file`, `sha256-file`, `reveal`, git and ripgrep shorthands, etc.)
 
 ## Keeping Stuff Updated
 
