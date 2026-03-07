@@ -36,7 +36,7 @@ This is my ZSH configuration and personal dotfiles. Please review everything bef
 - `lazygit` (git TUI)
 - `jq` (JSON processor and URI encoding/decoding helper)
 - Some other ZSH plugins and niceties (installed using antidote)
-- A few aliases and tools to make life easier (`mkcd`, `uuid`, `url-encode`, `url-decode`, `base64-encode`, `base64-decode`, `reveal`, git and ripgrep shorthands, etc.)
+- A few aliases and tools to make life easier (`mkcd`, `uuid`, `url-encode`, `url-decode`, `base64-encode`, `base64-decode`, `md5-file`, `sha256-file`, `reveal`, git and ripgrep shorthands, etc.)
 
 ## Keeping Stuff Updated
 
@@ -48,17 +48,13 @@ This is my ZSH configuration and personal dotfiles. Please review everything bef
 
 Use `chezmoi` commands such as `chezmoi edit` or open `~/local/share/chezmoi` (which contains the dotfiles working copy) in your editor of choice. Make any changes you want, commit them, then run `chezmoi apply` to apply those changes to your home folder. Make sure to push the changes back to the remote for backup and sharing with your other machines!
 
-## Helper Commands
+## Dotfile Management Commands
 
-These commands can be used instead of the `chezmoi` and `antidote` commands in certain cases and simplify management.
+These commands can be used instead of the `chezmoi` and `antidote` commands in certain cases to simplify management.
 
 - `dot-update` pulls the latest changes and applies them in one go via chezmoi (mostly a proxy for `chezmoi update`)
 - `dot-apply` applies the working copy's state to your home directory via chezmoi (mostly a proxy for `chezmoi apply`)
 - `dot-update-plugins` updates ZSH plugins using antidote (they don't update automatically when applying)
-- `url-encode` percent-encodes a string or stdin for use in URLs
-- `url-decode` decodes percent-encoded URL text from an argument or stdin
-- `base64-encode` base64-encodes an argument or stdin
-- `base64-decode` decodes base64 text from an argument or stdin
 
 ## Font
 
