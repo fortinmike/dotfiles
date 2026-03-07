@@ -50,6 +50,7 @@
 - Limit modifications to the specific task being worked on. If additional changes feel warranted, ask and do them as a second step if allowed to so that they can be committed independently.
 - Do not build projects for me. Verifying syntax with linting tools is fine though.
 - When a dependency is explicitly added to handle a capability, use that dependency directly for the implementation. Do not re-implement the same functionality manually unless explicitly requested.
+- Code comments and documentation comments should be present where the logic isn't self-evident.
 
 #### Issue Tracking
 
