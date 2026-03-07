@@ -30,6 +30,7 @@
 [interactive]
 	diffFilter = delta --color-only
 [delta]
+	hunk-header-style = omit
 	navigate = true
 	line-numbers = true
 	side-by-side = true
