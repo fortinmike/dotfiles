@@ -111,6 +111,7 @@ typeset -g _history_up_or_fzf_base_opts="--height 40% --layout=default --with-nt
 _history_up_or_fzf_open() {
   local _extra_opts="$1"
   local _exclude_latest="${2:-0}"
+  local _restore_latest_on_cancel="${3:-0}"
   local widget_status=0
   local FZF_CTRL_R_OPTS="${FZF_CTRL_R_OPTS:+$FZF_CTRL_R_OPTS }${_history_up_or_fzf_base_opts}${_extra_opts:+ ${_extra_opts}}"
   _fzf_history_exclude_latest=$_exclude_latest
@@ -118,8 +119,19 @@ _history_up_or_fzf_open() {
   widget_status=$?
   _fzf_history_exclude_latest=0
   if (( widget_status != 0 )); then
-    BUFFER=$_history_up_or_fzf_saved_buffer
-    CURSOR=$_history_up_or_fzf_saved_cursor
+    if (( _restore_latest_on_cancel )); then
+      BUFFER="$(_history_latest_entry)"
+      if [[ -n $BUFFER ]]; then
+        CURSOR=${#BUFFER}
+        _history_up_or_fzf_armed=1
+      else
+        BUFFER=$_history_up_or_fzf_saved_buffer
+        CURSOR=$_history_up_or_fzf_saved_cursor
+      fi
+    else
+      BUFFER=$_history_up_or_fzf_saved_buffer
+      CURSOR=$_history_up_or_fzf_saved_cursor
+    fi
   fi
   return 0
 }
@@ -132,7 +144,7 @@ _history_up_or_fzf() {
   if (( _history_up_or_fzf_armed )) && [[ $LASTWIDGET == _history_up_or_fzf ]]; then
     BUFFER=""
     _history_up_or_fzf_armed=0
-    _history_up_or_fzf_open "" 1
+    _history_up_or_fzf_open "" 1 1
     return 0
   fi
 
