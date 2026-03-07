@@ -36,7 +36,7 @@ This is my ZSH configuration and personal dotfiles. Please review everything bef
 - `lazygit` (git TUI)
 - `jq` (JSON processor and URI encoding/decoding helper)
 - Some other ZSH plugins and niceties (installed using antidote)
-- A few aliases and tools to make life easier (`mkcd`, `uuid`, `url-encode`, `url-decode`, `reveal`, git and ripgrep shorthands, etc.)
+- A few aliases and tools to make life easier (`mkcd`, `uuid`, `url-encode`, `url-decode`, `base64-encode`, `base64-decode`, `reveal`, git and ripgrep shorthands, etc.)
 
 ## Keeping Stuff Updated
 
@@ -57,6 +57,8 @@ These commands can be used instead of the `chezmoi` and `antidote` commands in c
 - `dot-update-plugins` updates ZSH plugins using antidote (they don't update automatically when applying)
 - `url-encode` percent-encodes a string or stdin for use in URLs
 - `url-decode` decodes percent-encoded URL text from an argument or stdin
+- `base64-encode` base64-encodes an argument or stdin
+- `base64-decode` decodes base64 text from an argument or stdin
 
 ## Font
 

@@ -1,4 +1,5 @@
-# Web helpers
+# Show public IP info as JSON
+alias public-ip='curl https://ifconfig.co/json; printf "\n"'
 
 _read_args_or_stdin_without_trailing_newline() {
   local input
@@ -22,5 +23,23 @@ url-decode() {
   _read_args_or_stdin_without_trailing_newline "$@" | jq -sRr @urid
 }
 
-# Show public IP info as JSON
-alias public-ip='curl https://ifconfig.co/json; printf "\n"'
+base64-encode() {
+  [ "$#" -gt 0 ] && {
+    printf '%s' "${(j: :)@}" | command base64 | tr -d '\n'
+    printf '\n'
+    return
+  }
+
+  command base64 | tr -d '\n'
+  printf '\n'
+}
+
+base64-decode() {
+  [ "$#" -gt 0 ] && {
+    printf '%s' "${(j: :)@}" | command base64 -d
+    return
+  }
+
+  command base64 -d
+}
+
