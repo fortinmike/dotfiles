@@ -1,7 +1,6 @@
 STARSHIP_CONFIG_DIR="${XDG_CONFIG_HOME:-$HOME/.config}"
 STARSHIP_CONFIG_PATH="$STARSHIP_CONFIG_DIR/starship.toml"
-CHEZMOI_BIN="${BREW_BIN:h}/chezmoi"
-STARSHIP_TEMPLATE_PATH="$("$CHEZMOI_BIN" source-path)/.manualtemplates/starship.toml"
+STARSHIP_TEMPLATE_PATH="$(chezmoi source-path)/.manualtemplates/starship.toml"
 STARSHIP_HOST_COLOR_DEFAULT='#7f8489'
 
 # Build the runtime starship config from the repo template, then apply any
