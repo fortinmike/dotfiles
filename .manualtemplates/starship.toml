@@ -36,6 +36,7 @@ palette = 'mono_gradient'
 [palettes.mono_gradient]
 color_fg = '#e5e5e5'
 color_host = '#7f8489'
+color_host_text = '#191a1b'
 color_1 = '#7f8489'
 color_2 = '#6d7277'
 color_3 = '#5c6065'
@@ -47,13 +48,13 @@ color_8 = '#22262a'
 
 [os]
 disabled = false
-style = "bg:color_host fg:color_8"
+style = "bg:color_host fg:color_host_text"
 format = "[$symbol ]($style)"
 
 [hostname]
 disabled = false
 ssh_only = false
-style = "bg:color_host fg:color_8"
+style = "bg:color_host fg:color_host_text"
 format = "[$hostname ]($style)"
 
 [os.symbols]
