@@ -1,2 +1,5 @@
 README.md
 AGENTS.md
+{{ if ne .chezmoi.os "darwin" }}
+.local/bin/wherefrom
+{{ end }}
