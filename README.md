@@ -53,6 +53,13 @@ Use `chezmoi` commands such as `chezmoi edit` or open `~/local/share/chezmoi` (w
 - `~/.zshrc_local` is sourced during shell startup and can be used for machine-specific exports, PATH additions, and tool initialization that should stay out of the shared dotfiles
 - `PROMPT_HOST_COLOR` can be set in `~/.zshrc_local` to give that machine a distinct first Starship prompt capsule color, for example `export PROMPT_HOST_COLOR='#5e8ffb'`
 
+## Secrets
+
+This repository is public, so secrets should never be committed here in plain text.
+
+- Use `~/.zshrc_local` for machine-local configuration
+- Do not store API keys, tokens, private certificates, passwords, or similar sensitive values in tracked dotfiles.
+
 ## Dotfile Management Commands
 
 These commands can be used instead of the `chezmoi` and `antidote` commands in certain cases to simplify management.
