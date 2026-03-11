@@ -9,7 +9,7 @@ function _set_terminal_title() {
 }
 precmd_functions+=(_set_terminal_title)
 
-# Auto-list small directories after cd (skip if > 40 entries)
+# Auto-list small directories after cd (skip if > 80 entries)
 function _autols_small_dir() {
   if [[ -o interactive ]]; then
     local count
