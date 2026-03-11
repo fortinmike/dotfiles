@@ -68,6 +68,7 @@ _dotfiles_update_precmd() {
 
   local behind
   read -r behind < "$DOTFILES_UPDATE_RESULT_FILE" || return
+  command rm -f -- "$DOTFILES_UPDATE_RESULT_FILE"
   [[ "$behind" == <-> ]] || return
   [ "$behind" -gt 0 ] || return
 
