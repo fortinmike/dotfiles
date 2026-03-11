@@ -40,9 +40,13 @@ This is my ZSH configuration and personal dotfiles. Please review everything bef
 
 ## Keeping Stuff Updated
 
-- Full refresh: `dot-update` (runs `chezmoi update` which pulls the latest changes from the remote and applies them)
-- Only apply dotfile changes: `dot-apply` (runs `chezmoi apply` which applies the changes from the working copy into the home folder)
-- Only update plugins: `dot-update-plugins`
+These commands can be used instead of the `chezmoi` and `antidote` commands in most cases.
+
+- `dot-update` pulls the latest changes, applies them, and updates ZSH plugins in one go via chezmoi
+- `dot-apply` applies the working copy's state to your home directory and updates ZSH plugins
+- `dot-push` pushes local dotfiles commits from the chezmoi source repo to upstream
+- `dot-status` shows local-only and remote-only dotfiles commits relative to upstream
+- `dot-log` shows the chezmoi source repo history as a decorated graph
 
 ## Modifying Your Setup
 
@@ -59,14 +63,6 @@ This repository is public, so secrets should never be committed here in plain te
 
 - Use `~/.zshrc_local` for machine-local configuration
 - Do not store API keys, tokens, private certificates, passwords, or similar sensitive values in tracked dotfiles.
-
-## Dotfile Management Commands
-
-These commands can be used instead of the `chezmoi` and `antidote` commands in certain cases to simplify management.
-
-- `dot-update` pulls the latest changes and applies them in one go via chezmoi (mostly a proxy for `chezmoi update`)
-- `dot-apply` applies the working copy's state to your home directory via chezmoi (mostly a proxy for `chezmoi apply`)
-- `dot-update-plugins` updates ZSH plugins using antidote (they don't update automatically when applying)
 
 ## Font
 
