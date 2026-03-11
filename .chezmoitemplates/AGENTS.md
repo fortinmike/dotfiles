@@ -5,6 +5,7 @@
 - If a prompt contains a question (for example a chain-of-thought or brainstorm-like series of sentences with a question somewhere), answer the question instead of immediately jumping into action.
 - If there is any ambiguity in the request, ask for clarification before proceeding to avoid doing the wrong thing.
 - When answering questions, give me the TLDR first (without explicitly saying "TLDR" please), then elaborate only if necessary.
+- If you see significant downsides in an approach I'm suggesting, please flag them so we can step back and revise it.
 - Avoid excessive verbosity and redundancy.
 
 ## Computing
@@ -44,9 +45,11 @@
 - Comments should not end with a dot unless there are multiple sentences in a single comment.
 - Avoid making parameters and props optional unless necessary. This often complexifies code by adding multiple layers of default values and logic to handle "value not provided" cases.
 - Limit modifications to the specific task being worked on. If additional changes feel warranted, ask and do them as a second step if allowed to so that they can be committed independently.
-- Do not build projects for me. Verifying syntax with linting tools is fine though.
-- When a dependency is explicitly added to handle a capability, use that dependency directly for the implementation. Do not re-implement the same functionality manually unless explicitly requested.
+- Do not build projects for me unless requested. Verifying syntax with linting tools is fine though.
+- When a dependency is explicitly added to handle a capability, use that dependency directly for the implementation. Do not re-implement the same functionality manually.
 - Code comments and documentation comments should be present where the logic isn't self-evident.
+- Don’t let technical debt build up. Keep an eye on both the macro and micro aspects of the code, and flag anything that should be refactored for later.
+- Avoid making refactors unrelated to the feature being worked on; suggest them for later instead.
 
 #### Issue Tracking
 
