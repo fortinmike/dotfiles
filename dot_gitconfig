@@ -6,9 +6,7 @@
 	status = auto
 	branch = auto
 [alias]
-	logd = log --decorate
 	logg = log --decorate --graph --oneline
-	logm = log --pretty=oneline --abbrev-commit
 	discard = reset --hard HEAD
 	find = "!f() { git log --all -- **/$1*; }; f"
 [init]
@@ -23,6 +21,10 @@
 	default = simple
 [gc]
 	autoDetach = false
+[format]
+	pretty = oneline
+[log]
+	decorate = short
 [diff "sketchtool"]
 	textconv = sketchtool dump
 	cachetextconv = true
