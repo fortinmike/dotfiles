@@ -50,7 +50,7 @@ These commands can be used instead of the `chezmoi` and `antidote` commands in m
 
 ## Modifying Your Setup
 
-Use `chezmoi` commands such as `chezmoi edit` or open `~/local/share/chezmoi` (which contains the dotfiles working copy) in your editor of choice. Make any changes you want, commit them, then run `chezmoi apply` to apply those changes to your home folder. Make sure to push the changes back to the remote for backup and sharing with your other machines!
+Use `chezmoi` commands such as `chezmoi edit` or open `~/.local/share/chezmoi` (which contains the dotfiles working copy) in your editor of choice. Make any changes you want, commit them, then run `chezmoi apply` to apply those changes to your home folder. Make sure to push the changes back to the remote for backup and sharing with your other machines!
 
 ## Extension Points
 
