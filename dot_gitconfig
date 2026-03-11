@@ -17,6 +17,8 @@
 	pager = delta
 [branch]
 	autosetuprebase = never
+[merge]
+	ff = false
 [push]
 	default = simple
 [gc]
