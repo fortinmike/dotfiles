@@ -2,6 +2,11 @@
 
 set -e
 
+if [[ "$OSTYPE" != darwin* ]]; then
+    echo "wherefrom is only supported on macOS" >&2
+    exit 1
+fi
+
 # Copyright (c) 2012 Jake Petroules. All rights reserved.
 #
 # Redistribution and use in source and binary forms, with or without

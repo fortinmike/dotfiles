@@ -46,5 +46,6 @@ alias gp='git pull --ff-only'
 alias gpr='git pull --rebase'
 alias gpu='git push'
 
-# Finder reveal
-alias reveal='open -R'
+if [[ "$OSTYPE" == darwin* ]]; then
+  alias reveal='open -R'
+fi

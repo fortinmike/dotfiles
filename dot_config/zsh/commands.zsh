@@ -8,7 +8,7 @@ source "$COMMANDS_DIR/escaping.zsh"
 source "$COMMANDS_DIR/hashing.zsh"
 source "$COMMANDS_DIR/host-keys.zsh"
 source "$COMMANDS_DIR/aliases.zsh"
-source "$COMMANDS_DIR/fzf.zsh"
-source "$COMMANDS_DIR/system.zsh"
+source "$COMMANDS_DIR/processes.zsh"
+source "$COMMANDS_DIR/network.zsh"
 
 unset COMMANDS_DIR
