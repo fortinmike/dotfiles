@@ -33,10 +33,6 @@
 - Favor working inside the current working directory as much as possible, avoiding any side-effects outside of it.
 - For work that requires temporary files, create a `.tmp` directory in the current working directory instead of using a global folder like `/tmp`. After the job is done and if the user does not directly need the files, delete the `.tmp` folder root (not individual files inside of it). Do not force output to the `.tmp` folder for tools that have default output directories such as Xcode, just let them put their temporary files wherever they want.
 
-### Tools
-
-- For temporary static file serving, favor `pnpm dlx serve` if pnpm is available
-
 ### Coding & Software
 
 - Default to the simplest viable path first (while still avoiding workarounds) and only escalate complexity when there's a meaningful tradeoff to better fit the expressed intent.
