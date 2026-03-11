@@ -1,5 +1,7 @@
 # Shell hooks (precmd/chpwd, etc.)
 
+zmodload zsh/datetime
+
 # Keep window/tab title in sync so it resets after SSH exits.
 function _set_terminal_title() {
   # %n = user, %m = host (short)
@@ -21,10 +23,31 @@ chpwd_functions+=(_autols_small_dir)
 
 # Dotfiles update notification (start async on first prompt, print on later prompt)
 typeset -g _dotfiles_update_state=0
-typeset -g DOTFILES_UPDATE_RESULT_FILE="${${TMPDIR:-/tmp}%/}/dotfiles-update-${UID}-$$.result"
+typeset -gi DOTFILES_UPDATE_CACHE_MAX_AGE=64800
+typeset -g DOTFILES_UPDATE_CACHE_DIR="$HOME/.cache/zsh"
+typeset -g DOTFILES_UPDATE_CACHE_FILE="$DOTFILES_UPDATE_CACHE_DIR/dotfiles-update.cache"
+typeset -g DOTFILES_UPDATE_RESULT_FILE="$DOTFILES_UPDATE_CACHE_DIR/dotfiles-update-${UID}-$$.result"
+
+_dotfiles_update_read_cache() {
+  local checked_at behind
+  [ -r "$DOTFILES_UPDATE_CACHE_FILE" ] || return 1
+  read -r checked_at behind < "$DOTFILES_UPDATE_CACHE_FILE" || return 1
+  [[ "$checked_at" == <-> && "$behind" == <-> ]] || return 1
+  (( EPOCHSECONDS - checked_at < DOTFILES_UPDATE_CACHE_MAX_AGE )) || return 1
+  print -r -- "$behind"
+}
 
 _dotfiles_update_precmd() {
   if [ "$_dotfiles_update_state" -eq 0 ]; then
+    local cached_behind
+    mkdir -p "$DOTFILES_UPDATE_CACHE_DIR"
+    cached_behind="$(_dotfiles_update_read_cache)" || cached_behind=
+    if [[ "$cached_behind" == <-> ]]; then
+      print -r -- "$cached_behind" >| "$DOTFILES_UPDATE_RESULT_FILE"
+      _dotfiles_update_state=1
+      return
+    fi
+
     _dotfiles_update_state=1
     (
       local behind=0
@@ -32,6 +55,8 @@ _dotfiles_update_precmd() {
       GIT_TERMINAL_PROMPT=0 GIT_SSH_COMMAND='ssh -o BatchMode=yes -o ConnectTimeout=3 -o ConnectionAttempts=1 -o ServerAliveInterval=3 -o ServerAliveCountMax=1' \
         chezmoi git -- fetch --quiet --no-tags >/dev/null 2>&1 || true
       behind="$(chezmoi git -- rev-list --count HEAD..@{u} 2>/dev/null)" || behind=0
+      [[ "$behind" == <-> ]] || behind=0
+      print -r -- "$EPOCHSECONDS $behind" >| "$DOTFILES_UPDATE_CACHE_FILE"
       print -r -- "$behind" >| "$DOTFILES_UPDATE_RESULT_FILE"
     ) &!
     return
