@@ -16,6 +16,7 @@ bindkey '^[[Z' reverse-menu-complete # Shift-Tab cycles backward
 source <("$("$BREW_BIN" --prefix fzf)/bin/fzf" --zsh)
 
 typeset -gi _fzf_history_exclude_latest=0
+typeset -g _fzf_history_display_opts="--with-nth=2.. --nth=.."
 
 # Keep fzf's built-in widget for normal history search.
 functions -c fzf-history-widget _fzf_builtin_history_widget
@@ -49,6 +50,7 @@ _fzf_history_build_list() {
 # Wrapper only needed to support the second-Up "exclude latest" behavior (252300f).
 fzf-history-widget() {
   if (( _fzf_history_exclude_latest == 0 )); then
+    local FZF_CTRL_R_OPTS="${FZF_CTRL_R_OPTS:+$FZF_CTRL_R_OPTS }${_fzf_history_display_opts}"
     zle _fzf_builtin_history_widget
     return $?
   fi
@@ -106,7 +108,7 @@ zmodload zsh/terminfo
 typeset -g _history_up_or_fzf_saved_buffer=""
 typeset -gi _history_up_or_fzf_saved_cursor=0
 typeset -gi _history_up_or_fzf_armed=0
-typeset -g _history_up_or_fzf_base_opts="--height 40% --layout=default --with-nth=2.. --bind='down:transform:[[ \$FZF_POS -eq 1 ]] && echo abort || echo down'"
+typeset -g _history_up_or_fzf_base_opts="--height 40% --layout=default ${_fzf_history_display_opts} --bind='down:transform:[[ \$FZF_POS -eq 1 ]] && echo abort || echo down'"
 
 _history_up_or_fzf_open() {
   local _extra_opts="$1"
