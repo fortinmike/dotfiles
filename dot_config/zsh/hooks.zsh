@@ -9,10 +9,41 @@ function _set_terminal_title() {
 }
 precmd_functions+=(_set_terminal_title)
 
+function _macos_remote_login_protected_path() {
+  [[ -n "$HOME" ]] || return 1
+
+  local path="${1:A}" home="${HOME:A}" protected_dir
+  local -a protected_dirs=(
+    "$home/Desktop"
+    "$home/Documents"
+    "$home/Downloads"
+    "$home/Library/Mobile Documents"
+  )
+
+  for protected_dir in $protected_dirs; do
+    [[ "$path" == "$protected_dir" || "$path" == "$protected_dir"/* ]] && return 0
+  done
+
+  return 1
+}
+
+function _print_macos_remote_login_access_hint() {
+  print -P "%F{yellow}[macOS]%f Access likely refused by macOS privacy controls. Check %BSystem Settings > General > Sharing > Remote Login > Allow full disk access for remote users%b."
+}
+
 # Auto-list small directories after cd (skip if > 80 entries)
 function _autols_small_dir() {
   if [[ -o interactive ]]; then
-    local count
+    local count is_macos_remote_session=0
+    [[ "$OSTYPE" == darwin* && -n "$SSH_TTY" ]] && is_macos_remote_session=1
+
+    if ! command ls -A1 >/dev/null 2>&1; then
+      if (( is_macos_remote_session )) && _macos_remote_login_protected_path "$PWD"; then
+        _print_macos_remote_login_access_hint
+      fi
+      return
+    fi
+
     count=$(command ls -A1 2>/dev/null | command wc -l | tr -d ' ')
     if [ -n "$count" ] && [ "$count" -le 80 ]; then
       command eza
