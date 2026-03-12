@@ -37,7 +37,7 @@ function _autols_small_dir() {
     local count is_macos_remote_session=0
     [[ "$OSTYPE" == darwin* && -n "$SSH_TTY" ]] && is_macos_remote_session=1
 
-    if ! command ls -A1 >/dev/null 2>&1; then
+    if ! command /bin/ls -A -U . >/dev/null 2>&1; then
       if (( is_macos_remote_session )) && _macos_remote_login_protected_path "$PWD"; then
         _print_macos_remote_login_access_hint
       fi
