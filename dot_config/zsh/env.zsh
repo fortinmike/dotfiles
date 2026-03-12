@@ -35,9 +35,9 @@ export HOMEBREW_NO_ENV_HINTS=1
 export ANSIBLE_LOAD_CALLBACK_PLUGINS=1
 export OBJC_DISABLE_INITIALIZE_FORK_SAFETY=YES # Fixes python fork() issue on recent macOS
 
-# History (OMZ-style defaults)
+# History
 export HISTFILE="$HOME/.zsh_history" # History file path (explicit for cross-platform consistency)
-export HISTSIZE=10000 # In-memory history size
+export HISTSIZE=50000 # In-memory history size
 export SAVEHIST=10000 # Number of history entries to save to disk
 
 # Autosuggestions: only use completion results to avoid stale history paths
@@ -57,12 +57,11 @@ export LESS_TERMCAP_so=$'\e[1;44;33m'
 export LESS_TERMCAP_ue=$'\e[0m'
 export LESS_TERMCAP_us=$'\e[1;32m'
 
-# History behavior (OMZ-style)
-setopt append_history # Append to history file, don't overwrite
+# History behavior
 setopt hist_ignore_dups # Skip duplicate commands in history
 setopt hist_ignore_space # Do not add commands that start with a space to the history
 setopt hist_verify # Edit expanded history before running
-setopt inc_append_history # Write to history file immediately
+setopt share_history # Import and append history incrementally across shells
 setopt noextended_history # Keep plain history format (no timestamps)
 setopt hist_expire_dups_first # Expire duplicate entries first
 
