@@ -83,7 +83,8 @@
 
 #### Linear MCP
 
-- When asked to complete a task, set it to Implemented.
+- When asked to complete a task, commit the relevant changes with the appropriate task identifier prefix, then set the task to Implemented.
+- When asked to deliver a task, commit the relevant changes with the appropriate task identifier prefix, push the repo, then set the task to Delivered.
 
 #### Sketch MCP
 
