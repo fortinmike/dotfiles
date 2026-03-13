@@ -62,6 +62,7 @@
 
 - When asked to fix an issue given only an issue identifier like XXX-XXXX (or similar formats), try using a tool to obtain the actual issue details.
 - When committing a fix for an issue with a specific identifier, format the commit message like so: `ISSUE-ID: Short description starting with a capital letter`
+- When committing a fix for multiple issues at once, format the commit message like so: `ISSUE-ID-1+ISSUE-ID-2: Short description starting with a capital letter`
 - Ask the user before updating issue status.
 
 #### JavaScript & Web
@@ -83,8 +84,9 @@
 
 #### Linear MCP
 
-- When asked to complete a task, commit the relevant changes with the appropriate task identifier prefix, then set the task to Implemented.
-- When asked to deliver a task, commit the relevant changes with the appropriate task identifier prefix, push the repo, then set the task to Delivered.
+- When asked to complete a task, commit the relevant changes with the appropriate task identifier prefix(es), then set the task to Implemented.
+- When asked to deliver a task, commit the relevant changes with the appropriate task identifier prefix(es), push the repo, then set the task to Delivered.
+- Use separate commits for each distinct task, staging and committing parts of the on-disk changes if multiple tasks have been worked on simultaneously. If splitting into separate commits is unsafe due to overlapping changes, create a single commit prefixed with multiple task identifiers.
 
 #### Sketch MCP
 
