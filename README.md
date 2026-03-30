@@ -57,6 +57,11 @@ Use `chezmoi` commands such as `chezmoi edit` or open `~/.local/share/chezmoi` (
 - `~/.zshrc_local` is sourced during shell startup and can be used for machine-specific exports, PATH additions, and tool initialization that should stay out of the shared dotfiles
 - `PROMPT_HOST_COLOR` can be set in `~/.zshrc_local` to give that machine a distinct first Starship prompt capsule color, for example `export PROMPT_HOST_COLOR='#5e8ffb'`
 
+## Customizations
+
+- `Ctrl-X Ctrl-E` opens the current command in `$VISUAL` or `$EDITOR`
+- `Ctrl-J` inserts a literal newline into the current shell buffer so multiline commands can be edited as one buffer without triggering `PS2`
+
 ## Secrets
 
 This repository is public, so secrets should never be committed here in plain text.

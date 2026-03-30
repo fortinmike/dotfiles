@@ -79,6 +79,11 @@ bindkey '^Xc' fzf-cd-widget
 
 # Ensure common keybindings work in all terminals
 bindkey '^A' beginning-of-line # Ctrl-A
+_insert_literal_newline() {
+  LBUFFER+=$'\n'
+}
+zle -N _insert_literal_newline
+bindkey '^J' _insert_literal_newline # Ctrl-J inserts a literal newline into the buffer
 bindkey '^K' kill-line # Ctrl-K
 bindkey '^?' backward-delete-char # Delete/Backspace
 bindkey '^H' backward-delete-char # Backspace on some terminals
