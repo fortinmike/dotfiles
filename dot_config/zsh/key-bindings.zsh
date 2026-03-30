@@ -139,9 +139,17 @@ _history_up_or_fzf_open() {
 }
 
 # Up arrow:
-# - Empty prompt: first Up recalls latest history, second Up opens unfiltered fzf.
-# - Non-empty prompt: open fzf history immediately, using prompt text as query.
+# - Within a multiline prompt: move the cursor up inside the buffer
+# - Empty prompt or first line of the prompt: first Up recalls latest history, second Up opens unfiltered fzf
+# - Single-line non-empty prompt: open fzf history immediately, using prompt text as query
 _history_up_or_fzf() {
+  # Preserve multiline editing: only trigger history when Up is pressed from the first line.
+  if [[ $LBUFFER == *$'\n'* ]]; then
+    _history_up_or_fzf_armed=0
+    zle up-line-or-history
+    return 0
+  fi
+
   # Second Up after empty-prompt recall: open fzf with an empty query.
   if (( _history_up_or_fzf_armed )) && [[ $LASTWIDGET == _history_up_or_fzf ]]; then
     BUFFER=""
