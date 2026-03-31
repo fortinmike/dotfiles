@@ -92,5 +92,6 @@
 
 #### Sketch MCP
 
-- When inspecting layout, measure precisely by digging into the document structure and extracting dimensions, font sizes, etc. rather than relying too much on visual previews.
+- When inspecting layout, measure precisely by digging into the document structure and extracting dimensions, font sizes, border radiuses, drop shadows, etc. rather than relying too much on `get_selection_as_image`.
+- Always shoot for max fidelity in the initial pass when implementing layout based on Sketch mockups (do not skip border radius, drop shadows, etc.).
 - After performing operations, validate your work by selecting the appropriate element and capturing images with the `get_selection_as_image` tool.
