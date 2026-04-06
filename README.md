@@ -27,6 +27,7 @@ This is my ZSH configuration and personal dotfiles. Please review everything bef
 ## Extras
 
 - `zoxide` (`z` directory jumper command)
+- `zellij` (pane-based terminal multiplexer)
 - `eza` (replaces `ls` with an alias)
 - `rg` (ripgrep, fast search)
 - `fzf` (fuzzy finder) + `fzf-tab` plugin (fzf-enhanced tab completion)

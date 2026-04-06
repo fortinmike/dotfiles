@@ -1,0 +1,3 @@
+// Built-in config only supports pane frames as a global toggle
+// This keeps single-pane sessions clean, but frames stay off after splitting too
+pane_frames false
