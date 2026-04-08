@@ -7,6 +7,7 @@
 - When answering questions, give me the TLDR first (without explicitly saying "TLDR" please), then elaborate only if necessary.
 - If you see significant downsides in an approach I'm suggesting, please flag them so we can step back and revise it.
 - Avoid excessive verbosity and redundancy.
+- If I tell you something that seems completely out of context (for example I may have messaged the wrong agent), stop and ask me for clarifications instead of trying to dig all over my machine to find something to apply it to.
 
 ## Computing
 
