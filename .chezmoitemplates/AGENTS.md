@@ -60,6 +60,7 @@
 - Code comments and documentation comments should be present where the logic isn't self-evident.
 - Don’t let technical debt build up. Keep an eye on both the macro and micro aspects of the code, and flag anything that should be refactored for later.
 - Avoid making refactors unrelated to the feature being worked on; suggest them for later instead.
+- Do not create commits unless prompted to or the specific workflow you must perform requires it.
 
 #### Issue Tracking
 
@@ -67,6 +68,7 @@
 - When committing a fix for an issue with a specific identifier, format the commit message like so: `ISSUE-ID : Short description starting with a capital letter`
 - When committing a fix for multiple issues at once, format the commit message like so: `ISSUE-ID-1 + ISSUE-ID-2 : Short description starting with a capital letter`
 - Ask the user before updating issue status.
+- Do not commit and mark issues as Implemented unless requested to; the user will most often validate the implementation and ask for this later.
 
 #### JavaScript & Web
 
