@@ -44,6 +44,11 @@
   - Never use `git pull --rebase`.
   - Never fast-forward merges when integrating branches.
 
+### Documentation and Comments
+
+- Comments should explain the "why", not the "how", unless a specific piece of code is complex and requires details to be understandable.
+- Do not write documentation that lists files on disk or enumerates items that have a high risk of changing over time. This is bound to become stale and incorrect quickly.
+
 ### Coding & Software
 
 - Default to the simplest viable path first (while still avoiding workarounds) and only escalate complexity when there's a meaningful tradeoff to better fit the expressed intent.
