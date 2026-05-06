@@ -90,7 +90,9 @@
 
 - Do not hesitate to ask the user to perform actions if the most reliable way to make a change is to use the Xcode GUI, instead of trying to make edits to complex Xcode project files and ending up in an invalid state, UNLESS you have access to the Xcode MCP to perform the operations yourself in a reliable manner.
 
-## MCP
+## MCPs and Tools
+
+When trying to use a MCP server and it doesn't seem usable or reachable, stop and tell the user instead of trying to work around the issue.
 
 #### Linear MCP
 
