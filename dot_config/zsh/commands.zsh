@@ -10,5 +10,6 @@ source "$COMMANDS_DIR/host-keys.zsh"
 source "$COMMANDS_DIR/aliases.zsh"
 source "$COMMANDS_DIR/processes.zsh"
 source "$COMMANDS_DIR/network.zsh"
+source "$COMMANDS_DIR/xcode.zsh"
 
 unset COMMANDS_DIR
