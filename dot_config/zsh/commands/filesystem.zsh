@@ -30,7 +30,6 @@ if [[ "$OSTYPE" == darwin* ]]; then
   delete-local-snapshots() {
     local line
     local snapshot_dates
-    local i
     local d
     local -a snapshots
     local -a sorted_snapshots
@@ -49,26 +48,20 @@ if [[ "$OSTYPE" == darwin* ]]; then
     sorted_snapshots=("${(@o)snapshots}")
 
     if [ "${#snapshots[@]}" -eq 1 ]; then
-      echo "✅ ${sorted_snapshots[1]} (keep)"
-      echo "Nothing to delete (only one local snapshot found)"
+      echo "✅ ${sorted_snapshots[1]} (kept)"
+      echo "Nothing deleted (only one local snapshot found)"
       return
     fi
 
     # Keep the newest snapshot: removing all snapshots can force extra Time Machine work
     # Reference: https://eclecticlight.co/2026/02/02/which-snapshots-could-you-delete/
     local newest_snapshot="${sorted_snapshots[-1]}"
-    for (( i = ${#sorted_snapshots[@]}; i >= 1; i-- )); do
-      d="${sorted_snapshots[i]}"
-      if [ "$d" = "$newest_snapshot" ]; then
-        echo "✅ $d (keep)"
-        continue
-      fi
-      echo "❌ $d (delete)"
-    done
+    echo "✅ $newest_snapshot (kept)"
 
     for d in "${sorted_snapshots[@]}"; do
       [ "$d" = "$newest_snapshot" ] && continue
       sudo tmutil deletelocalsnapshots "$d" || return $?
+      echo "❌ $d (deleted)"
     done
   }
 fi

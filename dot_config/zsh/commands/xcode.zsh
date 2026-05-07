@@ -44,21 +44,18 @@ if [[ "$OSTYPE" == darwin* ]]; then
     runtime_rows=("${(@f)runtime_output}")
 
     runtime_label="${runtime_rows[1]#*$'\t'}"
-    echo "✅ $runtime_label (keep)"
+    echo "✅ $runtime_label (kept)"
 
     if (( ${#runtime_rows} == 1 )); then
-      echo "Nothing to delete (only one iOS simulator runtime found)"
+      echo "Nothing deleted (only one iOS simulator runtime found)"
       return 0
     fi
 
     for runtime_row in "${runtime_rows[@]:1}"; do
-      runtime_label="${runtime_row#*$'\t'}"
-      echo "❌ $runtime_label (delete)"
-    done
-
-    for runtime_row in "${runtime_rows[@]:1}"; do
       identifier="${runtime_row%%$'\t'*}"
+      runtime_label="${runtime_row#*$'\t'}"
       command xcrun simctl runtime delete "$identifier" || return $?
+      echo "❌ $runtime_label (deleted)"
     done
   }
 fi
