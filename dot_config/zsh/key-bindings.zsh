@@ -2,7 +2,7 @@
 bindkey -e # Use emacs keybindings in the line editor
 zmodload zsh/complist
 zstyle ':completion:*' menu select # Enable menu selection for completion
-zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'r:|=*' 'l:|=*' # Case-insensitive + substring matches
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'm:{a-zA-Z}={A-Za-z} r:|=* l:|=*' # Case-insensitive + substring matches
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS} # Use LS_COLORS for completion listing
 zstyle ':completion:*' use-cache on # Cache completion results for speed
 zstyle ':completion:*' cache-path "$HOME/.cache/zsh/compcache" # Cache location
