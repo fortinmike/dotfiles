@@ -12,6 +12,9 @@ if [[ -z "$_comps" ]]; then
   compinit -C -d "$ZSH_CACHE_DIR/zcompdump"
 fi
 
+# fzf completion must load before fzf-tab so fzf-tab remains the final Tab widget
+source <("$("$BREW_BIN" --prefix fzf)/bin/fzf" --zsh)
+
 # This fetches missing plugins and builds the bundle cache once during the first shell load
 if [ ! -f "$ANTIDOTE_CACHE" ] || [ "$ANTIDOTE_BUNDLE" -nt "$ANTIDOTE_CACHE" ]; then
   antidote bundle <"$ANTIDOTE_BUNDLE" >| "$ANTIDOTE_CACHE"

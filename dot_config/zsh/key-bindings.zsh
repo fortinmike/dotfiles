@@ -1,19 +1,17 @@
 # Completion menu selection
 bindkey -e # Use emacs keybindings in the line editor
 zmodload zsh/complist
-zstyle ':completion:*' menu select # Enable menu selection for completion
+zstyle ':completion:*' menu no # Let fzf-tab open immediately for ambiguous completions
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z}' 'm:{a-zA-Z}={A-Za-z} r:|=* l:|=*' # Case-insensitive + substring matches
 zstyle ':completion:*' list-colors ${(s.:.)LS_COLORS} # Use LS_COLORS for completion listing
 zstyle ':completion:*' use-cache on # Cache completion results for speed
 zstyle ':completion:*' cache-path "$HOME/.cache/zsh/compcache" # Cache location
 zstyle ':completion:*' sort false # Disable completion sorting so fzf-tab keeps source order
+zstyle ':completion:*' force-list 2 # Open fzf-tab when multiple matches share one inserted prefix
 zstyle ':fzf-tab:*' fzf-flags --ignore-case # fzf-tab: force case-insensitive matching
 setopt auto_menu # Automatically show the completion menu on repeated tab
 setopt no_list_beep # Don't beep when listing completions
 bindkey '^[[Z' reverse-menu-complete # Shift-Tab cycles backward
-
-# fzf keybindings + completion (Ctrl-T, Ctrl-R, Alt-C)
-source <("$("$BREW_BIN" --prefix fzf)/bin/fzf" --zsh)
 
 typeset -gi _fzf_history_exclude_latest=0
 typeset -g _fzf_history_display_opts="--with-nth=2.. --nth=.."
