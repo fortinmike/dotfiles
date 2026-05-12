@@ -96,7 +96,8 @@ When trying to use a MCP server and it doesn't seem usable or reachable, stop an
 
 #### Linear MCP
 
-- When asked to complete a task, commit the relevant changes with the appropriate task identifier prefix(es), then set the task to Implemented.
+- When asked to implement a task, just read the task and implement it in source, but don't commit or alter the Linear task's state unless told to.
+- When asked to complete a task or mark it as implemented (the user clearly expects an action to happen on Linear), commit the relevant changes with the appropriate task identifier prefix(es), then set the task to Implemented.
 - When asked to deliver a task, commit the relevant changes with the appropriate task identifier prefix(es), push the repo, then set the task to Delivered.
 - Use separate commits for each distinct task, staging and committing parts of the on-disk changes if multiple tasks have been worked on simultaneously. If splitting into separate commits is unsafe due to overlapping changes, create a single commit prefixed with multiple task identifiers.
 
