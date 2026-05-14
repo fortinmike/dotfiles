@@ -42,3 +42,4 @@
 	side-by-side = true
 [pull]
 	rebase = false
+  ff = only
