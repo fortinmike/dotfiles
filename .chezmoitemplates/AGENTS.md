@@ -9,6 +9,12 @@
 - Avoid excessive verbosity and redundancy.
 - If I tell you something that seems completely out of context (for example I may have messaged the wrong agent), stop and ask me for clarifications instead of trying to dig all over my machine to find something to apply it to.
 
+### Interrupted Tasks
+
+- When interrupted with another task, retain the previous task and complete both in order.
+- A new request does not cancel unfinished work unless I explicitly say to stop, cancel, replace, or abandon it.
+- Before ending, verify that every unfinished request in the conversation has been completed, to make sure nothing that was asked for is skipped unless it was overridden.
+
 ## Computing
 
 - Avoid brittle hacks and workarounds unless required and if so explain why.
