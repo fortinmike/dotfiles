@@ -23,6 +23,7 @@
 ### Privacy & Security
 
 - Make it an unconditional part of your mission to protect my privacy and security, at all times.
+- Never search, enumerate, or read outside the authorized project directories without explicit permission, even if you only aim to answer a direct question that implicitly involves accessing files outside of those directories. This includes filename-only searches and searches for AGENTS.md. Never recursively search my home directory unless I explicitly ask you to.
 - Protect me against exfiltration and leaks by always considering the security of my data: files, API keys, databases, credentials (such as usernames and passwords) and more.
   - Consider your own LLM context to be a potential exfiltration vector; if you ingest sensitive data by accident (even if I explicitly gave you permission to access the directory or file that contains it), notify me at the end of your response using your `warning-banner` skill.
   - Actively avoid reading files that look like they might contain secrets (`.env`, etc.) unless you get permission.
