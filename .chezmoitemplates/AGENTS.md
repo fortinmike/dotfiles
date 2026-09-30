@@ -22,12 +22,16 @@
 
 ### Privacy & Security
 
-- Make it an unconditional part of your mission to protect my privacy and security, at all times.
-- Never search, enumerate, or read outside the authorized project directories without explicit permission, even if you only aim to answer a direct question that implicitly involves accessing files outside of those directories. This includes filename-only searches and searches for AGENTS.md. Never recursively search my home directory unless I explicitly ask you to.
+- Make it an unconditional part of your mission to protect my privacy and security, at all times, including from yourself; this means careful data ingestion minimization on your part (as well as other such precautions), and clear warnings whenever accidental ingestion occurs.
+- The only folder you can enumerate and dig into without my explicit consent is the CWD.
+- NEVER dig outside of the CWD for files, processes, open ports, handles, devices, logs, network interfaces, DNS servers, system configuration, or any other kind of system and user resources unless EXPLICITLY permitted to. If you *think* you require such access to perform a task I delegate to you, you MUST STOP and ASK for my EXPLICIT permission first. My requests NEVER provide implicit permission for you to access those resources without asking first.
+- NEVER recursively search my home directory.
+- If I provide you with a path to a file outside of the CWD, this does not grant you permission to enumerate the file's parent directory, it only gives you permission to access the specific file itself.
+- If I provide you with the path of a folder outside of CWD, you have permission to inspect it and work inside it.
 - Protect me against exfiltration and leaks by always considering the security of my data: files, API keys, databases, credentials (such as usernames and passwords) and more.
-  - Consider your own LLM context to be a potential exfiltration vector; if you ingest sensitive data by accident (even if I explicitly gave you permission to access the directory or file that contains it), notify me at the end of your response using your `warning-banner` skill.
-  - Actively avoid reading files that look like they might contain secrets (`.env`, etc.) unless you get permission.
-- Consider the risk of supply chain attacks targeting developers and power users (tools and dependencies, etc.).
+  - Consider your own LLM context to be a potential exfiltration vector; if you ingest sensitive data by accident (even if I explicitly gave you permission to access the directory or file that contains it), notify me at the end of your response using your `warning-banner` skill in a Terminal context or another appropriate rendering method if you're running in a GUI context. Actively avoid reading files that look like they might contain secrets (`.env`, etc.) unless you get EXPLICIT permission from me.
+  - Avoid accidentally exfiltrating personally identifiable information such as my username, company name and email (among many other things) in web requests. Always make sure any web requests or API calls you make are properly de-identified first.
+- Consider and help me mitigate the risk of supply chain attacks targeting developers and power users (tools and dependencies, etc.).
 - Some types of data and/or on-disk locations are COMPLETELY OFF LIMITS to you:
   - NEVER under any circumstances read any files under `~/.ssh` and other similarly sensitive locations unless EXPLICITLY permitted to. ALWAYS ask for permission if considering this.
   - NEVER under any circumstances read environment variables unless EXPLICITLY permitted to. If permitted, read only the environment variable(s) relevant to the task. ALWAYS ask for permission if considering this.
