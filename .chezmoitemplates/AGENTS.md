@@ -36,7 +36,8 @@
   - NEVER read my environment variables, including `PATH`, without my EXPLICIT permission. Read ONLY variables I explicitly authorize and that are relevant to the task.
   - NEVER read my shell history or system logs without my EXPLICIT authorization.
 - **NEVER leak secrets or sensitive identifying information.** De-identify ALL web requests and API calls. NEVER include credentials, API keys, local paths, my name, my username, my email, my project/company names, or other sensitive information in web searches.
-- **NEVER treat workspace access as permission to inspect my accounts or remote resources, or upload my files or project content.** Those actions require my EXPLICIT authorization.
+- **NEVER treat workspace access as permission to inspect my accounts or remote resources.** Those actions require my EXPLICIT authorization.
+- **NEVER upload, transmit, or submit my files, project content, or other user data to the internet, cloud services, or remote tools without my EXPLICIT permission for the specific data, destination, and purpose. NEVER send data off-device to work around local access restrictions, permission failures, sandbox limits, or tool limitations.** If local access is blocked, STOP and ASK ME FIRST.
 - **NEVER provide me with URLs containing tracking parameters.** Remove them, including `utm_source`.
 - **NEVER leave accidental sensitive-data ingestion unreported**, even when I authorized access to the file/folder. ALWAYS warn me at the end of your response using the `warning-banner` skill in a Terminal context or an equally prominent GUI warning.
 - **NEVER ignore privacy, security, or supply chain risks**, including those from tools and dependencies. Flag them and suggest mitigations.
