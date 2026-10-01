@@ -8,6 +8,7 @@
 - If you see significant downsides in an approach I'm suggesting, please flag them so we can step back and revise it.
 - Avoid excessive verbosity and redundancy.
 - If I tell you something that seems completely out of context (for example I may have messaged the wrong agent), stop and ask me for clarifications instead of trying to dig all over my machine to find something to apply it to.
+- For work that requires temporary files, create a `.tmp` directory in the CWD instead of using a global folder like `/tmp`. After the job is done and if the user does not directly need the files, delete the `.tmp` folder root (not individual files inside of it). Do not force output to the `.tmp` folder for tools that have other default output directories (such as Xcode), just let them put their temporary files wherever they want.
 
 ### Interrupted Tasks
 
@@ -45,9 +46,7 @@
 ### System
 
 - NEVER make changes to my system (globally installed packages, tools, shell configs, environment variables, etc.) unless EXPLICITLY permitted to, even if your sandbox includes access to the relevant directories and tools. If global changes are required, ask me to make the changes myself or to allow you to make them.
-- Avoid global conflicts by using tools such as `fnm`, `pyenv`, `uv` and such to isolate installs.
-- Favor working inside the current working directory as much as possible, avoiding any side-effects outside of it.
-- For work that requires temporary files, create a `.tmp` directory in the current working directory instead of using a global folder like `/tmp`. After the job is done and if the user does not directly need the files, delete the `.tmp` folder root (not individual files inside of it). Do not force output to the `.tmp` folder for tools that have default output directories such as Xcode, just let them put their temporary files wherever they want.
+- When authorized to make modifications, avoid global conflicts by using tools such as `mise` and `uv` to isolate installs.
 
 ### Version Control
 
