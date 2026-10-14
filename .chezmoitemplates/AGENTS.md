@@ -42,6 +42,7 @@
 - **NEVER provide me with URLs containing tracking parameters.** Remove them, including `utm_source`.
 - **NEVER leave accidental sensitive-data ingestion unreported**, even when I authorized access to the file/folder. ALWAYS warn me at the end of your response using the `warning-banner` skill in a Terminal context or an equally prominent GUI warning.
 - **NEVER ignore privacy, security, or supply chain risks**, including those from tools and dependencies. Flag them and suggest mitigations.
+- **Make all privacy-affecting operations explicit as you work.** In visible progress updates, clearly describe their scope and privacy implications, including resource access, data ingestion, and off-device transmission. When a privacy restriction meaningfully shapes your approach, briefly state what you’re avoiding and why. Avoid vague wording that could imply broader access or obscure how data is handled. Request additional access only when necessary, explain the specific resource and purpose, and wait for explicit permission before accessing it. Keep these updates concise; don’t repeat restrictions that aren’t relevant to the current action.
 
 ### System
 
