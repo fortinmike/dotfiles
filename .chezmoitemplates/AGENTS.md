@@ -49,6 +49,10 @@
 - NEVER make changes to my system (globally installed packages, tools, shell configs, environment variables, etc.) unless EXPLICITLY permitted to, even if your sandbox includes access to the relevant directories and tools. If global changes are required, ask me to make the changes myself or to allow you to make them.
 - When authorized to make modifications, avoid global conflicts by using tools such as `mise` and `uv` to isolate installs.
 
+### Shell Commands
+
+When a command requires my configured toolchains, hooks, or authentication setup, load my normal shell environment (for example with `zsh -ic '<command>'`). Keep sandbox and approval settings unchanged, keep hooks enabled, and do not wrap commands in tools like Mise unnecessarily. If this fails, report the error and ask before investigating outside the authorized workspace.
+
 ### Version Control
 
 - Preserve branch topology and avoid history rewriting.
